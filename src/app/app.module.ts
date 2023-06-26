@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ProgressbarComponent } from './shared/progressbar/progressbar.component';
 import { PrimengModule } from './primeng/primeng.module';
+import { QuizComponent } from './feature/quiz/quiz.component';
+import { ButtonComponent } from './shared/button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProgressbarComponent
+    ProgressbarComponent,
+    QuizComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

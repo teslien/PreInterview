@@ -10,7 +10,7 @@ import {ProgressBarModule} from 'primeng/progressbar';
     ProgressBarModule
   ],
   exports:[
-    ProgressBarModule
+    ProgressBarModule,
   ]
 })
 export class PrimengModule { }

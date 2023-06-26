@@ -7,6 +7,11 @@
 
 :root {
     font-size: 62.5%;
+    --textWonder: #252525;
+    --backgroundWonder: #E1E1E1;
+    --navbarBGWOnder: #F4F4F4;
+    --quizBg: #FBFBFB;
+    --primarybg:#3266CA;
 }
 
 
@@ -22,7 +27,7 @@
     font-family: "poppins";
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-    background-color: #E1E1E1;
+    background-color: var(--backgroundWonder);
   }
   
 h1,
@@ -75,4 +80,20 @@ h6 {
 
 .shadowWonder{
     box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.container{
+  padding: 1.5rem;
+}
+
+.primaryFontSize{
+  font-size: 1.7rem;
+}
+
+.secondaryFontSize{
+  font-size: 1.4rem;
+}
+
+.primarybg{
+  background-color: #3266CA;
 }

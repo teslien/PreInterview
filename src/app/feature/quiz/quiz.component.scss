@@ -1,0 +1,75 @@
+.appQuiz{
+    position: relative;
+    margin-top:5rem;
+    background-color: var(--quizBg);
+    height: auto;
+    max-width: 1236px;
+    margin-inline: auto;
+
+    &_ques{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.7rem;
+    }
+
+    &_ans{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.7rem;
+    }
+
+    &_right{
+        position: absolute;
+        right:2rem;
+        height: 2rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+    
+    &_options{
+        width: 97%;
+        height: 6.3rem;
+        border-radius: 9px;
+        border: 1px solid #808080;
+        background: var(--quizBg);
+        display: flex;
+        align-items: center;
+        box-sizing: content-box;
+        gap:1rem;
+    }
+
+    
+// &_options:before{
+//     content: '';
+//     position: absolute;
+//     top:0;
+//     left:0;
+//     height: 100%;
+//     width: 100%;
+//     background-color: aqua;
+//     z-index: -1;
+//     transform: translateX(-100%);
+//     transition: all 1s;
+// }
+
+// &_options:hover:before{
+//     transform: translateX(0%);
+// }
+
+// &_options:hover{
+//     color:white;
+//     background-color: black;
+// }
+
+    &_checkCircle{
+        max-width: 48px;
+        width: 100%;
+        max-height: 48px;
+        height: 100%;
+        border: 1px solid #808080;
+        border-radius: 50%;
+    }
+
+}
