@@ -14,7 +14,7 @@ export class ProgressbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.calculatedValue= Math.floor((this.value*100)/60);
+    this.calculatedValue= Math.floor((this.value*100)/10);
 }
 
 }

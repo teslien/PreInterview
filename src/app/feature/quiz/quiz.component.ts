@@ -24,7 +24,7 @@ export class QuizComponent implements OnInit {
     {
       qNo:1,
       statement:'Consider the following definition of demo module.',
-      image:'../../../assets/yo.png',
+      image:'../../../assets/images/france.jpg',
       question: 'What is the capital of France?',
       options: [
       {
@@ -52,7 +52,7 @@ export class QuizComponent implements OnInit {
     {
       qNo:2,
       statement:'Consider the following definition of demo module.',
-      image:'https://miro.medium.com/v2/resize:fit:1400/1*sdJ9XQg9k84CdL0xGwc-sg.png',
+      image:'../../../assets/images/japan.jpg',
       question: 'What is the currency of Japan?',
       options: [
       {
@@ -81,7 +81,7 @@ export class QuizComponent implements OnInit {
     {
       qNo: 3,
       statement: 'Consider the following statement.',
-      image: '',
+      image: '../../../assets/images/solar.jpg',
       question: 'What is the largest planet in our solar system?',
       options: [
         {
