@@ -38,30 +38,8 @@
         align-items: center;
         box-sizing: content-box;
         gap:1rem;
+        transition: all 0.5s;
     }
-
-    
-// &_options:before{
-//     content: '';
-//     position: absolute;
-//     top:0;
-//     left:0;
-//     height: 100%;
-//     width: 100%;
-//     background-color: aqua;
-//     z-index: -1;
-//     transform: translateX(-100%);
-//     transition: all 1s;
-// }
-
-// &_options:hover:before{
-//     transform: translateX(0%);
-// }
-
-// &_options:hover{
-//     color:white;
-//     background-color: black;
-// }
 
     &_checkCircle{
         max-width: 48px;
@@ -72,4 +50,32 @@
         border-radius: 50%;
     }
 
+    &_show{
+        display: none;
+    }
+
 }
+
+.appQuiz_options:hover{
+    background-color: #3267caea;
+    color:rgb(255, 255, 255);
+
+    .appQuiz_checkCircle{
+        border: 1.3px solid #ffffff;
+    }
+}
+
+
+.activeOptions{
+        background-color: #3266CA;
+        color:white;
+
+        .appQuiz_checkCircle{
+            border: 1.3px solid #ffffff;
+        }
+    
+        .appQuiz_show{
+            display: block;
+        }
+
+    }

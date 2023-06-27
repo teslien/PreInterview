@@ -8,6 +8,7 @@ import { ProgressbarComponent } from './shared/progressbar/progressbar.component
 import { PrimengModule } from './primeng/primeng.module';
 import { QuizComponent } from './feature/quiz/quiz.component';
 import { ButtonComponent } from './shared/button/button.component';
+import { RunningQuizComponent } from './feature/running-quiz/running-quiz.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ButtonComponent } from './shared/button/button.component';
     NavbarComponent,
     ProgressbarComponent,
     QuizComponent,
-    ButtonComponent
+    ButtonComponent,
+    RunningQuizComponent
   ],
   imports: [
     BrowserModule,
