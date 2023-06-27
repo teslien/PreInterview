@@ -5,6 +5,7 @@
     height: auto;
     max-width: 1236px;
     margin-inline: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     &_ques{
         height: 100%;
@@ -31,8 +32,8 @@
     &_options{
         width: 97%;
         height: 6.3rem;
-        border-radius: 9px;
-        border: 1px solid #808080;
+        border-radius: 5px;
+        border: 1px solid #a4a4a4;
         background: var(--quizBg);
         display: flex;
         align-items: center;
