@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -15,7 +16,6 @@ export class QuizComponent implements OnInit {
   currentQuestionIndex:number=0;
   optionChoosen:boolean=false;
   optionChoosenIndex:number=0;
-  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -360,4 +360,5 @@ export class QuizComponent implements OnInit {
     this.optionChoosen=true;
     this.currentQuestionIndex--;
   }
+
 }
