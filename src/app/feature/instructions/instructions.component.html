@@ -1,3 +1,35 @@
 <app-wrap-instruction>
-<h1>Hello world this is instructions</h1>
+    <div class="p-4 primaryFontSize text-justify">
+        <h3 class="font-bold">Instructions</h3>
+
+        <br>
+        As part of the evaluation process, you will be required to complete two rounds. These rounds are designed to
+        assess your skills, knowledge, and suitability for the position you've applied for.
+
+        During the first round, you will be presented with a series of questions or tasks. These may be in the form of
+        multiple-choice questions, problem-solving exercises, or practical assignments, depending on the nature of the
+        position. Take your time to carefully read and understand each question or task before providing your response.
+
+        If you successfully pass the first round, you will proceed to the second round. The second round might involve
+        additional assessments, such as a virtual interview, a coding challenge, a presentation, or a simulation
+        exercise. The specific details and requirements for the second round will be communicated to you after the
+        completion of the first round.
+
+        It's important to approach each round with focus, attention to detail, and a desire to showcase your abilities.
+        Make sure to follow any provided instructions closely and submit your responses within the given timeframe, if
+        applicable.
+
+        We wish you the best of luck in the upcoming rounds of the pre-interview test. If you have any further questions
+        or require clarification on anything, please don't hesitate to ask.
+        <div class="col-12 flex justify-content-end gap-3 px-4">
+            <app-button [customStyles]="{
+                background:'#FBFBFB'
+              }" routerLink="/welcome"><i
+                    class="pi textWonder text-2xl pi-arrow-left"></i></app-button>
+            <app-button [customStyles]="{
+                background:'#3266CA'
+              }" routerLink="/quiz">Start Test<i
+                    class="pi pi-arrow-right text-2xl"></i></app-button>
+        </div>
+    </div>
 </app-wrap-instruction>

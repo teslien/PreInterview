@@ -12,6 +12,7 @@ import { RunningQuizComponent } from './feature/running-quiz/running-quiz.compon
 import { InstructionsComponent } from './feature/instructions/instructions.component';
 import { WrapInstructionComponent } from './shared/wrap-instruction/wrap-instruction.component';
 import { WelcomeComponent } from './feature/welcome/welcome.component';
+import { CountdownComponent } from './shared/countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { WelcomeComponent } from './feature/welcome/welcome.component';
     RunningQuizComponent,
     WrapInstructionComponent,
     InstructionsComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CountdownComponent
   ],
   imports: [
     BrowserModule,

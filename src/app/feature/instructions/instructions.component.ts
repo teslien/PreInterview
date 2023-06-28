@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructionsComponent implements OnInit {
 
+  bgColorBtn='#3266CA';
+  bgColorSEBtn='#FBFBFB';
   constructor() { }
 
   ngOnInit(): void {

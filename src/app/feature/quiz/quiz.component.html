@@ -1,6 +1,6 @@
-<div class="appQuiz  grid p-4">
+<div class="appQuiz grid p-4">
     <span class="appQuiz_right flex gap-2 align-items-center p-3">
-        1 hour : 20 Min<img src="../../../assets/images/stop.png" width="27px" height="27px" alt=""></span>
+       <app-countdown [value]="[0,59,59,99]" [startPositive]="false"></app-countdown> <img src="../../../assets/images/stop.png" width="27px" height="27px" alt=""></span>
 
     <div class="appQuiz_ques col-6 p-5">
         <div class="flex gap-5 flex-column ">
@@ -26,8 +26,12 @@
 
     </div>
     <div class="col-12 flex justify-content-end gap-3 px-4">
-        <app-button [bgcolor]='bgColorSEBtn' (click)="onBack()"><i class="pi textWonder text-2xl pi-arrow-left"></i></app-button>
-        <app-button [bgcolor]='bgColorBtn' (click)="onNext()">Next<i class="pi pi-arrow-right text-2xl"></i></app-button>
+        <app-button [customStyles]="{
+            background:'#FBFBFB'
+          }" (click)="onBack()"><i class="pi textWonder text-2xl pi-arrow-left"></i></app-button>
+        <app-button [customStyles]="{
+            background:'#3266CA'
+          }" (click)="onNext()">Next<i class="pi pi-arrow-right text-2xl"></i></app-button>
     </div>
 
 </div>
