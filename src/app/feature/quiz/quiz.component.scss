@@ -26,7 +26,7 @@
         right:2rem;
         height: 2rem;
         font-size: 1.4rem;
-        font-weight: 700;
+        // font-weight: 700;
     }
     
     &_options{
@@ -58,11 +58,12 @@
 }
 
 .appQuiz_options:hover{
-    background-color: #3267caea;
-    color:rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    border-color: #000000;
+
 
     .appQuiz_checkCircle{
-        border: 1.3px solid #ffffff;
+        border: 1.3px solid #000000;
     }
 }
 

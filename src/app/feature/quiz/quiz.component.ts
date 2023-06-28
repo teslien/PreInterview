@@ -354,12 +354,10 @@ export class QuizComponent implements OnInit {
   onNext(){
     this.optionChoosen=false;
     this.currentQuestionIndex++;
-    this.router.navigate(['/quiz', this.currentQuestionIndex]);
   }
 
   onBack(){
     this.optionChoosen=true;
     this.currentQuestionIndex--;
-    this.router.navigate(['/quiz', this.currentQuestionIndex]);
   }
 }

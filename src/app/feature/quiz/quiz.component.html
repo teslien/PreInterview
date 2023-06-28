@@ -1,5 +1,6 @@
 <div class="appQuiz  grid p-4">
-    <span class="appQuiz_right">1 hour 20 Min Left</span>
+    <span class="appQuiz_right flex gap-2 align-items-center p-3">
+        1 hour : 20 Min<img src="../../../assets/images/stop.png" width="27px" height="27px" alt=""></span>
 
     <div class="appQuiz_ques col-6 p-5">
         <div class="flex gap-5 flex-column ">
@@ -9,7 +10,7 @@
         </div>
     </div>
     <div class="appQuiz_ans col-6 flex gap-5 flex-column p-5">
-        <label class="mb-7 relative m-auto mt-2">SELECT ONLY ONE</label>
+        <label class="mb-7 mt-2">SELECT ONLY ONE</label>
 
         <div *ngFor="let option of quizData[currentQuestionIndex].options">
             <div class="appQuiz_options px-3 py-1 mb-6 cursor-pointer" [ngClass]="{'activeOptions':option.id==option.inputIndex}" (click)="onAnswerSelected(option.id,option.name,currentQuestionIndex)">

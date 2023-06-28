@@ -9,6 +9,9 @@ import { PrimengModule } from './primeng/primeng.module';
 import { QuizComponent } from './feature/quiz/quiz.component';
 import { ButtonComponent } from './shared/button/button.component';
 import { RunningQuizComponent } from './feature/running-quiz/running-quiz.component';
+import { InstructionsComponent } from './feature/instructions/instructions.component';
+import { WrapInstructionComponent } from './shared/wrap-instruction/wrap-instruction.component';
+import { WelcomeComponent } from './feature/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { RunningQuizComponent } from './feature/running-quiz/running-quiz.compon
     ProgressbarComponent,
     QuizComponent,
     ButtonComponent,
-    RunningQuizComponent
+    RunningQuizComponent,
+    WrapInstructionComponent,
+    InstructionsComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
