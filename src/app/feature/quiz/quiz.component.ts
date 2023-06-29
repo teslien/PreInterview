@@ -1,7 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-quiz',
@@ -16,6 +13,9 @@ export class QuizComponent implements OnInit {
   currentQuestionIndex:number=0;
   optionChoosen:boolean=false;
   optionChoosenIndex:number=0;
+  selectInpector:any[]=[0,0,0,0];
+  previousValue:any;
+  isSelected:boolean=false;
 
   ngOnInit(): void {
   }
@@ -329,36 +329,41 @@ export class QuizComponent implements OnInit {
 
   onAnswerSelected(id:number,selectedValue:string,currentIndex:number){
   this.optionChoosen=!this.optionChoosen;
-  if(this.optionChoosen)
+  if(this.optionChoosen && !this.isSelected)
   {
    this.quizData[currentIndex].input = selectedValue;
    const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
    if(objectToUpdate)
    {
     objectToUpdate.inputIndex=id;
+    console.log(objectToUpdate);
+    this.isSelected=true;
    }
 
-  }
-  else{
-
+  }else if(!this.optionChoosen && this.isSelected){
     this.quizData[currentIndex].input = '';
     const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
     if(objectToUpdate)
     {
      objectToUpdate.inputIndex=-1;
+     this.isSelected=false;
     }
 
   }
 }
 
   onNext(){
-    this.optionChoosen=false;
-    this.currentQuestionIndex++;
+    if(this.currentQuestionIndex<9){
+      this.optionChoosen=false;
+      this.currentQuestionIndex++;
+    }
   }
 
   onBack(){
-    this.optionChoosen=true;
-    this.currentQuestionIndex--;
+    if(this.currentQuestionIndex>=1){
+      this.optionChoosen=true;
+      this.currentQuestionIndex--;
+    }
   }
 
 }
