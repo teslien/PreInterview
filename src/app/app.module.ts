@@ -13,6 +13,9 @@ import { InstructionsComponent } from './feature/instructions/instructions.compo
 import { WrapInstructionComponent } from './shared/wrap-instruction/wrap-instruction.component';
 import { WelcomeComponent } from './feature/welcome/welcome.component';
 import { CountdownComponent } from './shared/countdown/countdown.component';
+import { LoginComponent } from './feature/login/login.component';
+import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -25,12 +28,15 @@ import { CountdownComponent } from './shared/countdown/countdown.component';
     WrapInstructionComponent,
     InstructionsComponent,
     WelcomeComponent,
-    CountdownComponent
+    CountdownComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PrimengModule
+    PrimengModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

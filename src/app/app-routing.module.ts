@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './feature/quiz/quiz.component';
 import { InstructionsComponent } from './feature/instructions/instructions.component';
 import { WelcomeComponent } from './feature/welcome/welcome.component';
+import { LoginComponent } from './feature/login/login.component';
 
 const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'instruction', component: InstructionsComponent },
-  { path:'welcome', component: WelcomeComponent}
+  { path:'welcome', component: WelcomeComponent},
+  { path:'login/:user',component:LoginComponent}
 ];
 
 @NgModule({

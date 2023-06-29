@@ -1,0 +1,16 @@
+<section class="w-full h-screen flex justify-content-center align-items-center ">
+    <div class="login flex align-items-center container flex-column gap-5">
+            <img src="../../../assets/logoWonder.png" width="171px" height="50px">
+            <div class="text-4xl">
+                {{activeUser | titlecase}} Login 
+            </div>
+        <div class="flex flex-column justify-content-center align-items-center gap-7 login_input">
+            <input type="text" pInputText [(ngModel)]="emailId" placeholder="Email id"/>
+            <p-password [(ngModel)]="inputpassword" [feedback]="false" placeholder="password" [toggleMask]="true"></p-password>
+            <a btn [customStyles]="{
+                background:'#3266CA',
+                width:'7.5rem'
+              }" (click)="onLogin()">Login</a>
+        </div>
+    </div>
+</section>
