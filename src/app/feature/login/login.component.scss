@@ -4,9 +4,9 @@
   max-height: 400px;
   height: 100%;
   border-radius: 4px;
-//   background: #f3f3f3;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
-  &_input{
+&_input{
     flex-grow: 1;
   }
   &_threed{
@@ -21,6 +21,10 @@
         height: 50px !important;
         font-family: poppins !important;
         font-size: 1.4rem !important;
+        background-color: #ececec;
+    }::placeholder {
+      color: rgb(58, 58, 58);
+      opacity: 1; 
     }
     i{
         font-size: 1.4rem ;

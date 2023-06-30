@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
 
   roundDetails:boolean=false;
   private eventSubscription: Subscription;
-  CurrentQuestion: any;
+  CurrentQuestion: any=1;
 
   constructor(private route:Router,private testDataService: TestDataService) { }
   
