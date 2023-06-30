@@ -16,6 +16,8 @@ export class QuizComponent implements OnInit {
   selectInpector:any[]=[0,0,0,0];
   previousValue:any;
   isSelected:boolean=false;
+  totalTime:number=30;
+  currentRound:number=1;
 
   ngOnInit(): void {
   }

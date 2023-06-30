@@ -1,0 +1,14 @@
+<app-wrap-instruction>
+    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+
+<!-- Button Takes Photo -->
+<a class="actionBtn" btn [customStyles]="{
+    background:'green'
+}" (click)="triggerSnapshot();">Take A Snapshot</a>
+
+<!-- Snapshot Div where image will be shown -->
+<div class="snapshot" *ngIf="webcamImage">
+  <h2>Take your image or get another</h2>
+  <img [src]="webcamImage.imageAsDataUrl"/>
+</div>
+</app-wrap-instruction>
