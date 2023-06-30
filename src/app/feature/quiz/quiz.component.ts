@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestDataService } from 'src/app/service/test-data.service';
 
 @Component({
   selector: 'app-quiz',
@@ -18,6 +19,8 @@ export class QuizComponent implements OnInit {
   isSelected:boolean=false;
   totalTime:number=30;
   currentRound:number=1;
+
+  constructor(private testDataService:TestDataService){}
 
   ngOnInit(): void {
   }
@@ -358,6 +361,7 @@ export class QuizComponent implements OnInit {
     if(this.currentQuestionIndex<9){
       this.optionChoosen=false;
       this.currentQuestionIndex++;
+      this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
     }
   }
 
@@ -365,6 +369,7 @@ export class QuizComponent implements OnInit {
     if(this.currentQuestionIndex>=1){
       this.optionChoosen=true;
       this.currentQuestionIndex--;
+      this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
     }
   }
 

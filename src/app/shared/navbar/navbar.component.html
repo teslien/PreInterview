@@ -3,9 +3,9 @@
 alt="logo"
 class="navbar_logo navbar_margin-right"
 >
-<div class="relative m-auto navbar_progress">
+<div class="relative m-auto navbar_progress" *ngIf="roundDetails">
    <div >
-     <app-progressbar [maxValue]="10" [value]="8"></app-progressbar>
+     <app-progressbar [maxValue]="10" [value]="CurrentQuestion"></app-progressbar>
    </div>
 </div>
 <div class="navbar_margin-left">

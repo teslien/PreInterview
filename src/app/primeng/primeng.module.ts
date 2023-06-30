@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ProgressBarModule} from 'primeng/progressbar';
 import {InputTextModule} from 'primeng/inputtext';
 import {PasswordModule} from 'primeng/password';
 
@@ -10,12 +9,10 @@ import {PasswordModule} from 'primeng/password';
   declarations: [],
   imports: [
     CommonModule,
-    ProgressBarModule,
     InputTextModule,
     PasswordModule
   ],
   exports:[
-    ProgressBarModule,
     InputTextModule,
     PasswordModule
   ]
