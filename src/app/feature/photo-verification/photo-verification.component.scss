@@ -1,0 +1,33 @@
+.verification{
+
+
+
+    &_photo{
+        width: 500px;
+        height: 400px;
+        transform: scalex(-1);
+    }
+    &_heading{
+        font-weight: 800;
+        font-size: 2rem;
+        color:var(--primarybg);
+        &:after{
+                content:'*';
+                color:rgb(207, 64, 64);
+        }   
+    }
+    &_hiwid{
+        font-size: 1.5rem;
+    }
+
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

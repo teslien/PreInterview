@@ -1,14 +1,44 @@
 <app-wrap-instruction>
-    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+<div class="verification">
+  <div class="text-center p-3 textWonder">
+    <label class="verification_heading">Verification Step</label>
+  </div>
+  <div class="grid mt-3">
+    <div class="col-6 flex justify-content-center">
+      <webcam *ngIf="!webcamImage" [height]="400" [width]="500" [trigger]="triggerObservable" class="border-1" (imageCapture)="handleImage($event)"></webcam>
+      <div class="snapshot" *ngIf="webcamImage">
+        <img [src]="webcamImage.imageAsDataUrl" class="verification_photo"/>
+      </div>
+    </div>
+    <div class="col-6 verification_hiwid">
+      <label class="font-bold">Recommended :</label>
+      <ol>
+        <li> <span class="font-bold"> Find a well-lit area:</span> Look for a location with good lighting, preferably natural light, to ensure your face is well illuminated and there are no harsh shadows.</li>
+        <li><span class="font-bold">Choose a solid, light-colored background: </span>Opt for a plain, light-colored background that contrasts with your face. White or off-white walls are commonly used as they provide a clean backdrop.</li>
+        <li><span class="font-bold">Sit straight and face the camera:</span>Stand straight and face the camera: Position yourself directly facing the camera with your shoulders squared and your body upright. Avoid tilting your head or turning it to the side.</li>
+        <li><span class="font-bold">Remove any accessories or headwear: </span>Take off hats, sunglasses, or any other accessories that may obstruct your face. Passport photos typically require you to have a clear view of your full face.</li>
+      </ol>
+      <label class="text-red-500 font-bold">Note :</label>
+      <ul>
+        <li>Make Sure the Photo is not blurred.</li>
+      </ul>
+    </div>
+    <div class="col-12 h-10rem align-items-center flex justify-content-center gap-3 p-2">
+      <a class="actionBtn" btn [customStyles]="{
+        background:'green',
+        width:'25rem'
+    }" (click)="triggerSnapshot();">Take A Snapshot</a>
+    <a class="actionBtn" btn [customStyles]="{
+      background:'gray',
+      width:'8rem'
+  }" (click)="webcamImage=null">Retake</a>
 
-<!-- Button Takes Photo -->
-<a class="actionBtn" btn [customStyles]="{
-    background:'green'
-}" (click)="triggerSnapshot();">Take A Snapshot</a>
+  <button *ngIf="webcamImage" routerLink="/instruction"  btn [customStyles]="{
+    background:'#3266CA',
+    width:'auto'
+  }"><i class="pi pi-check text-4xl" ></i>Next</button>
+    </div>
+  </div>
 
-<!-- Snapshot Div where image will be shown -->
-<div class="snapshot" *ngIf="webcamImage">
-  <h2>Take your image or get another</h2>
-  <img [src]="webcamImage.imageAsDataUrl"/>
 </div>
 </app-wrap-instruction>
