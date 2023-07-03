@@ -3,15 +3,14 @@
         <h2>Send Invitations</h2>
     </div>
     <div class="generate_link p-5">
-        <div class="generate_link_linkText relative m-auto ">
-            https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+        <div class="generate_link_linkText relative m-auto" [innerText]="link">
         </div>
         <hr>
         <div class="flex justify-content-center mt-4">
             <a btn [customStyles]="{
                 background:'#3266CA',
                 width:'4rem'
-              }">Copy</a>
+              }" (click)="copyText(link)">Copy</a>
         </div>
         <article class="text-center container primaryFontSize text-red-600">
             Before you send the link to applicants please generate access code for each.Generated Password are basically applicants mobile numbers.

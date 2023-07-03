@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Clipboard } from '@angular/cdk/clipboard';
+
 
 @Component({
   selector: 'app-link-generated',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkGeneratedComponent implements OnInit {
 
-  constructor() { }
+  link:string='https://www.w3schools.com/howto/howto_js_copy_clipboard.asp';
+  copied:boolean=false;
 
+  constructor(private clipboard: Clipboard){}
   ngOnInit(): void {
   }
+
+  copyText(textToCopy: string) {
+    this.clipboard.copy(textToCopy);
+    this.copied=true;
+  }
+
+
 
 }

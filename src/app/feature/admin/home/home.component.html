@@ -1,20 +1,20 @@
 <div class="home">
     <div class="home_heading">
-        Hello <span class="font-bold">Rohit</span>,<br>
+        Hello <span class="home_heading_bold">Liza</span>,<br>
         We have a list of tests for the applicant. Please <br>
         choose one from the following options :
     </div>
 
     <div class="flex flex-wrap gap-5 mt-4">
         <div class="home_list">
-            <div class="home_listIn" *ngFor="let item of [1,2,3,4,5,6]">
-                Aptitude Test
+            <div class="home_listIn" *ngFor="let item of ['Aptitude Test','Personality Assessment','Technical Skills Evaluation','Problem-Solving Exercise','Coding Challenge','Create Customize Test']">
+                {{item}}
             </div>
         </div>
         <div class="home_design">
             <div class="home_design_options">
-                <div class="home_design_options_list mt-4" *ngFor="let item of [1,2,3,4]">
-                    English Grammer
+                <div class="home_design_options_list mt-4" *ngFor="let item of ['Angular 2 Test','Kotlin - Android Test','Java 8','C# 4.3 Test']">
+                    {{item}}
                 </div>
                 <div class="w-full flex justify-content-center mt-7">
                     <app-button [customStyles]="{
