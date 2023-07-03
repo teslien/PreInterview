@@ -35,9 +35,31 @@
     &_design{
         flex:1 1 497px;
         background-image: url(../../../../assets/images/designShape.png) ;
+        border-radius: 4px;
 
         &_options{
-            
+            width: 100%;
+            height: 100%;
+            background-color: rgba(157, 157, 157, 0.5);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            font-size: 2rem;
+    
+
+            &_list{
+                width: 100%;
+                padding: 2rem;
+                background-color: #FBFBFB;
+                padding: 1rem;
+                padding-left: 2.5rem;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.4s;
+
+                &:hover{
+                    background-color: #9aaed3;
+                }
+            }
         }
     }
 }

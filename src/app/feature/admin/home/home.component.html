@@ -12,7 +12,21 @@
     </div>
     </div>
     <div class="home_design">
-<div class="home_design_options"></div>
+    <div class="home_design_options">
+    <div class="home_design_options_list mt-4" *ngFor="let item of [1,2,3,4]">
+        English Grammer
+    </div>
+    <div class="w-full flex justify-content-center mt-7">
+        <app-button [customStyles]="{
+            background:'#3266CA',
+            width:'25rem',
+            height:'5rem',
+            borderRadius:'41px'
+          }">Generate Link <i class="pi pi-link
+          text-4xl"></i></app-button>
+    </div>
+
+    </div>
     </div>
     </div>
 </div>
