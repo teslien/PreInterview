@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PhotoVerificationComponent } from './feature/photo-verification/photo-verification.component';
 import {WebcamModule} from 'ngx-webcam';
 import { HomeComponent } from './feature/admin/home/home.component';
+import { UploadDetailsComponent } from './feature/admin/upload-details/upload-details.component';
+import { LinkGeneratedComponent } from './feature/admin/link-generated/link-generated.component';
 
 
 
@@ -36,7 +38,9 @@ import { HomeComponent } from './feature/admin/home/home.component';
     CountdownComponent,
     LoginComponent,
     PhotoVerificationComponent,
-    HomeComponent
+    HomeComponent,
+    UploadDetailsComponent,
+    LinkGeneratedComponent
   ],
   imports: [
     BrowserModule,

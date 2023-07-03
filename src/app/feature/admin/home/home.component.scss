@@ -7,19 +7,22 @@
 
 
     &_heading{
-        font-size:3rem;
+        font-size:2rem;
     }
 
     &_list{
         flex: 1 1 713px;
-        font-size: 2.2rem;
+        font-size: 2rem;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        gap:1.2rem;
     }
 
     &_listIn{
         width: 100%;
         border-radius: 4px;
         background-color: #FBFBFB;
-        margin-bottom: 2rem;
         padding: 1rem;
         padding-left: 2.5rem;
         transition: all .4s;
@@ -43,7 +46,7 @@
             background-color: rgba(157, 157, 157, 0.5);
             backdrop-filter: blur(5px);
             padding: 2rem;
-            font-size: 2rem;
+            font-size: 1.7rem;
     
 
             &_list{

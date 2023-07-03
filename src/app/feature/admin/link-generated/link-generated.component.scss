@@ -1,0 +1,21 @@
+.generate{
+    position: relative;
+    margin-top:5rem;
+    height: auto;
+    max-width: 1236px;
+    margin-inline: auto;
+
+    &_link{
+        max-width:760px ;
+        width: 100%;
+        background-color: #FBFBFB;
+
+        &_linkText{
+            width: 90%;
+            font-size: 1.7rem;
+            overflow-wrap: break-word;
+            padding: 1rem;
+            color:#0B2CDA;
+        }
+    }
+}
