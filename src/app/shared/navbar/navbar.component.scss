@@ -24,7 +24,23 @@
     }
 
     &_margin-left{
-        margin-right: 14rem;
+        margin-right: 15rem;
+        display: flex;
+    }
+
+    &_adminlogo{
+        width: 4.7rem;
+        height: 4.7rem;
+        border-radius: 50%;
+        background-color: #E0E0E0;
+
+        &_logo{
+            width: 4rem;
+            height: 4rem;
+            background-color: gray;
+            border-radius: 50%;
+        }
+        
     }
 
   }

@@ -18,6 +18,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PhotoVerificationComponent } from './feature/photo-verification/photo-verification.component';
 import {WebcamModule} from 'ngx-webcam';
+import { HomeComponent } from './feature/admin/home/home.component';
 
 
 
@@ -34,7 +35,8 @@ import {WebcamModule} from 'ngx-webcam';
     WelcomeComponent,
     CountdownComponent,
     LoginComponent,
-    PhotoVerificationComponent
+    PhotoVerificationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
