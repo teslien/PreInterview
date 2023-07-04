@@ -1,0 +1,64 @@
+{
+    "admin":{
+        "id":"w2343e23r32",
+        "name":"Rohit Bairwa",
+        "email":"rohittbairwaa11@gmail.com",
+        "contact":"8766550949",
+        "password":"234redf23*",
+        "ip":["213:2134:124"],
+        "noOftestCreated":1,
+        "testCreated":[
+            {
+                "sd323ed":[
+                    {
+                        "id":1,
+                        "descheading":"Consider the following",
+                        "question":"what is Angular?",
+                        "documentData":"<a>hello world<a/>",
+                        "options":["abc","def","hij","lmn"],
+                        "correctAnswer":"abc"
+                    },
+                    {
+                        "id": 2,
+                        "descheading": "Take a look at this",
+                        "question": "What is React?",
+                        "documentData": "<p>This is a React component</p>",
+                        "options": ["abc", "def", "hij", "lmn"],
+                        "correctAnswer": "def"
+                    },
+                    {
+                        "id": 3,
+                        "descheading": "Examine the given scenario",
+                        "question": "What is Python?",
+                        "documentData": "<code>print('Hello, World!')</code>",
+                        "options": ["abc", "def", "hij", "lmn"],
+                        "correctAnswer": "hij"
+                    },
+                    {
+                        "id": 4,
+                        "descheading": "Review the following details",
+                        "question": "What is HTML?",
+                        "documentData": "<h1>Welcome to HTML</h1>",
+                        "options": ["abc", "def", "hij", "lmn"],
+                        "correctAnswer": "lmn"
+                    },
+                    {
+                        "id": 5,
+                        "descheading": "Explore the given information",
+                        "question": "What is JavaScript?",
+                        "documentData": "<script>alert('Hello, World!');</script>",
+                        "options": ["abc", "def", "hij", "lmn"],
+                        "correctAnswer": "abc"
+                    },
+                    {
+                        "id": 6,
+                        "descheading": "Consider the following example",
+                        "question": "What is CSS?",
+                        "documentData": "<style>body { color: red; }</style>",
+                        "options": ["abc", "def", "hij", "lmn"],
+                        "correctAnswer": "def"
+                    }]
+            }
+            ]
+    }
+}
