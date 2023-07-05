@@ -3,30 +3,29 @@
        <app-countdown [value]="[0,30,1,99]" [startPositive]="false"></app-countdown> <img src="../../../assets/images/stop.png" width="27px" height="27px" alt=""></span>
 
     <div class="appQuiz_ques col-6 p-5">
-        <div class="flex gap-5 flex-column ">
-            <label>{{quizData[currentQuestionIndex].statement}}</label>
-            <label class="font-bold text-4xl">{{quizData[currentQuestionIndex].question}}</label>
-            <img src="{{quizData[currentQuestionIndex].image}}" alt="" class="w-full h-full">
+        <div class="flex gap-4 flex-column ">
+            <label>{{quizData[currentQuestionIndex]?.descheading}}</label>
+            <label class="font-bold text-4xl">{{quizData[currentQuestionIndex]?.question}}</label>
+            <div class="appQuiz_document" [innerHTML]="quizData[currentQuestionIndex]?.documentData"></div>
         </div>
     </div>
     <div class="appQuiz_ans col-6 flex gap-5 flex-column p-5">
         <label class="mb-7 mt-2">SELECT ONLY ONE</label>
 
-        <div *ngFor="let option of quizData[currentQuestionIndex].options">
-            <div class="appQuiz_options px-3 py-1 mb-6 cursor-pointer" [ngClass]="{'activeOptions':option.id==option.inputIndex}" (click)="onAnswerSelected(option.id,option.name,currentQuestionIndex)">
+        <div *ngFor="let category of categories">
+            <!-- <div class="appQuiz_options px-3 py-1 mb-6 cursor-pointer">
                 <div class="appQuiz_checkCircle flex flex-column text-center justify-content-center">
                     <i class="pi pi-check text-4xl appQuiz_show"></i>
                 </div>
                 <label>
-                    {{ option.name }}
+                    {{ option }}
                 </label>
-            </div>
+            </div> -->
 
+                <p-radioButton [inputId]="category.key" name="category" [value]="category" [(ngModel)]="selectedCategory"
+                   ></p-radioButton>
+                <label [for]="category.key">{{category.name}}</label>
 
-                <!-- <label class="formControl flex gap-4">
-                    <input type="radio" name="radio" />
-                    {{ option.name }}
-                  </label> -->
         </div>
         
 

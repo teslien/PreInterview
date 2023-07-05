@@ -1,0 +1,73 @@
+<app-wrap-instruction>
+    <div class="grid textWonder create">
+        <div class="col-12 flex gap-4 p-4">
+            <div class="create_back">
+                <i class="pi pi-arrow-left text-3xl text-gray-700"></i>
+            </div>
+            <h2>Create New Assessment</h2>
+        </div>
+        <div class="col-12 flex create_progress px-4 pt-4">
+
+            <div class="col-3 flex justify-content-end align-items-center">
+                <div class="create_progress_line"></div>
+                <div class="create_progress_outer ">
+                    <div class="w-4rem h-4rem border-circle create_progress_inner">1</div>
+                </div>
+                <div class="create_progress_line"></div>
+                
+            </div>
+            <div class="col-3 flex justify-content-center align-items-center">
+                <div class="create_progress_line"></div>
+                <div  class="create_progress_outer">
+                    <div class="w-4rem border-circle h-4rem  create_progress_inner">2</div>
+                </div>
+                <div class="create_progress_line"></div>
+            </div>
+            <div class="col-3 flex justify-content-center align-items-center">
+                <div class="create_progress_line"></div>
+                <div  class="create_progress_outer">
+                    <div class="w-4rem border-circle h-4rem  create_progress_inner">3</div>
+                </div>
+                <div class="create_progress_line"></div>
+            </div>
+            <div class="col-3 flex justify-content-center align-items-center">
+                <div class="create_progress_line"></div>
+                <div class="create_progress_outer">
+                    <div class="w-4rem border-circle  h-4rem create_progress_inner">4</div>
+                </div>
+                <div class="create_progress_line "></div>
+            </div>
+
+        </div>
+        <div class="col-12 px-4 flex create_progress_label pb-6">
+            <div class="col-3 flex justify-content-center align-items-center">
+                New Assessment
+            </div>
+            <div class="col-3 flex justify-content-center align-items-center">
+                Select Test
+            </div>
+            <div class="col-3 flex justify-content-center align-items-center">
+                Add Questions
+            </div>
+            <div class="col-3 flex justify-content-center align-items-center">
+                Review & Configure
+            </div>
+        </div>
+        <div class="col-6 flex flex-column gap-5 p-4">
+            <input type="text" pInputText class="w-full text-3xl" placeholder="Name Your Assessment*">
+            <p-dropdown [options]="cities" styleClass="w-full text-3xl" panelStyleClass="text-3xl" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+            <p-dropdown [options]="cities" styleClass="w-full text-3xl" panelStyleClass="text-3xl" placeholder="Job Role*" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+            <p-dropdown [options]="cities" styleClass="w-full text-3xl" panelStyleClass="text-3xl" placeholder="Job Role*" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+        </div>
+        <div class="col-6 flex flex-column gap-5 p-4">
+            <input type="text" pInputText class="w-full text-3xl" placeholder="Total Questions*">
+            <input type="number" pInputText class="w-full text-3xl" placeholder="Time in Mins*">
+        </div>
+        <div class="col-12 p-4 flex justify-content-end">
+            <app-button [customStyles]="{
+                background:'#3266CA'
+              }" >Next <i class="pi pi-arrow-right text-2xl"></i></app-button>
+        </div>
+
+    </div>
+</app-wrap-instruction>

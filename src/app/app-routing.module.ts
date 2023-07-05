@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, createComponent } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './feature/quiz/quiz.component';
 import { InstructionsComponent } from './feature/instructions/instructions.component';
@@ -8,6 +8,7 @@ import { PhotoVerificationComponent } from './feature/photo-verification/photo-v
 import { HomeComponent } from './feature/admin/home/home.component';
 import { UploadDetailsComponent } from './feature/admin/upload-details/upload-details.component';
 import { LinkGeneratedComponent } from './feature/admin/link-generated/link-generated.component';
+import { CreateComponent } from './feature/admin/create/create.component';
 
 const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'verification',component:PhotoVerificationComponent},
   {path:'admin', component:HomeComponent},
   {path:'admin/upload',component:UploadDetailsComponent},
-  {path:'admin/generate',component:LinkGeneratedComponent}
+  {path:'admin/generate',component:LinkGeneratedComponent},
+  {path:'admin/create',component:CreateComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,4 @@
 {
-    "admin":{
         "id":"w2343e23r32",
         "name":"Rohit Bairwa",
         "email":"rohittbairwaa11@gmail.com",
@@ -59,6 +58,6 @@
                         "correctAnswer": "def"
                     }]
             }
-            ]
+            ],
+        "applicant":[]
     }
-}
