@@ -24,7 +24,7 @@ import { LinkGeneratedComponent } from './feature/admin/link-generated/link-gene
 import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './feature/admin/create/create.component';
 import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -54,7 +54,8 @@ import { AddQuestionsComponent } from './feature/admin/add-questions/add-questio
     FormsModule,
     BrowserAnimationsModule,
     WebcamModule,
-    HttpClientModule
+    HttpClientModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

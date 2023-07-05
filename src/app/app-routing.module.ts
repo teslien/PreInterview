@@ -9,6 +9,7 @@ import { HomeComponent } from './feature/admin/home/home.component';
 import { UploadDetailsComponent } from './feature/admin/upload-details/upload-details.component';
 import { LinkGeneratedComponent } from './feature/admin/link-generated/link-generated.component';
 import { CreateComponent } from './feature/admin/create/create.component';
+import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
 
 const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'admin', component:HomeComponent},
   {path:'admin/upload',component:UploadDetailsComponent},
   {path:'admin/generate',component:LinkGeneratedComponent},
-  {path:'admin/create',component:CreateComponent}
+  {path:'admin/create',component:CreateComponent},
+  {path:'admin/createtest/add',component:AddQuestionsComponent}
 ];
 
 @NgModule({
