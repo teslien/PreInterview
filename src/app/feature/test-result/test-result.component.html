@@ -1,0 +1,25 @@
+<app-wrap-instruction>
+    <div class="text-center">
+        <label class="primaryFontSize font-bold">RESULT : <span class="text-green-600">PASS</span></label>
+
+        <article class="primaryFontSize mt-7">
+            <span class="font-bold text-green-600">Congratulation !!</span> You are selected for the INTERVIEW round ,
+            we will connect with you via call within 3 days.
+        </article>
+    </div>
+    <ng-template #fail>
+        <div class="text-center">
+            <label class="primaryFontSize font-bold">RESULT : <span class="text-red-600">Fail</span></label>
+            <article class="primaryFontSize mt-7">
+                We appreciate the time and effort you invested in the application. We regret to inform you that you did not pass the first round of evaluations. 
+            </article>
+        </div>
+    </ng-template>
+    
+    <div class="flex justify-content-center mt-8 mb-3">
+        <a btn [customStyles]="{
+            background:'#3266CA'
+            
+          }" >Exit Application<i class="pi pi-sign-out text-2xl"></i></a>
+    </div>
+</app-wrap-instruction>

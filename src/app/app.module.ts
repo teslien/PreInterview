@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './feature/admin/create/create.component';
 import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { TestResultComponent } from './feature/test-result/test-result.component';
+import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     UploadDetailsComponent,
     LinkGeneratedComponent,
     CreateComponent,
-    AddQuestionsComponent
+    AddQuestionsComponent,
+    TestResultComponent,
+    ViewApplicantsComponent
   ],
   imports: [
     BrowserModule,

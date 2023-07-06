@@ -1,19 +1,18 @@
-<section class="navbar navbarBGWOnder textWonder">
-<img src='../../../assets/logoWonder.png' 
-alt="logo"
-class="navbar_logo navbar_margin-right"
->
-<div class="relative m-auto navbar_progress" *ngIf="roundDetails">
-   <div >
-     <app-progressbar [maxValue]="10" [value]="CurrentQuestion"></app-progressbar>
-   </div>
-</div>
-<div class="navbar_margin-left">
-<span class="hidden">Rohit Rajesh Bairwa</span>
-<div class="navbar_adminlogo flex justify-content-center align-items-center">
-  <div class="navbar_adminlogo_logo">
-    <img src="../../../assets/images/adminlogo.png" height="100%" width="100%" alt="">
+<nav class="navbar navbarBGWOnder textWonder">
+  <div class="navbar_center">
+      <img src='../../../assets/logoWonder.png' alt="logo" class="navbar_logo">
+    <div class="navbar-links">
+      <ul>
+        <div class="navbar_link gap-2">
+          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1">Tests</li>
+          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1">Applicants</li>
+        </div>
+        <li  class="navbar_adminlogo flex justify-content-center align-items-center">
+          <div class="navbar_adminlogo_logo">
+            <img src="../../../assets/images/adminlogo.png" height="100%" width="100%" alt="">
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
-</div>
-</section>
+</nav>
