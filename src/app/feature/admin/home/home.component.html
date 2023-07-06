@@ -7,11 +7,14 @@
 
     <div class="flex flex-wrap gap-5 mt-4">
         <div class="home_list">
-            <div class="home_listIn" *ngFor="let item of ['Aptitude Test','Personality Assessment','Technical Skills Evaluation','Problem-Solving Exercise','Coding Challenge','Create Customize Test']">
+            <div class="home_listIn" *ngFor="let item of ['Aptitude Test','Personality Assessment','Technical Skills Evaluation','Problem-Solving Exercise','Coding Challenge']">
                 {{item}}
             </div>
+            <div class="home_listIn flex justify-content-between align-items-center gap-4" routerLink="/admin/create">
+                <label>Create Customize Test</label> <i class="pi pi-pencil text-xl mr-3 textWonder"></i>
+            </div>
         </div>
-        <div class="home_design">
+        <div class="home_design ">
             <div class="home_design_options">
                 <div class="home_design_options_list mt-4" *ngFor="let item of ['Angular 2 Test','Kotlin - Android Test','Java 8','C# 4.3 Test']">
                     {{item}}

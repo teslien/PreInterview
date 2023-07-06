@@ -14,7 +14,25 @@
                     "descheading":"Consider the following",
                     "question":"what is Angular?",
                     "documentData":"<a>hello world<a/>",
-                    "options":["abc","def","hij","lmn"],
+                    "options":[
+                        {
+                            "name":"option one",
+                            "key" :"1"
+                        },
+                        {
+                            "name":"second option",
+                            "key":"2"
+                        },
+                        {
+                            "name":"Third option",
+                            "key":"3"
+                        },
+                        {
+                            "name":"Forth option",
+                            "key":"4"
+                        }
+                    ],
+
                     "correctAnswer":"abc"
                 },
                 {

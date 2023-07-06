@@ -21,10 +21,9 @@
                     {{ option }}
                 </label>
             </div> -->
-
-                <p-radioButton [inputId]="category.key" name="category" [value]="category" [(ngModel)]="selectedCategory"
+                <p-radioButton [inputId]="this.quizData[currentQuestionIndex].options" name="category" [value]="this.quizData[currentQuestionIndex].options" [(ngModel)]="selectedCategory"
                    ></p-radioButton>
-                <label [for]="category.key">{{category.name}}</label>
+                <label [for]="this.quizData[currentQuestionIndex].options">{{this.quizData[currentQuestionIndex].options}}</label>
 
         </div>
         

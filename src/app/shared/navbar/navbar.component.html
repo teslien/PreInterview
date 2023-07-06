@@ -1,18 +1,31 @@
 <nav class="navbar navbarBGWOnder textWonder">
   <div class="navbar_center">
+
       <img src='../../../assets/logoWonder.png' alt="logo" class="navbar_logo">
-    <div class="navbar-links">
-      <ul>
-        <div class="navbar_link gap-2">
-          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1">Tests</li>
-          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1">Applicants</li>
+
+
+      <div *ngIf="roundDetails">
+        <div>
+          <app-progressbar [maxValue]="10" [value]="CurrentQuestion"></app-progressbar>
         </div>
-        <li  class="navbar_adminlogo flex justify-content-center align-items-center">
+     </div>
+
+    <div class="navbar-links">
+      <ul class="">
+        <div class="navbar_link gap-2 relative cursor-pointer mr-5 " >
+          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1  hoverLine" routerLink="/admin/tests" routerLinkActive="activeClass">Tests</li>
+        </div>
+        <div class="navbar_link gap-2 relative cursor-pointer ">
+          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1  hoverLine mr-4" routerLink="/admin/applicants" routerLinkActive="activeClass">Applicants</li>
+        </div>
+        <li  class="navbar_adminlogo flex justify-content-center align-items-center ml-8 cursor-pointer">
           <div class="navbar_adminlogo_logo">
             <img src="../../../assets/images/adminlogo.png" height="100%" width="100%" alt="">
           </div>
         </li>
       </ul>
+      <span class="hidden">Rohit Rajesh Bairwa</span>
     </div>
+
   </div>
 </nav>

@@ -28,7 +28,7 @@ export class QuizComponent implements OnInit {
 
   selectedCategory: any = null;
 
-  categories: any[] = [{name: 'Accounting', key: 'A'}, {name: 'Marketing', key: 'B'}, {name: 'Production', key: 'C'}, {name: 'Research', key: 'D'}];
+  categories: any[] = [{name: 'abc', key: 'A'}, {name: 'Marketing', key: 'B'}, {name: 'Production', key: 'C'}, {name: 'Research', key: 'D'}];
 
   constructor(private testDataService:TestDataService){}
 
@@ -73,6 +73,11 @@ export class QuizComponent implements OnInit {
 }
 
   onNext(){
+
+    if(this.quizData[this.currentQuestionIndex].correctAnswer==this.selectedCategory.name){
+      console.log("hurray");
+    }
+
     if(this.currentQuestionIndex<9){
       this.optionChoosen=false;
       this.currentQuestionIndex++;

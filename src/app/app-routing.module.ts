@@ -11,6 +11,7 @@ import { LinkGeneratedComponent } from './feature/admin/link-generated/link-gene
 import { CreateComponent } from './feature/admin/create/create.component';
 import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
 import { TestResultComponent } from './feature/test-result/test-result.component';
+import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 
 const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
@@ -23,7 +24,9 @@ const routes: Routes = [
   {path:'admin/generate',component:LinkGeneratedComponent},
   {path:'admin/create',component:CreateComponent},
   {path:'admin/createtest/add',component:AddQuestionsComponent},
-  {path:'quiz/result',component:TestResultComponent}
+  {path:'quiz/result',component:TestResultComponent},
+  {path:'admin/applicants',component:ViewApplicantsComponent},
+  {path:'admin/tests',component:HomeComponent},
 ];
 
 @NgModule({
