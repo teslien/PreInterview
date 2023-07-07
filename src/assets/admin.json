@@ -1,63 +1,176 @@
 {
-        "id":"w2343e23r32",
-        "name":"Rohit Bairwa",
-        "email":"rohittbairwaa11@gmail.com",
-        "contact":"8766550949",
-        "password":"234redf23*",
-        "ip":["213:2134:124"],
-        "noOftestCreated":1,
-        "testCreated":[
+  "id": "w2343e23r32",
+  "name": "Rohit Bairwa",
+  "email": "rohittbairwaa11@gmail.com",
+  "contact": "8766550949",
+  "password": "234redf23*",
+  "ip": ["213:2134:124"],
+  "noOftestCreated": 1,
+  "testCreated": [
+    {
+      "sd323ed": [
+        {
+          "id": 1,
+          "descheading": "Consider the following",
+          "question": "what is Angular?",
+          "documentData": "<a>hello world<a/>",
+          "options": [
             {
-                "sd323ed":[
-                    {
-                        "id":1,
-                        "descheading":"Consider the following",
-                        "question":"what is Angular?",
-                        "documentData":"<a>hello world<a/>",
-                        "options":["abc","def","hij","lmn"],
-                        "correctAnswer":"abc"
-                    },
-                    {
-                        "id": 2,
-                        "descheading": "Take a look at this",
-                        "question": "What is React?",
-                        "documentData": "<p>This is a React component</p>",
-                        "options": ["abc", "def", "hij", "lmn"],
-                        "correctAnswer": "def"
-                    },
-                    {
-                        "id": 3,
-                        "descheading": "Examine the given scenario",
-                        "question": "What is Python?",
-                        "documentData": "<code>print('Hello, World!')</code>",
-                        "options": ["abc", "def", "hij", "lmn"],
-                        "correctAnswer": "hij"
-                    },
-                    {
-                        "id": 4,
-                        "descheading": "Review the following details",
-                        "question": "What is HTML?",
-                        "documentData": "<h1>Welcome to HTML</h1>",
-                        "options": ["abc", "def", "hij", "lmn"],
-                        "correctAnswer": "lmn"
-                    },
-                    {
-                        "id": 5,
-                        "descheading": "Explore the given information",
-                        "question": "What is JavaScript?",
-                        "documentData": "<script>alert('Hello, World!');</script>",
-                        "options": ["abc", "def", "hij", "lmn"],
-                        "correctAnswer": "abc"
-                    },
-                    {
-                        "id": 6,
-                        "descheading": "Consider the following example",
-                        "question": "What is CSS?",
-                        "documentData": "<style>body { color: red; }</style>",
-                        "options": ["abc", "def", "hij", "lmn"],
-                        "correctAnswer": "def"
-                    }]
+              "name": "Angular is JS Framework.",
+              "key": "1"
+            },
+            {
+              "name": "Angular is Java Framework.",
+              "key": "2"
+            },
+            {
+              "name": "Angular is Not a Framework.",
+              "key": "3"
+            },
+            {
+              "name": "Angular is Python Framework.",
+              "key": "4"
             }
-            ],
-        "applicant":[]
+          ],
+          "correctAnswer": {
+            "name": "Angular is JS Framework.",
+            "key": "1"
+          }
+        },
+        {
+          "id": 2,
+          "descheading": "Take a look at this",
+          "question": "What is React?",
+          "documentData": "<p>This is a React component</p>",
+          "options": [
+            {
+                "name": "React is JS Framework.",
+                "key": "1"
+              },
+              {
+                "name": "React is Java Framework.",
+                "key": "2"
+              },
+              {
+                "name": "React is Not a Framework.",
+                "key": "3"
+              },
+              {
+                "name": "React is Python Framework.",
+                "key": "4"
+              }
+          ],
+          "correctAnswer":  {
+            "name": "React is Python Framework.",
+            "key": "4"
+          }
+        },
+        {
+          "id": 3,
+          "descheading": "Examine the given scenario",
+          "question": "What is Python?",
+          "documentData": "<code>print('Hello, World!')</code>",
+          "options": [        {
+            "name": "Python is C Framework.",
+            "key": "1"
+          },
+          {
+            "name": "Python is Java Framework.",
+            "key": "2"
+          },
+          {
+            "name": "Python is Not a Framework.",
+            "key": "3"
+          },
+          {
+            "name": "Python is Python Framework.",
+            "key": "4"
+          }],
+          "correctAnswer":  {
+            "name": "Python is Python Framework.",
+            "key": "4"
+          }
+        },
+        {
+          "id": 4,
+          "descheading": "Review the following details",
+          "question": "What is HTML?",
+          "documentData": "<h1>Welcome to HTML</h1>",
+          "options": [        {
+            "name": "HTML is JS Framework.",
+            "key": "1"
+          },
+          {
+            "name": "HTML is Java Framework.",
+            "key": "2"
+          },
+          {
+            "name": "HTML is Not a Framework.",
+            "key": "3"
+          },
+          {
+            "name": "HTML is Python Framework.",
+            "key": "4"
+          }],
+          "correctAnswer":  {
+            "name": "HTML is Not a Framework.",
+            "key": "3"
+          }
+        },
+        {
+          "id": 5,
+          "descheading": "Explore the given information",
+          "question": "What is JavaScript?",
+          "documentData": "<script>alert('Hello, World!');</script>",
+          "options": [        {
+            "name": "JavaScript is JS Framework.",
+            "key": "1"
+          },
+          {
+            "name": "JavaScript is Java Framework.",
+            "key": "2"
+          },
+          {
+            "name": "JavaScript is Not a Framework.",
+            "key": "3"
+          },
+          {
+            "name": "JavaScript is Python Framework.",
+            "key": "4"
+          }],
+          "correctAnswer":  {
+            "name": "JavaScript is Not a Framework.",
+            "key": "3"
+          }
+        },
+        {
+          "id": 6,
+          "descheading": "Consider the following example",
+          "question": "What is CSS?",
+          "documentData": "<style>body { color: red; }</style>",
+          "options": [        {
+            "name": "CSS is JS Framework.",
+            "key": "1"
+          },
+          {
+            "name": "CSS is Java Framework.",
+            "key": "2"
+          },
+          {
+            "name": "CSS is Not a Framework.",
+            "key": "3"
+          },
+          {
+            "name": "CSS is Python Framework.",
+            "key": "4"
+          }],
+          "correctAnswer":  {
+            "name": "CSS is Java Framework.",
+            "key": "2"
+          }
+        }
+      ]
     }
+  ],
+  "applicant": []
+}

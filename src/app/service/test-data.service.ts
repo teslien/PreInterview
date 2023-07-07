@@ -13,7 +13,7 @@ export class TestDataService {
 
 
   getTestkData() {
-    return this.http.get(`https://pre-interviewtest-default-rtdb.firebaseio.com/admin/-NZZhjdX1cPNJImoo7m9/applicant/-NZZiHYn3fTthPQS4meR/testData/questionData.json`).pipe(Rx.map(responsedata=>{
+    return this.http.get(`https://pre-interviewtest-default-rtdb.firebaseio.com/admin/-NZZhjdX1cPNJImoo7m9/testCreated/-NZkCe26tVkDfvxaVtZR.json`).pipe(Rx.map(responsedata=>{
       const testArray =[];
       for(const key in responsedata){
         if(responsedata.hasOwnProperty(key)){

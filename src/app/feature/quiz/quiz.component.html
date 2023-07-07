@@ -12,19 +12,11 @@
     <div class="appQuiz_ans col-6 flex gap-5 flex-column p-5">
         <label class="mb-7 mt-2">SELECT ONLY ONE</label>
 
-        <div *ngFor="let category of categories">
-            <!-- <div class="appQuiz_options px-3 py-1 mb-6 cursor-pointer">
-                <div class="appQuiz_checkCircle flex flex-column text-center justify-content-center">
-                    <i class="pi pi-check text-4xl appQuiz_show"></i>
-                </div>
-                <label>
-                    {{ option }}
-                </label>
-            </div> -->
-                <p-radioButton [inputId]="this.quizData[currentQuestionIndex].options" name="category" [value]="this.quizData[currentQuestionIndex].options" [(ngModel)]="selectedCategory"
-                   ></p-radioButton>
-                <label [for]="this.quizData[currentQuestionIndex].options">{{this.quizData[currentQuestionIndex].options}}</label>
-
+        <div *ngFor="let category of quizData[currentQuestionIndex]?.options">
+            <div class="radio-item "> 
+                <input type="radio" name="category" [value]="category.name" (change)="checkStatus($event);" [checked]="category.name==this.selectInpector[currentQuestionIndex]" class="radioStyle_radbtn cursor-pointer" id="category.key">
+                <label for="category"><span class="pl-8 ">{{category.name}}</span></label>
+            </div>
         </div>
         
 
@@ -34,9 +26,9 @@
             background:'#FBFBFB',
             width:'7.5rem'
           }" (click)="onBack()"><i class="pi textWonder text-2xl pi-arrow-left"></i></app-button>
+
         <a btn [customStyles]="{
             background:'#3266CA'
-            
           }" (click)="onNext()">Next<i class="pi pi-arrow-right text-2xl"></i></a>
     </div>
 

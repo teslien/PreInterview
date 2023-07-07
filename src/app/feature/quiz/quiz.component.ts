@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -17,23 +18,24 @@ export class QuizComponent implements OnInit {
   currentQuestionIndex:number=0;
   optionChoosen:boolean=false;
   optionChoosenIndex:number=0;
-  selectInpector:any[]=[0,0,0,0];
   previousValue:any;
   isSelected:boolean=false;
   totalTime:number=30;
   currentRound:number=1;
   selectedValue:string;
 
+  random:string="";
   city: string;
 
-  selectedCategory: any = null;
-
-  categories: any[] = [{name: 'abc', key: 'A'}, {name: 'Marketing', key: 'B'}, {name: 'Production', key: 'C'}, {name: 'Research', key: 'D'}];
+  selectedCategory:any;
+  selectInpector:any[]=["none","none","none","none","none","none"];
 
   constructor(private testDataService:TestDataService){}
 
   ngOnInit(): void {
     this.getTestData();
+    const arrayString = localStorage.getItem('selected');
+    this.selectInpector = JSON.parse(arrayString);
   }
 
   quizData = [];
@@ -42,7 +44,7 @@ export class QuizComponent implements OnInit {
   getTestData(){
     this.dataSubscription=this.testDataService.getTestkData().subscribe((res)=>{
       this.quizData=res;
-      console.log(this.quizData);
+      console.log(this.quizData)
     })
   }
 
@@ -56,7 +58,6 @@ export class QuizComponent implements OnInit {
    if(objectToUpdate)
    {
     objectToUpdate.inputIndex=id;
-    console.log(objectToUpdate);
     this.isSelected=true;
    }
 
@@ -74,16 +75,15 @@ export class QuizComponent implements OnInit {
 
   onNext(){
 
-    if(this.quizData[this.currentQuestionIndex].correctAnswer==this.selectedCategory.name){
-      console.log("hurray");
-    }
-
     if(this.currentQuestionIndex<9){
       this.optionChoosen=false;
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
+    }else if(this.currentQuestionIndex==5){
+      console.log("wefrg");
     }
-    console.log(this.selectedCategory);
+
+
   }
 
   onBack(){
@@ -91,6 +91,21 @@ export class QuizComponent implements OnInit {
       this.optionChoosen=true;
       this.currentQuestionIndex--;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
+    }
+  }
+
+
+  checkStatus(event:any){
+
+    if(event.target.checked == true){
+     this.selectedCategory = event.target.value;
+     this.selectInpector[this.currentQuestionIndex]=this.selectedCategory;
+     const arrayString = JSON.stringify(this.selectInpector);
+     localStorage.setItem("selected",arrayString);
+
+     if(this.selectedCategory==this.quizData[this.currentQuestionIndex].correctAnswer.name){
+      console.log("currect answer bro")
+     }
     }
   }
 
