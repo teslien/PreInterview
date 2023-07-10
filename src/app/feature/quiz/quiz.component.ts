@@ -27,8 +27,9 @@ export class QuizComponent implements OnInit {
   random:string="";
   city: string;
 
-  selectedCategory:any;
+  selectedCategory:any="none";
   selectInpector:any[]=["none","none","none","none","none","none"];
+  currentSelection:any="none";
 
   constructor(private testDataService:TestDataService){}
 
@@ -49,49 +50,55 @@ export class QuizComponent implements OnInit {
   }
 
 
-  onAnswerSelected(id:number,selectedValue:string,currentIndex:number){
-  this.optionChoosen=!this.optionChoosen;
-  if(this.optionChoosen && !this.isSelected)
-  {
-   this.quizData[currentIndex].input = selectedValue;
-   const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
-   if(objectToUpdate)
-   {
-    objectToUpdate.inputIndex=id;
-    this.isSelected=true;
-   }
+//   onAnswerSelected(id:number,selectedValue:string,currentIndex:number){
+//   this.optionChoosen=!this.optionChoosen;
+//   if(this.optionChoosen && !this.isSelected)
+//   {
+//    this.quizData[currentIndex].input = selectedValue;
+//    const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
+//    if(objectToUpdate)
+//    {
+//     objectToUpdate.inputIndex=id;
+//     this.isSelected=true;
+//    }
 
-  }else if(!this.optionChoosen && this.isSelected){
-    this.quizData[currentIndex].input = '';
-    const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
-    if(objectToUpdate)
-    {
-     objectToUpdate.inputIndex=-1;
-     this.isSelected=false;
-    }
+//   }else if(!this.optionChoosen && this.isSelected){
+//     this.quizData[currentIndex].input = '';
+//     const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
+//     if(objectToUpdate)
+//     {
+//      objectToUpdate.inputIndex=-1;
+//      this.isSelected=false;
+//     }
 
-  }
-}
+//   }
+// }
+
 
   onNext(){
 
-    if(this.currentQuestionIndex<9){
+    if(this.currentQuestionIndex<5){
       this.optionChoosen=false;
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
+      this.currentSelection=this.selectInpector[this.currentQuestionIndex++];
+      console.log("hurray:",this.currentSelection);
     }else if(this.currentQuestionIndex==5){
       console.log("wefrg");
     }
 
-
   }
 
   onBack(){
+
     if(this.currentQuestionIndex>=1){
       this.optionChoosen=true;
       this.currentQuestionIndex--;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
+      this.currentSelection=this.selectInpector[this.currentQuestionIndex--];
+      console.log("back hurray:",this.currentQuestionIndex);
     }
+
   }
 
 
@@ -107,6 +114,10 @@ export class QuizComponent implements OnInit {
       console.log("currect answer bro")
      }
     }
+  }
+
+  isOptionChecked(option: string): boolean {
+    return this.selectInpector.includes(option);
   }
 
 }

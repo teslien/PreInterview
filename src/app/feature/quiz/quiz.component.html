@@ -3,7 +3,7 @@
        <app-countdown [value]="[0,30,1,99]" [startPositive]="false"></app-countdown> <img src="../../../assets/images/stop.png" width="27px" height="27px" alt=""></span>
 
     <div class="appQuiz_ques col-6 p-5">
-        <div class="flex gap-4 flex-column ">
+        <div class="flex gap-4 flex-column">
             <label>{{quizData[currentQuestionIndex]?.descheading}}</label>
             <label class="font-bold text-4xl">{{quizData[currentQuestionIndex]?.question}}</label>
             <div class="appQuiz_document" [innerHTML]="quizData[currentQuestionIndex]?.documentData"></div>
@@ -14,7 +14,7 @@
 
         <div *ngFor="let category of quizData[currentQuestionIndex]?.options">
             <div class="radio-item "> 
-                <input type="radio" name="category" [value]="category.name" (change)="checkStatus($event);" [checked]="category.name==this.selectInpector[currentQuestionIndex]" class="radioStyle_radbtn cursor-pointer" id="category.key">
+                <input type="radio" name="category" [value]="category.name" (change)="checkStatus($event)"  class="radioStyle_radbtn cursor-pointer" id="category.key">
                 <label for="category"><span class="pl-8 ">{{category.name}}</span></label>
             </div>
         </div>
