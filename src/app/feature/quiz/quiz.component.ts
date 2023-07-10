@@ -27,7 +27,7 @@ export class QuizComponent implements OnInit {
   random:string="";
   city: string;
 
-  selectedCategory:any="none";
+  selectedCategory:any;
   selectInpector:any[]=["none","none","none","none","none","none"];
   currentSelection:any="none";
 
@@ -81,7 +81,7 @@ export class QuizComponent implements OnInit {
       this.optionChoosen=false;
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
-      this.currentSelection=this.selectInpector[this.currentQuestionIndex++];
+      // this.currentSelection=this.selectInpector[this.currentQuestionIndex];
       console.log("hurray:",this.currentSelection);
     }else if(this.currentQuestionIndex==5){
       console.log("wefrg");
@@ -116,8 +116,5 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  isOptionChecked(option: string): boolean {
-    return this.selectInpector.includes(option);
-  }
 
 }
