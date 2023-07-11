@@ -28,15 +28,15 @@ export class QuizComponent implements OnInit {
   city: string;
 
   selectedCategory:any;
-  selectInpector:any[]=["none","none","none","none","none","none"];
+  // selectInpector:any[]=["none","none","none","none","none","none"];
   currentSelection:any="none";
 
   constructor(private testDataService:TestDataService){}
 
   ngOnInit(): void {
     this.getTestData();
-    const arrayString = localStorage.getItem('selected');
-    this.selectInpector = JSON.parse(arrayString);
+    // const arrayString = localStorage.getItem('selected');
+    // this.selectInpector = JSON.parse(arrayString);
   }
 
   quizData = [];
@@ -77,7 +77,7 @@ export class QuizComponent implements OnInit {
 
   onNext(){
 
-    if(this.currentQuestionIndex<5){
+    if(this.currentQuestionIndex<9){
       this.optionChoosen=false;
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
@@ -95,7 +95,7 @@ export class QuizComponent implements OnInit {
       this.optionChoosen=true;
       this.currentQuestionIndex--;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
-      this.currentSelection=this.selectInpector[this.currentQuestionIndex--];
+      // this.currentSelection=this.selectInpector[this.currentQuestionIndex--];
       console.log("back hurray:",this.currentQuestionIndex);
     }
 
@@ -106,9 +106,9 @@ export class QuizComponent implements OnInit {
 
     if(event.target.checked == true){
      this.selectedCategory = event.target.value;
-     this.selectInpector[this.currentQuestionIndex]=this.selectedCategory;
-     const arrayString = JSON.stringify(this.selectInpector);
-     localStorage.setItem("selected",arrayString);
+    //  this.selectInpector[this.currentQuestionIndex]=this.selectedCategory;
+    //  const arrayString = JSON.stringify(this.selectInpector);
+    //  localStorage.setItem("selected",arrayString);
 
      if(this.selectedCategory==this.quizData[this.currentQuestionIndex].correctAnswer.name){
       console.log("currect answer bro")

@@ -14,7 +14,7 @@
 
         <div *ngFor="let category of quizData[currentQuestionIndex]?.options">
             <div class="radio-item "> 
-                <input type="radio" name="category" [value]="category.name" (change)="checkStatus($event)"  class="radioStyle_radbtn cursor-pointer" id="category.name">
+                <input type="radio" name="category" [value]="category.name" (change)="checkStatus($event)" [checked]="category.check"  class="radioStyle_radbtn cursor-pointer" id="category.name">
                 <label for="category"><span class="pl-8 ">{{category.name}}</span></label>
             </div>
         </div>
