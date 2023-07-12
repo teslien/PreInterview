@@ -1,8 +1,14 @@
 <app-wrap-instruction>
     <div class="grid">
-        <div class="col-12"></div>
-        <div class="col-6">
-            <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+        <div class="col-12 gap-2">
+            <div>
+                
+            </div>
+        </div>
+        <div class="col-6 editor_height">
+            <input type="text" pInputText placeholder="Enter heading of question" class="w-full text-2xl h-3rem mb-3">
+            <input type="text" pInputText placeholder="Enter your question" class="w-full text-2xl h-3rem mb-3">
+            <ckeditor [editor]="Editor" ></ckeditor>
         </div>
         <div class="col-6"></div>
     </div>

@@ -28,15 +28,12 @@ export class QuizComponent implements OnInit {
   city: string;
 
   selectedCategory:any;
-  // selectInpector:any[]=["none","none","none","none","none","none"];
   currentSelection:any="none";
 
   constructor(private testDataService:TestDataService){}
 
   ngOnInit(): void {
     this.getTestData();
-    // const arrayString = localStorage.getItem('selected');
-    // this.selectInpector = JSON.parse(arrayString);
   }
 
   quizData = [];
@@ -50,30 +47,6 @@ export class QuizComponent implements OnInit {
   }
 
 
-//   onAnswerSelected(id:number,selectedValue:string,currentIndex:number){
-//   this.optionChoosen=!this.optionChoosen;
-//   if(this.optionChoosen && !this.isSelected)
-//   {
-//    this.quizData[currentIndex].input = selectedValue;
-//    const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
-//    if(objectToUpdate)
-//    {
-//     objectToUpdate.inputIndex=id;
-//     this.isSelected=true;
-//    }
-
-//   }else if(!this.optionChoosen && this.isSelected){
-//     this.quizData[currentIndex].input = '';
-//     const objectToUpdate = this.quizData[currentIndex].options.find(obj => obj.id === id);
-//     if(objectToUpdate)
-//     {
-//      objectToUpdate.inputIndex=-1;
-//      this.isSelected=false;
-//     }
-
-//   }
-// }
-
 
   onNext(){
 
@@ -81,7 +54,6 @@ export class QuizComponent implements OnInit {
       this.optionChoosen=false;
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
-      // this.currentSelection=this.selectInpector[this.currentQuestionIndex];
       console.log("hurray:",this.currentSelection);
     }else if(this.currentQuestionIndex==5){
       console.log("wefrg");
@@ -102,13 +74,11 @@ export class QuizComponent implements OnInit {
   }
 
 
-  checkStatus(event:any){
+  checkStatus(event:any,index:any){
 
     if(event.target.checked == true){
      this.selectedCategory = event.target.value;
-    //  this.selectInpector[this.currentQuestionIndex]=this.selectedCategory;
-    //  const arrayString = JSON.stringify(this.selectInpector);
-    //  localStorage.setItem("selected",arrayString);
+     this.quizData[this.currentQuestionIndex].options[index].check=true;
 
      if(this.selectedCategory==this.quizData[this.currentQuestionIndex].correctAnswer.name){
       console.log("currect answer bro")

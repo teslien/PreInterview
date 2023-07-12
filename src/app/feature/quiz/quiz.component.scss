@@ -28,62 +28,12 @@
         font-size: 1.4rem;
     }
     
-    // &_options{
-    //     width: 97%;
-    //     height: 6.3rem;
-    //     border-radius: 5px;
-    //     border: 1px solid #a4a4a4;
-    //     background: var(--quizBg);
-    //     display: flex;
-    //     align-items: center;
-    //     box-sizing: content-box;
-    //     gap:1rem;
-    //     transition: all 0.5s;
-    // }
 
     &_document{
       display: inline-flex;
     }
 
-    // &_checkCircle{
-    //     max-width: 48px;
-    //     width: 100%;
-    //     max-height: 48px;
-    //     height: 100%;
-    //     border: 1px solid #808080;
-    //     border-radius: 50%;
-    // }
-
-    // &_show{
-    //     display: none;
-    // }
-
 }
-
-// .appQuiz_options:hover{
-//     color:rgb(0, 0, 0);
-//     border-color: #000000;
-
-
-//     .appQuiz_checkCircle{
-//         border: 1.3px solid #000000;
-//     }
-// }
-
-
-// .activeOptions{
-//         background-color: #3266CA;
-//         color:white;
-
-//         .appQuiz_checkCircle{
-//             border: 1.3px solid #ffffff;
-//         }
-    
-//         .appQuiz_show{
-//             display: block;
-//         }
-
-//     }
 
 
       :host ::ng-deep .appQuiz_document { 

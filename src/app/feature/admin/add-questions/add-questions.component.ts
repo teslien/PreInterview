@@ -9,9 +9,12 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class AddQuestionsComponent implements OnInit {
 
   public Editor = ClassicEditor;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
 
 }

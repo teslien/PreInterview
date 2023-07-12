@@ -1,0 +1,7 @@
+.editor_height{
+    height: 700px;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 300px !important;
+}
