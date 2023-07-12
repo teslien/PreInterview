@@ -27,6 +27,7 @@ import { AddQuestionsComponent } from './feature/admin/add-questions/add-questio
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TestResultComponent } from './feature/test-result/test-result.component';
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
+import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-ap
     CreateComponent,
     AddQuestionsComponent,
     TestResultComponent,
-    ViewApplicantsComponent
+    ViewApplicantsComponent,
+    ReportCardComponent
   ],
   imports: [
     BrowserModule,

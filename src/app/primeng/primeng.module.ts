@@ -19,6 +19,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { RippleModule } from 'primeng/ripple';
 
 
 @NgModule({
@@ -45,6 +46,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     InputNumberModule,
     ConfirmDialogModule,
     InputTextareaModule,
+    InputTextModule,
+		ButtonModule,
+		RadioButtonModule,
+    RippleModule
   ],
   exports:[
     InputTextModule,
@@ -67,6 +72,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     InputNumberModule,
     ConfirmDialogModule,
     InputTextareaModule,
+    InputTextModule,
+		ButtonModule,
+		RadioButtonModule,
+    RippleModule
   ]
 })
 export class PrimengModule { }

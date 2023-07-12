@@ -1,15 +1,29 @@
 <app-wrap-instruction>
     <div class="grid">
-        <div class="col-12 gap-2">
-            <div>
-                
+        <div class="col-12 flex justify-content-between p-4 align-items-center">
+            <div class="w-5rem h-5rem border-circle primarybg text-4xl font-bold text-white flex justify-content-center align-items-center">
+              1
+            </div>
+            <div class="flex  gap-3">
+                <app-button [customStyles]="{
+                    background:'#FBFBFB',
+                    width:'5.5rem'
+                  }"><i class="pi textWonder text-2xl pi-arrow-left"></i></app-button>
+
+                <a btn [customStyles]="{
+                    background:'#3266CA',
+                    width:'5.5rem'
+                  }">Next<i class="pi pi-arrow-right text-2xl"></i></a>
             </div>
         </div>
-        <div class="col-6 editor_height">
-            <input type="text" pInputText placeholder="Enter heading of question" class="w-full text-2xl h-3rem mb-3">
-            <input type="text" pInputText placeholder="Enter your question" class="w-full text-2xl h-3rem mb-3">
-            <ckeditor [editor]="Editor" ></ckeditor>
+        <div class="col-6 editor_height p-4">
+            <ckeditor [editor]="Editor"></ckeditor>
         </div>
-        <div class="col-6"></div>
+        <div class="col-6 flex justify-content-start flex-column gap-5 p-4">
+            <div class="p-inputgroup">
+                <input type="text" pInputText placeholder="Option 1" class="text-3xl">   
+                <span class="p-inputgroup-addon"><p-radioButton name="category" value="price" ></p-radioButton></span>      
+            </div>
+        </div>
     </div>
 </app-wrap-instruction>

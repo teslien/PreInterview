@@ -23,12 +23,14 @@ export class QuizComponent implements OnInit {
   totalTime:number=30;
   currentRound:number=1;
   selectedValue:string;
-
+  previousIndex:any=-1;
+  previousQuestionIndex:any=-1;
   random:string="";
   city: string;
 
   selectedCategory:any;
   currentSelection:any="none";
+  correctAnswers:number=0;
 
   constructor(private testDataService:TestDataService){}
 
@@ -52,9 +54,12 @@ export class QuizComponent implements OnInit {
 
     if(this.currentQuestionIndex<9){
       this.optionChoosen=false;
+      if(this.selectedCategory==this.quizData[this.currentQuestionIndex].correctAnswer.name){
+        console.log("Your Answer is correct",this.correctAnswers);
+       }
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
-      console.log("hurray:",this.currentSelection);
+
     }else if(this.currentQuestionIndex==5){
       console.log("wefrg");
     }
@@ -64,6 +69,7 @@ export class QuizComponent implements OnInit {
   onBack(){
 
     if(this.currentQuestionIndex>=1){
+      // this.previousIndex=-1;
       this.optionChoosen=true;
       this.currentQuestionIndex--;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
@@ -77,12 +83,16 @@ export class QuizComponent implements OnInit {
   checkStatus(event:any,index:any){
 
     if(event.target.checked == true){
+    if(this.previousIndex!=-1)
+    {
+      this.quizData[this.currentQuestionIndex].options[this.previousIndex].check=false;
+    }
      this.selectedCategory = event.target.value;
      this.quizData[this.currentQuestionIndex].options[index].check=true;
+     this.previousIndex=index;
+     this.previousQuestionIndex=this.currentQuestionIndex;
+     console.log(this.quizData[this.currentQuestionIndex].options)
 
-     if(this.selectedCategory==this.quizData[this.currentQuestionIndex].correctAnswer.name){
-      console.log("currect answer bro")
-     }
     }
   }
 
