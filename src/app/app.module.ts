@@ -24,11 +24,10 @@ import { LinkGeneratedComponent } from './feature/admin/link-generated/link-gene
 import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './feature/admin/create/create.component';
 import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TestResultComponent } from './feature/test-result/test-result.component';
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
-
+import { NgxEditorModule } from 'ngx-editor'
 
 @NgModule({
   declarations: [
@@ -51,7 +50,7 @@ import { ReportCardComponent } from './feature/admin/report-card/report-card.com
     AddQuestionsComponent,
     TestResultComponent,
     ViewApplicantsComponent,
-    ReportCardComponent
+    ReportCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +60,7 @@ import { ReportCardComponent } from './feature/admin/report-card/report-card.com
     BrowserAnimationsModule,
     WebcamModule,
     HttpClientModule,
-    CKEditorModule
+    NgxEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@
 
     <div class="appQuiz_ques col-6 p-5">
         <div class="flex gap-4 flex-column">
+            <webcam *ngIf="!webcamImage" [height]="200" [width]="200" [trigger]="triggerObservable" class="hidden" (imageCapture)="handleImage($event)"></webcam>
             <label>{{quizData[currentQuestionIndex]?.descheading}}</label>
             <label class="font-bold text-4xl">{{quizData[currentQuestionIndex]?.question}}</label>
             <div class="appQuiz_document" [innerHTML]="quizData[currentQuestionIndex]?.documentData"></div>

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ReportCardComponent implements OnInit {
 
   constructor() { }
-
+  value=100;
   ngOnInit(): void {
   }
 

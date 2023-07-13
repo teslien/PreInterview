@@ -1,4 +1,4 @@
-import { NgModule, createComponent } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './feature/quiz/quiz.component';
 import { InstructionsComponent } from './feature/instructions/instructions.component';
@@ -12,6 +12,7 @@ import { CreateComponent } from './feature/admin/create/create.component';
 import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
 import { TestResultComponent } from './feature/test-result/test-result.component';
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
+import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
 
 const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'quiz/result',component:TestResultComponent},
   {path:'admin/applicants',component:ViewApplicantsComponent},
   {path:'admin/tests',component:HomeComponent},
+  {path:'admin/applicant/report/:id', component:ReportCardComponent}
 ];
 
 @NgModule({

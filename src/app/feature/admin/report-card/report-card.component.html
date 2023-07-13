@@ -1,15 +1,48 @@
 <app-wrap-instruction>
-    <div class="grid">
-        <div class="col-12"></div>
-        <div class="col-4"></div>
-        <div class="col-8"></div>
-        <div class="col-12"></div>
+    <div class="grid p-5">
+        <div class="col-12 p-5 flex justify-content-between">
+            <div class="p-2 largeboldFont font-bold">
+                Report Card
+            </div>
+            <div class="px-4 py-2 primaryFontSize  border-round-2xl text-white bg-green-600 font-bold ">
+                PASS
+            </div>
+        </div>
+        <div class="col-4 flex justify-content-center">
+            <p-knob [(ngModel)]="value" valueColor="#3266CA"
+            [size]="200"></p-knob>
+        </div>
+        <div class="col-8">
+            <label for="name" class="primaryFontSize">Prince Singh</label>
+            <br> <span>Location : Pune</span><br>
+            <span>Applied : Senior Angular Developer</span><br>
+            <span>Test : Angular Basics</span><br>
+            <span>Score : 60/60</span>
+        </div>
+        <div class="col-12 p-5 ">
+            <div class="p-2 largeboldFont font-bold">
+                Cheat Monitor
+            </div>
+            <div>
+                <ul>
+                    <li>Ip : 103.86.182.248</li>
+                    <li>City: Pune</li>
+                    <li>Region : Maharashtra</li>
+                    <li>Country : India </li>
+                    <li>Org : Paradise Telecom Pvt Ltd</li>
+                    <li>Version : IPV4</li>
+                    <li>Timezone : Asia/Kolkata</li>
+                    <li>Latitude : 18.6161</li>
+                    <li>Longitude : 73.7286</li>
+                </ul>
+            </div>
+        </div>
         <div class="col-12">
             <div class="col-8">
                 <div class="col-4"></div>
                 <div class="col-4"></div>
             </div>
         </div>
-        
+
     </div>
 </app-wrap-instruction>

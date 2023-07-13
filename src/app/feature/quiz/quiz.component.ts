@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
-
+import {WebcamImage} from 'ngx-webcam';
+import {Subject, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-quiz',
@@ -23,7 +24,6 @@ export class QuizComponent implements OnInit {
   totalTime:number=30;
   currentRound:number=1;
   selectedValue:string;
-  previousIndex:any=-1;
   previousQuestionIndex:any=-1;
   random:string="";
   city: string;
@@ -31,11 +31,25 @@ export class QuizComponent implements OnInit {
   selectedCategory:any;
   currentSelection:any="none";
   correctAnswers:number=0;
+  UserIpAddress:any;
+
+
+
+  //image
+  imageCaptured:any[];
+
+
+  //location 
+  public lat;
+  public lng;
+
 
   constructor(private testDataService:TestDataService){}
 
   ngOnInit(): void {
     this.getTestData();
+    this.getUserIp();
+    this.getLocation();
   }
 
   quizData = [];
@@ -48,7 +62,11 @@ export class QuizComponent implements OnInit {
     })
   }
 
-
+  makeAllFalse(index:number){
+    this.quizData[index].options.forEach(obj => {
+      obj.check = false;
+    });
+  }
 
   onNext(){
 
@@ -58,6 +76,7 @@ export class QuizComponent implements OnInit {
         console.log("Your Answer is correct",this.correctAnswers);
        }
       this.currentQuestionIndex++;
+      this.randomlyCapturingImage(this.currentQuestionIndex);
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
 
     }else if(this.currentQuestionIndex==5){
@@ -69,11 +88,9 @@ export class QuizComponent implements OnInit {
   onBack(){
 
     if(this.currentQuestionIndex>=1){
-      // this.previousIndex=-1;
       this.optionChoosen=true;
       this.currentQuestionIndex--;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
-      // this.currentSelection=this.selectInpector[this.currentQuestionIndex--];
       console.log("back hurray:",this.currentQuestionIndex);
     }
 
@@ -83,18 +100,85 @@ export class QuizComponent implements OnInit {
   checkStatus(event:any,index:any){
 
     if(event.target.checked == true){
-    if(this.previousIndex!=-1)
-    {
-      this.quizData[this.currentQuestionIndex].options[this.previousIndex].check=false;
-    }
+    this.makeAllFalse(this.currentQuestionIndex);
      this.selectedCategory = event.target.value;
      this.quizData[this.currentQuestionIndex].options[index].check=true;
-     this.previousIndex=index;
      this.previousQuestionIndex=this.currentQuestionIndex;
      console.log(this.quizData[this.currentQuestionIndex].options)
 
     }
   }
 
+  getUserIp(){
+    this.testDataService.getUserIP().subscribe((res)=>{
+     this.UserIpAddress=res;
+     this.getUserInfo(this.UserIpAddress.ip);
+    })
+  }
+
+  getUserInfo(info:any){
+  console.log(info);
+    this.testDataService.getUserInfo(info).subscribe((res)=>{
+      console.log(res);
+    })
+  
+  }
+
+
+  ///this is cam capture functions
+
+  public webcamImage: WebcamImage=null;
+  // webcam snapshot trigger
+  private trigger: Subject<void> = new Subject<void>();
+  triggerSnapshot(): void {
+   this.trigger.next();
+  }
+  handleImage(webcamImage: WebcamImage): void {
+   console.info('received webcam image', webcamImage);
+   this.webcamImage = webcamImage;
+  //  if(this.webcamImage!=null)
+  //  {
+  //   this.imageCaptured.push(this.webcamImage);
+  //  }
+  }
+ 
+  public get triggerObservable(): Observable<void> {
+   return this.trigger.asObservable();
+  }
+
+
+  randomlyCapturingImage(index:number){
+  const factors=[];
+   for (let i = 1; i <= 5; i++) {
+    if (20 % i === 0) {
+      factors.push(i);
+    }
+
+  }
+  console.log(factors);
+  if (factors.includes(index)) {
+    // this.triggerSnapshot();
+    console.log("Your photo is captured");
+  }
+  }
+
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        if (position) {
+          console.log("Latitude: " + position.coords.latitude +
+            "Longitude: " + position.coords.longitude);
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          console.log(this.lat);
+          console.log(this.lat);
+        }
+      },
+        (error) => console.log(error));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
 
 }

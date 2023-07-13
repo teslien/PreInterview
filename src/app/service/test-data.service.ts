@@ -23,4 +23,12 @@ export class TestDataService {
       return testArray;
     }));
   }
+
+
+  getUserIP(){
+    return this.http.get('https://jsonip.com/');
+  }
+  getUserInfo(ip:any){
+    return this.http.get(`https://ipapi.co/${ip}/json/`);
+  }
 }
