@@ -18,6 +18,7 @@
     }
     &_hiwid{
         font-size: 1.5rem;
+    
     }
 
 }
@@ -30,4 +31,8 @@ button, input[type="submit"], input[type="reset"] {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+li{
+    line-height: 2.4rem;
 }

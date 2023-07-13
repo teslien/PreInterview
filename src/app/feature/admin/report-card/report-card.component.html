@@ -10,21 +10,25 @@
         </div>
         <div class="col-4 flex justify-content-center">
             <p-knob [(ngModel)]="value" valueColor="#3266CA"
-            [size]="200"></p-knob>
+            [size]="200" textColor="#252525" styleClass="font-bold" [readonly]="true"></p-knob>
         </div>
         <div class="col-8">
-            <label for="name" class="primaryFontSize">Prince Singh</label>
-            <br> <span>Location : Pune</span><br>
-            <span>Applied : Senior Angular Developer</span><br>
-            <span>Test : Angular Basics</span><br>
+            <label for="name" class="largerFont font-bold">Prince Singh</label>
+            
+            <div class="primaryFontSize flex flex-column gap-4 mt-4">
+            <span>Location : Pune</span>
+            <span>Applied : Senior Angular Developer</span>
+            <span>Test : Angular Basics</span>
             <span>Score : 60/60</span>
+            </div>
+            
         </div>
         <div class="col-12 p-5 ">
             <div class="p-2 largeboldFont font-bold">
                 Cheat Monitor
             </div>
-            <div>
-                <ul>
+            <div class="primaryFontSize">
+                <ul class="flex flex-column gap-4">
                     <li>Ip : 103.86.182.248</li>
                     <li>City: Pune</li>
                     <li>Region : Maharashtra</li>
@@ -38,10 +42,16 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="col-8">
+            <div class="p-2 largeboldFont font-bold">
+                Images Captured
+            </div>
+            <div class="col-8 flex flex-wrap">
+                <div class="col-4"></div>
+                <div class="col-4"></div>
                 <div class="col-4"></div>
                 <div class="col-4"></div>
             </div>
+     
         </div>
 
     </div>

@@ -38,7 +38,10 @@
     &_design{
         flex:1 1 497px;
         background-image: url(../../../../assets/images/designShape.png) ;
-        background-size: cover;
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
         border-radius: 4px;
 
         &_options{
