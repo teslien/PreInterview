@@ -13,7 +13,7 @@ export class TestDataService {
 
 
   getTestkData() {
-    return this.http.get(`https://pre-interviewtest-default-rtdb.firebaseio.com/admin/-NZZhjdX1cPNJImoo7m9/testCreated/-NZkCe26tVkDfvxaVtZR.json`).pipe(Rx.map(responsedata=>{
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/-N_JY9blQwmxNuuftBWm/-N_JYmvGVU_2898KEAPR/questionData.json`).pipe(Rx.map(responsedata=>{
       const testArray =[];
       for(const key in responsedata){
         if(responsedata.hasOwnProperty(key)){
@@ -31,4 +31,43 @@ export class TestDataService {
   getUserInfo(ip:any){
     return this.http.get(`https://ipapi.co/${ip}/json/`);
   }
+
+
+
+  getAdminData() {
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/admin.json`).pipe(Rx.map(responsedata=>{
+      const UserArray =[];
+      for(const key in responsedata){
+        if(responsedata.hasOwnProperty(key)){
+          UserArray.push({...responsedata[key], id: key})
+        }
+      }
+      return UserArray;
+    }));;
+  }
+
+  getApplicantData() {
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant.json`).pipe(Rx.map(responsedata=>{
+      const UserArray =[];
+      for(const key in responsedata){
+        if(responsedata.hasOwnProperty(key)){
+          UserArray.push({...responsedata[key], id: key})
+        }
+      }
+      return UserArray;
+    }));;
+  }
+
+  getAllTest(){
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests.json`).pipe(Rx.map(responsedata=>{
+      const UserArray =[];
+      for(const key in responsedata){
+        if(responsedata.hasOwnProperty(key)){
+          UserArray.push({...responsedata[key], id: key})
+        }
+      }
+      return UserArray;
+    }));;
+  }
+
 }

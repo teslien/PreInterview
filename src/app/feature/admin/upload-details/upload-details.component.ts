@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { Product } from 'src/assets/Models/product';
+
 
 
 @Component({
@@ -376,9 +376,9 @@ export class UploadDetailsComponent implements OnInit {
 		}
 	];
 
-  product: Product;
+  product:any;
 
-  selectedProducts: Product[];
+  selectedProducts: any[];
 
   submitted: boolean;
 
@@ -406,12 +406,12 @@ deleteSelectedProducts() {
     });
 }
 
-editProduct(product: Product) {
+editProduct(product) {
     this.product = {...product};
     this.productDialog = true;
 }
 
-deleteProduct(product: Product) {
+deleteProduct(product) {
     this.confirmationService.confirm({
         message: 'Are you sure you want to delete ' + product.name + '?',
         header: 'Confirm',

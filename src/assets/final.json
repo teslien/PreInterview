@@ -1,0 +1,365 @@
+{
+    "admin":{
+        "admin_id1":{
+            "id":"admin_id1",
+            "name":"Rohit Rajesh Bairwa",
+            "email":"rohittbairwaa11@gmail.com",
+            "password":"1111",
+            "company_name":"12th WOnder",
+            "location":"Pune",
+            "profile_pic":"image_url",
+            "noOfTest":0
+        }
+
+    },
+
+
+
+    "applicant":{
+        "admin_id":{
+            "applicants_id":{
+                "name":"Chandan Kumar",
+                "email":"chandan@gmail.com",
+                "password":"2222",
+                "mobile_number":1234567890,
+                "link":"https//linkedin.com/chandan",
+                "test_allocated_id":"-N_JYmvGVU_2898KEAPR",
+                "test_category":"Aptitude Tests",
+                "test_status":"Not Started"
+
+            }
+        }
+    },
+
+
+
+
+    "tests":[
+        {
+            "category":"Aptitude Tests",
+            "availableTests":{
+                "test_id":{
+                    "testName":"Logic Math Basics",
+                    "totalQuestions":10,
+                    "totalTimeInMins":20,
+                    "questionData":[
+                        
+                        {
+                            "id": 1,
+                            "question": "What is the value of x in the equation 2x + 5 = 15?",
+                            "options": [
+                               {
+                                  "name": "5",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "10",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "7",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "8",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "10",
+                               "key": "b"
+                            }
+                         },
+                         {
+                            "id": 2,
+                            "question": "If a car travels at a constant speed of 60 kilometers per hour, how long will it take to cover a distance of 240 kilometers?",
+                            "options": [
+                               {
+                                  "name": "2 hours",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "3 hours",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "4 hours",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "5 hours",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "4 hours",
+                               "key": "c"
+                            }
+                         },
+                         {
+                            "id": 3,
+                            "question": "A box contains 12 red balls and 8 blue balls. What is the probability of randomly selecting a red ball from the box?",
+                            "options": [
+                               {
+                                  "name": "0.4",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "0.5",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "0.6",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "0.7",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "0.6",
+                               "key": "c"
+                            }
+                         },{
+                            "id": 4,
+                            "question": "If 5 workers can build a wall in 10 days, how many workers are needed to build the same wall in 5 days?",
+                            "options": [
+                               {
+                                  "name": "10 workers",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "15 workers",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "20 workers",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "25 workers",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "15 workers",
+                               "key": "b"
+                            }
+                         },
+                         {
+                            "id": 5,
+                            "question": "What is the square root of 144?",
+                            "options": [
+                               {
+                                  "name": "9",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "10",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "11",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "12",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "12",
+                               "key": "d"
+                            }
+                         },
+                         {
+                            "id": 6,
+                            "question": "If a product is sold for $80, which includes a 25% profit, what is the cost price of the product?",
+                            "options": [
+                               {
+                                  "name": "$60",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "$64",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "$70",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "$75",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "$70",
+                               "key": "c"
+                            }
+                         },
+                         {
+                            "id": 7,
+                            "question": "Simplify the expression: 3(4 + 2) - 8 ÷ 4",
+                            "options": [
+                               {
+                                  "name": "12",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "14",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "16",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "18",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "12",
+                               "key": "a"
+                            }
+                         },
+                         {
+                            "id": 8,
+                            "question": "If a store offers a 20% discount on a $50 shirt, what is the sale price?",
+                            "options": [
+                               {
+                                  "name": "$30",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "$36",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "$40",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "$44",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "$36",
+                               "key": "b"
+                            }
+                         },
+                         {
+                            "id": 9,
+                            "question": "A rectangular field is 15 meters long and 10 meters wide. What is the area of the field?",
+                            "options": [
+                               {
+                                  "name": "100 square meters",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "120 square meters",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "150 square meters",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "200 square meters",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "150 square meters",
+                               "key": "c"
+                            }
+                         },
+                         {
+                            "id": 10,
+                            "question": "Solve the equation: 2x + 3 = 9",
+                            "options": [
+                               {
+                                  "name": "x = 2",
+                                  "key": "a",
+                                  "check": false
+                               },
+                               {
+                                  "name": "x = 3",
+                                  "key": "b",
+                                  "check": false
+                               },
+                               {
+                                  "name": "x = 4",
+                                  "key": "c",
+                                  "check": false
+                               },
+                               {
+                                  "name": "x = 5",
+                                  "key": "d",
+                                  "check": false
+                               }
+                            ],
+                            "correctAnswer": {
+                               "name": "x = 2",
+                               "key": "a"
+                            }
+                         }
+                         
+                         
+                    ]
+                }
+            }
+        }
+    ]
+
+
+
+
+
+
+
+
+
+
+}
+
+
