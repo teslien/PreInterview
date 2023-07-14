@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'instruction', component: InstructionsComponent },
   { path:'welcome', component: WelcomeComponent},
-  { path:'login/:user',component:LoginComponent},
+  { path:'login/:user/:id',component:LoginComponent},
   {path:'verification',component:PhotoVerificationComponent},
   {path:'admin', component:HomeComponent},
   {path:'admin/upload',component:UploadDetailsComponent},
