@@ -77,7 +77,7 @@ export class QuizComponent implements OnInit {
        }
       this.currentQuestionIndex++;
       this.randomlyCapturingImage(this.currentQuestionIndex);
-      this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
+      this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex);
 
     }else if(this.currentQuestionIndex==5){
       console.log("wefrg");

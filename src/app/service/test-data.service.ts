@@ -9,6 +9,7 @@ import * as Rx from "rxjs";
 export class TestDataService {
 
   UpdateNavbar = new EventEmitter<any>();
+
   constructor(private http: HttpClient) { }
 
 
@@ -56,6 +57,14 @@ export class TestDataService {
       }
       return UserArray;
     }));;
+  }
+
+  getSpecificApplicantdata(id: any){
+   return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${id}.json`);
+  }
+
+  getSpecificAdmindata(id:any){
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/admin/${id}.json`);
   }
 
   getAllTest(){

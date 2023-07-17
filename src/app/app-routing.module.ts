@@ -13,22 +13,23 @@ import { AddQuestionsComponent } from './feature/admin/add-questions/add-questio
 import { TestResultComponent } from './feature/test-result/test-result.component';
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: 'quiz', component: QuizComponent },
   { path: 'instruction', component: InstructionsComponent },
   { path:'welcome', component: WelcomeComponent},
-  { path:'login/:user/:id',component:LoginComponent},
+  { path:'login/:user',component:LoginComponent},
   {path:'verification',component:PhotoVerificationComponent},
-  {path:'admin', component:HomeComponent},
-  {path:'admin/upload',component:UploadDetailsComponent},
-  {path:'admin/generate',component:LinkGeneratedComponent},
-  {path:'admin/create',component:CreateComponent},
-  {path:'admin/createtest/add',component:AddQuestionsComponent},
+  {path:'admin', component:HomeComponent ,canActivate: [AuthGuard]},
+  {path:'admin/upload',component:UploadDetailsComponent,canActivate: [AuthGuard]},
+  {path:'admin/generate',component:LinkGeneratedComponent,canActivate: [AuthGuard]},
+  {path:'admin/create',component:CreateComponent,canActivate: [AuthGuard]},
+  {path:'admin/createtest/add',component:AddQuestionsComponent,canActivate: [AuthGuard]},
   {path:'quiz/result',component:TestResultComponent},
-  {path:'admin/applicants',component:ViewApplicantsComponent},
-  {path:'admin/tests',component:HomeComponent},
-  {path:'admin/applicant/report/:id', component:ReportCardComponent}
+  {path:'admin/applicants',component:ViewApplicantsComponent,canActivate: [AuthGuard]},
+  {path:'admin/tests',component:HomeComponent,canActivate: [AuthGuard]},
+  {path:'admin/applicant/report/:id', component:ReportCardComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({

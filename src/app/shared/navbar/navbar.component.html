@@ -11,7 +11,7 @@
      </div>
 
     <div class="navbar-links">
-      <ul >
+      <ul *ngIf="Applicant;else applicantname">
         <div class="navbar_link gap-2 relative cursor-pointer mr-5 " >
           <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1  hoverLine" routerLink="/admin/tests" routerLinkActive="activeClass">Tests</li>
         </div>
@@ -26,12 +26,12 @@
           <div class="dropdown-content">
             <a>Profile</a>
             <a>Settings</a>
-            <a class="text-red-500" routerLink="/login/applicant">Logout</a>
+            <a class="text-red-500" (click)="logout()">Logout</a>
           </div>
         </div>
         </li>
       </ul>
-      <span class="hidden">Rohit Rajesh Bairwa</span>
+      <ng-template #applicantname>Rohit Rajesh Bairwa</ng-template>
     </div>
 
   </div>
