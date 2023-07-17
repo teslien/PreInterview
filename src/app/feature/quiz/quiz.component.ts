@@ -26,12 +26,14 @@ export class QuizComponent implements OnInit {
   selectedValue:string;
   previousQuestionIndex:any=-1;
   random:string="";
-  city: string;
+  nexSub:any="Next";
+
 
   selectedCategory:any;
   currentSelection:any="none";
   correctAnswers:number=0;
   UserIpAddress:any;
+
 
 
 
@@ -52,14 +54,17 @@ export class QuizComponent implements OnInit {
     this.getLocation();
   }
 
-  quizData = [];
+  quizData:any[];
+  quizDetails:any;
 
 
   getTestData(){
-    this.dataSubscription=this.testDataService.getTestkData().subscribe((res)=>{
-      this.quizData=res;
-      console.log(this.quizData)
-    })
+      this.testDataService.getApplicantSpecificQuiz('-N_JY9blQwmxNuuftBWm','-N_JYmvGVU_2898KEAPR').subscribe(r=>{
+        this.quizDetails=r;
+        this.quizData=this.quizDetails.questionData;
+      })
+
+
   }
 
   makeAllFalse(index:number){
@@ -70,17 +75,18 @@ export class QuizComponent implements OnInit {
 
   onNext(){
 
-    if(this.currentQuestionIndex<9){
+    if(this.currentQuestionIndex<9 && this.currentQuestionIndex>-1){
+      this.currentQuestionIndex++;
+      this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex);
       this.optionChoosen=false;
       if(this.selectedCategory==this.quizData[this.currentQuestionIndex].correctAnswer.name){
         console.log("Your Answer is correct",this.correctAnswers);
        }
-      this.currentQuestionIndex++;
       this.randomlyCapturingImage(this.currentQuestionIndex);
-      this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex);
 
-    }else if(this.currentQuestionIndex==5){
-      console.log("wefrg");
+    }
+    if(this.currentQuestionIndex==9){
+      this.nexSub="Submit Task";
     }
 
   }
@@ -92,6 +98,9 @@ export class QuizComponent implements OnInit {
       this.currentQuestionIndex--;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
       console.log("back hurray:",this.currentQuestionIndex);
+    }
+    if(this.currentQuestionIndex!=9){
+      this.nexSub="Next"
     }
 
   }

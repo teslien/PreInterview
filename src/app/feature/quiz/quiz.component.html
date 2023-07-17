@@ -1,13 +1,11 @@
 <div class="appQuiz grid p-4">
     <span class="appQuiz_right flex gap-2 align-items-center p-3">
-       <app-countdown [value]="[0,30,1,99]" [startPositive]="false"></app-countdown><svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M176 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h16V98.4C92.3 113.8 16 200 16 304c0 114.9 93.1 208 208 208s208-93.1 208-208c0-41.8-12.3-80.7-33.5-113.2l24.1-24.1c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L355.7 143c-28.1-23-62.2-38.8-99.7-44.6V64h16c17.7 0 32-14.3 32-32s-14.3-32-32-32H224 176zm72 192V320c0 13.3-10.7 24-24 24s-24-10.7-24-24V192c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg></span>
+       <app-countdown [value]="[0,quizDetails.totalTimeInMins,1,99]" [startPositive]="false"></app-countdown><svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 448 512"><path d="M176 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h16V98.4C92.3 113.8 16 200 16 304c0 114.9 93.1 208 208 208s208-93.1 208-208c0-41.8-12.3-80.7-33.5-113.2l24.1-24.1c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L355.7 143c-28.1-23-62.2-38.8-99.7-44.6V64h16c17.7 0 32-14.3 32-32s-14.3-32-32-32H224 176zm72 192V320c0 13.3-10.7 24-24 24s-24-10.7-24-24V192c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg></span>
 
     <div class="appQuiz_ques col-6 p-5">
         <div class="flex gap-4 flex-column">
             <webcam *ngIf="!webcamImage" [height]="200" [width]="200" [trigger]="triggerObservable" class="hidden" (imageCapture)="handleImage($event)"></webcam>
-            <label>{{quizData[currentQuestionIndex]?.descheading}}</label>
-            <label class="font-bold text-4xl">{{quizData[currentQuestionIndex]?.question}}</label>
-            <div class="appQuiz_document" [innerHTML]="quizData[currentQuestionIndex]?.documentData"></div>
+            <div class="appQuiz_document" [innerHTML]="quizData[currentQuestionIndex]?.question"></div>
         </div>
     </div>
     <div class="appQuiz_ans col-6 flex gap-5 flex-column p-5">
@@ -30,7 +28,7 @@
 
         <a btn [customStyles]="{
             background:'#3266CA'
-          }" (click)="onNext()">Next<i class="pi pi-arrow-right text-2xl"></i></a>
+          }" (click)="onNext()">{{nexSub}}<i class="pi pi-arrow-right text-2xl"></i></a>
     </div>
 
 </div>

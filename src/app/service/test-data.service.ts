@@ -9,6 +9,8 @@ import * as Rx from "rxjs";
 export class TestDataService {
 
   UpdateNavbar = new EventEmitter<any>();
+  applicantdatalog=  new Rx.BehaviorSubject<any>({});;
+  
 
   constructor(private http: HttpClient) { }
 
@@ -77,6 +79,11 @@ export class TestDataService {
       }
       return UserArray;
     }));;
+  }
+
+
+  getApplicantSpecificQuiz(categoryId:any,testId:any){
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${categoryId}/${testId}.json`);
   }
 
 }

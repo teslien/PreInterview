@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestDataService } from 'src/app/service/test-data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class WelcomeComponent implements OnInit {
 
 
-  constructor() { }
+  userDetails:any;
+  constructor(private testService:TestDataService) { }
 
   ngOnInit(): void {
+    this.testService.applicantdatalog.subscribe(res=>{
+      this.userDetails=res;
+    })
   }
 
 }

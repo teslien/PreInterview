@@ -6,7 +6,7 @@
 
       <div *ngIf="roundDetails">
         <div>
-          <app-progressbar [maxValue]="10" [value]="CurrentQuestion"></app-progressbar>
+          <app-progressbar [maxValue]="userArray?.totalQuestions" [value]="CurrentQuestion" [testName]="userArray?.testName"></app-progressbar>
         </div>
      </div>
 
@@ -31,7 +31,7 @@
         </div>
         </li>
       </ul>
-      <ng-template #applicantname>Rohit Rajesh Bairwa</ng-template>
+      <ng-template #applicantname>{{userArray?.name}}</ng-template>
     </div>
 
   </div>

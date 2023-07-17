@@ -16,17 +16,22 @@ export class NavbarComponent implements OnInit,OnDestroy {
   CurrentQuestion: any=1;
   Applicant:boolean;
   userArray:any;
+  adminArray:any;
+  admintoken=localStorage.getItem('UserId');
+  applicanttoken=localStorage.getItem('ApplicantId')
 
   constructor(private route:Router,private testDataService: TestDataService) { }
   
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
+    this.UserDataSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
 
     this.Applicant = Boolean(localStorage.getItem('UserId'));
     
+    this.getUserData();
     this.route.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.roundDetails = event.url.includes('/quiz');
@@ -41,22 +46,19 @@ export class NavbarComponent implements OnInit,OnDestroy {
 
 
 getUserData(){
-if(this.Applicant){
-  const id = localStorage.getItem("ApplicantId");
-  if(id!=null)
-  {
-    this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(id).subscribe((res)=>{
+if(this.applicanttoken){
+  console.log(this.applicanttoken);
+    this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(this.applicanttoken).subscribe((res)=>{
       this.userArray=res;
+      this.testDataService.applicantdatalog.next(res);
+      console.log(this.userArray);
     })
-  }
 }
-else{
-const id =localStorage.getItem("UserId");
-if(id!=null){
-  this.UserDataSubscription=this.testDataService.getSpecificAdmindata(id).subscribe(res=>{
-    this.userArray=res;
+else if(this.admintoken){
+  this.UserDataSubscription=this.testDataService.getSpecificAdmindata(this.admintoken).subscribe((res)=>{
+    this.adminArray=res;
+    console.log(this.adminArray);
   })
-}
 }
 }
 
