@@ -32,7 +32,7 @@ export class QuizComponent implements OnInit {
   selectedCategory:any;
   currentSelection:any="none";
   correctAnswers:number=0;
-  UserIpAddress:any;
+ 
 
 
 
@@ -41,17 +41,12 @@ export class QuizComponent implements OnInit {
   imageCaptured:any[];
 
 
-  //location 
-  public lat;
-  public lng;
 
 
   constructor(private testDataService:TestDataService){}
 
   ngOnInit(): void {
     this.getTestData();
-    this.getUserIp();
-    this.getLocation();
   }
 
   quizData:any[];
@@ -114,24 +109,9 @@ export class QuizComponent implements OnInit {
      this.quizData[this.currentQuestionIndex].options[index].check=true;
      this.previousQuestionIndex=this.currentQuestionIndex;
      console.log(this.quizData[this.currentQuestionIndex].options)
-
     }
   }
 
-  getUserIp(){
-    this.testDataService.getUserIP().subscribe((res)=>{
-     this.UserIpAddress=res;
-     this.getUserInfo(this.UserIpAddress.ip);
-    })
-  }
-
-  getUserInfo(info:any){
-  console.log(info);
-    this.testDataService.getUserInfo(info).subscribe((res)=>{
-      console.log(res);
-    })
-  
-  }
 
 
   ///this is cam capture functions
@@ -172,22 +152,6 @@ export class QuizComponent implements OnInit {
   }
 
 
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        if (position) {
-          console.log("Latitude: " + position.coords.latitude +
-            "Longitude: " + position.coords.longitude);
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          console.log(this.lat);
-          console.log(this.lat);
-        }
-      },
-        (error) => console.log(error));
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  }
+
 
 }

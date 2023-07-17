@@ -86,4 +86,8 @@ export class TestDataService {
     return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${categoryId}/${testId}.json`);
   }
 
+  // sendMyPic(){
+  //   return this.http.post(``);
+  // }
+
 }
