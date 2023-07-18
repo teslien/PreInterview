@@ -16,10 +16,11 @@ import { ReportCardComponent } from './feature/admin/report-card/report-card.com
 import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
+  {path:'',redirectTo:'login/admin/0',pathMatch:'full'},
   { path: 'quiz', component: QuizComponent },
   { path: 'instruction', component: InstructionsComponent },
   { path:'welcome', component: WelcomeComponent},
-  { path:'login/:user',component:LoginComponent},
+  { path:'login/:user/:id',component:LoginComponent},
   {path:'verification',component:PhotoVerificationComponent},
   {path:'admin', component:HomeComponent ,canActivate: [AuthGuard]},
   {path:'admin/upload',component:UploadDetailsComponent,canActivate: [AuthGuard]},
@@ -29,11 +30,11 @@ const routes: Routes = [
   {path:'quiz/result',component:TestResultComponent},
   {path:'admin/applicants',component:ViewApplicantsComponent,canActivate: [AuthGuard]},
   {path:'admin/tests',component:HomeComponent,canActivate: [AuthGuard]},
-  {path:'admin/applicant/report/:id', component:ReportCardComponent,canActivate: [AuthGuard]}
+  {path:'admin/applicant/report', component:ReportCardComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

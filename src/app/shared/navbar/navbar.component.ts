@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
   adminArray:any;
   admintoken=localStorage.getItem('UserId');
   applicanttoken=localStorage.getItem('ApplicantId')
+  admid=localStorage.getItem('admid');
 
   constructor(private route:Router,private testDataService: TestDataService) { }
   
@@ -48,7 +49,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
 getUserData(){
 if(this.applicanttoken){
   console.log(this.applicanttoken);
-    this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(this.applicanttoken).subscribe((res)=>{
+    this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(this.applicanttoken,this.admid).subscribe((res)=>{
       this.userArray=res;
       this.testDataService.applicantdatalog.next(res);
       console.log(this.userArray);
@@ -65,7 +66,7 @@ else if(this.admintoken){
 
   logout(){
     localStorage.clear();
-    this.route.navigate(['/login/admin']);
+    this.route.navigate(['/login/admin/0']);
   }
 
 }

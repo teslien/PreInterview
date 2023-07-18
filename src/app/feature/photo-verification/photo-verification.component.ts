@@ -11,17 +11,13 @@ import { TestDataService } from 'src/app/service/test-data.service';
 export class PhotoVerificationComponent implements OnInit {
 
   UserIpAddress:any;
-  //location 
-  public lat;
-  public lng;
-
+  applicantid=localStorage.getItem("ApplicantId");
     
 
   constructor(private testDataService:TestDataService) { }
 
   ngOnInit(): void {
     this.getUserIp();
-    this.getLocation();
   }
 
   public webcamImage: WebcamImage=null;
@@ -33,6 +29,9 @@ export class PhotoVerificationComponent implements OnInit {
   handleImage(webcamImage: WebcamImage): void {
    console.info('received webcam image', webcamImage);
    this.webcamImage = webcamImage;
+   this.testDataService.sendMyPicToCheatMonitor(this.applicantid,{"firstpic":this.webcamImage}).subscribe((res)=>{
+    console.log("mission successful!");
+   })
   }
  
   public get triggerObservable(): Observable<void> {
@@ -50,26 +49,13 @@ export class PhotoVerificationComponent implements OnInit {
   console.log(info);
     this.testDataService.getUserInfo(info).subscribe((res)=>{
       console.log(res);
+      this.testDataService.sendMyPicToCheatMonitor(this.applicantid,{"Info":res}).subscribe(res=>{
+        console.log("mission 2 successfull");
+      })
     })
   
   }
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        if (position) {
-          console.log("Latitude: " + position.coords.latitude +
-            "Longitude: " + position.coords.longitude);
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          console.log(this.lat);
-          console.log(this.lat);
-        }
-      },
-        (error) => console.log(error));
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  }
+
 
 
 }

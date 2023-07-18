@@ -9,7 +9,8 @@ import * as Rx from "rxjs";
 export class TestDataService {
 
   UpdateNavbar = new EventEmitter<any>();
-  applicantdatalog=  new Rx.BehaviorSubject<any>({});;
+  applicantdatalog=  new Rx.BehaviorSubject<any>({});
+  updateReportCard = new Rx.Subject<any>();
   
 
   constructor(private http: HttpClient) { }
@@ -49,8 +50,8 @@ export class TestDataService {
     }));;
   }
 
-  getApplicantData() {
-    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant.json`).pipe(Rx.map(responsedata=>{
+  getApplicantData(adminId:any) {
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}.json`).pipe(Rx.map(responsedata=>{
       const UserArray =[];
       for(const key in responsedata){
         if(responsedata.hasOwnProperty(key)){
@@ -61,8 +62,8 @@ export class TestDataService {
     }));;
   }
 
-  getSpecificApplicantdata(id: any){
-   return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${id}.json`);
+  getSpecificApplicantdata(id: any,adminid:any){
+   return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminid}/${id}.json`);
   }
 
   getSpecificAdmindata(id:any){
@@ -86,8 +87,10 @@ export class TestDataService {
     return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${categoryId}/${testId}.json`);
   }
 
-  // sendMyPic(){
-  //   return this.http.post(``);
-  // }
+  sendMyPicToCheatMonitor(id:any,obj:any){
+    return this.http.post(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/-N_JdG27QYI-GXJrT8Qo.json`,obj);
+  }
+
+  
 
 }

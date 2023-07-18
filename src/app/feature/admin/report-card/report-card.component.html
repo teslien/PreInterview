@@ -13,17 +13,17 @@
             [size]="200" textColor="#252525" styleClass="font-bold" [readonly]="true"></p-knob>
         </div>
         <div class="col-8">
-            <label for="name" class="largerFont font-bold">Prince Singh</label>
+            <label for="name" class="largerFont font-bold">{{reportCard?.name}}</label>
             
             <div class="primaryFontSize flex flex-column gap-4 mt-4">
-            <span>Location : Pune</span>
-            <span>Applied : Senior Angular Developer</span>
-            <span>Test : Angular Basics</span>
+            <span>Location : {{reportCard?.location}}</span>
+            <span>Position : {{reportCard?.position}}</span>
+            <span>Test :{{reportCard?.test_name}}</span>
             <span>Score : 60/60</span>
             </div>
             
         </div>
-        <div class="col-12 p-5 ">
+        <div class="col-6 p-5 ">
             <div class="p-2 largeboldFont font-bold">
                 Cheat Monitor
             </div>
@@ -41,7 +41,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-6">
             <div class="p-2 largeboldFont font-bold">
                 Images Captured
             </div>
