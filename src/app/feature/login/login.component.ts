@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit,OnDestroy {
   
 
   constructor(private router:Router, private route:ActivatedRoute,private testService : TestDataService,private messageService: MessageService) { }
+  
+  
   ngOnDestroy(): void {
     this.dataSubcription.unsubscribe();
   }
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
    this.activeUser =  this.route.snapshot.params['user'];
    this.activeId =  this.route.snapshot.params['id'];
+
 
    this.dataSubcription = this.testService.getAdminData().subscribe((res)=>{
     this.adminArray=res;
@@ -57,7 +60,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   else if(this.activeUser=="applicant"){
     const applicant = this.applicantArray.find(u => u.email == this.emailId && u.password == this.inputpassword);
     if(applicant){
-      this.getLocation(applicant.id);
+      localStorage.setItem("admid",this.activeId);
       localStorage.setItem("ApplicantId", applicant.id);
       this.router.navigate(['/welcome']);
     }
@@ -74,24 +77,4 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
 
 
-getLocation(applicantid:any) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      if (position) {
-        console.log("Latitude: " + position.coords.latitude +
-          "Longitude: " + position.coords.longitude);
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        console.log(this.lat);
-        console.log(this.lng);
-        this.testService.sendMyPicToCheatMonitor(applicantid,{"lat":this.lat,"lng":this.lng}).subscribe(res=>{
-          console.log("mission 3 successful");
-        })
-      }
-    },
-      (error) => console.log(error));
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
-}
 }

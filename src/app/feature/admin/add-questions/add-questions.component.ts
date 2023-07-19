@@ -1,26 +1,45 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Editor } from 'ngx-editor';
+
 
 @Component({
   selector: 'app-add-questions',
   templateUrl: './add-questions.component.html',
   styleUrls: ['./add-questions.component.scss']
 })
-export class AddQuestionsComponent implements OnInit,OnDestroy {
+export class AddQuestionsComponent implements OnInit {
   
+  text:any;
+  Options:any[]=[
+  {
+    name:"Option 1",
+    key:1,
+    check:false
+  },
+  {
+    name:"Option 2",
+    key:2,
+    check:false
+  }
+];
   constructor() { }
 
-  editor: Editor | undefined;
-  html = '';
-
   ngOnInit(): void {
-    this.editor = new Editor();
+
+  }
+  
+  addOptions(){
+    const len = this.Options.length+1;
+    this.Options.push({
+      name:"Option "+len,
+      key:len,
+      check:false
+    })
   }
 
-  ngOnDestroy(): void {
-    this.editor?.destroy();
+  deleteOptions(){
+    
   }
-
+  
 
 
 }

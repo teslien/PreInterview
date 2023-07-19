@@ -32,7 +32,7 @@ export class QuizComponent implements OnInit {
   selectedCategory:any;
   currentSelection:any="none";
   correctAnswers:number=0;
- 
+  allocatedTime:any;
 
 
 
@@ -57,6 +57,7 @@ export class QuizComponent implements OnInit {
       this.testDataService.getApplicantSpecificQuiz('-N_JY9blQwmxNuuftBWm','-N_JYmvGVU_2898KEAPR').subscribe(r=>{
         this.quizDetails=r;
         this.quizData=this.quizDetails.questionData;
+        console.log(this.quizDetails);
       })
 
 

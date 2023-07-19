@@ -9,7 +9,7 @@ import * as Rx from "rxjs";
 export class TestDataService {
 
   UpdateNavbar = new EventEmitter<any>();
-  applicantdatalog=  new Rx.BehaviorSubject<any>({});
+  applicantdatalog=  new Rx.Subject<any>();
   updateReportCard = new Rx.Subject<any>();
   
 

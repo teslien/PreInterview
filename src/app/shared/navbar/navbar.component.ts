@@ -52,7 +52,7 @@ if(this.applicanttoken){
     this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(this.applicanttoken,this.admid).subscribe((res)=>{
       this.userArray=res;
       this.testDataService.applicantdatalog.next(res);
-      console.log(this.userArray);
+      console.log("Here Bro!",this.userArray);
     })
 }
 else if(this.admintoken){

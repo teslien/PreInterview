@@ -27,7 +27,6 @@ import { AddQuestionsComponent } from './feature/admin/add-questions/add-questio
 import { TestResultComponent } from './feature/test-result/test-result.component';
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
-import { NgxEditorModule } from 'ngx-editor'
 
 @NgModule({
   declarations: [
@@ -59,8 +58,7 @@ import { NgxEditorModule } from 'ngx-editor'
     FormsModule,
     BrowserAnimationsModule,
     WebcamModule,
-    HttpClientModule,
-    NgxEditorModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

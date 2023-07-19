@@ -21,7 +21,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RippleModule } from 'primeng/ripple';
 import {KnobModule} from 'primeng/knob';
-
+import {EditorModule} from 'primeng/editor';
 
 
 
@@ -53,7 +53,8 @@ import {KnobModule} from 'primeng/knob';
 		ButtonModule,
 		RadioButtonModule,
     RippleModule,
-    KnobModule
+    KnobModule,
+    EditorModule
   ],
   exports:[
     InputTextModule,
@@ -80,7 +81,8 @@ import {KnobModule} from 'primeng/knob';
 		ButtonModule,
 		RadioButtonModule,
     RippleModule,
-    KnobModule
+    KnobModule,
+    EditorModule
   ]
 })
 export class PrimengModule { }
