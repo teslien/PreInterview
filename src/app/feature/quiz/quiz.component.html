@@ -28,7 +28,14 @@
 
         <a btn [customStyles]="{
             background:'#3266CA'
-          }" (click)="onNext()">{{nexSub}}<i class="pi pi-arrow-right text-2xl"></i></a>
+          }" *ngIf="!showSubmit;else showS" (click)="onNext()">Next<i class="pi pi-arrow-right text-2xl"></i></a>
+
+          <ng-template #showS>
+            <app-button [customStyles]="{
+                background:'#3266CA',
+                underline:'none'
+              }" routerLink="/quiz/result">Submit Test</app-button>
+          </ng-template>
     </div>
 
 </div>

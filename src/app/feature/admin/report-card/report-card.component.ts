@@ -16,7 +16,7 @@ export class ReportCardComponent implements OnInit,OnDestroy {
   }
   value=100;
   reportCard:any;
-  adminId=localStorage.getItem('UserId');
+  adminId=sessionStorage.getItem('UserId');
   dataSubscription:Subscription;
 
   ngOnInit(): void {

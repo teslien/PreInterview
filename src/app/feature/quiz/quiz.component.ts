@@ -3,6 +3,7 @@ import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
 import {WebcamImage} from 'ngx-webcam';
 import {Subject, Observable} from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -43,7 +44,7 @@ export class QuizComponent implements OnInit {
 
 
 
-  constructor(private testDataService:TestDataService){}
+  constructor(private testDataService:TestDataService,private route:Router){}
 
   ngOnInit(): void {
     this.getTestData();
@@ -51,6 +52,7 @@ export class QuizComponent implements OnInit {
 
   quizData:any[];
   quizDetails:any;
+  showSubmit:boolean=false;
 
 
   getTestData(){
@@ -71,7 +73,7 @@ export class QuizComponent implements OnInit {
 
   onNext(){
 
-    if(this.currentQuestionIndex<9 && this.currentQuestionIndex>-1){
+    if(this.currentQuestionIndex<10 && this.currentQuestionIndex>-1){
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex);
       this.optionChoosen=false;
@@ -82,7 +84,7 @@ export class QuizComponent implements OnInit {
 
     }
     if(this.currentQuestionIndex==9){
-      this.nexSub="Submit Task";
+      this.showSubmit=true;
     }
 
   }
@@ -91,6 +93,7 @@ export class QuizComponent implements OnInit {
 
     if(this.currentQuestionIndex>=1){
       this.optionChoosen=true;
+      this.showSubmit=false;
       this.currentQuestionIndex--;
       this.testDataService.UpdateNavbar.emit(this.currentQuestionIndex+1);
       console.log("back hurray:",this.currentQuestionIndex);
@@ -151,6 +154,7 @@ export class QuizComponent implements OnInit {
     console.log("Your photo is captured");
   }
   }
+
 
 
 

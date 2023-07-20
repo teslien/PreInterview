@@ -17,10 +17,10 @@ import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'login/admin/0',pathMatch:'full'},
-  { path: 'quiz', component: QuizComponent },
-  { path: 'instruction', component: InstructionsComponent },
-  { path:'welcome', component: WelcomeComponent},
-  { path:'login/:user/:id',component:LoginComponent},
+  {path: 'quiz', component: QuizComponent },
+  {path: 'instruction', component: InstructionsComponent },
+  {path:'welcome', component: WelcomeComponent},
+  {path:'login/:user/:id',component:LoginComponent},
   {path:'verification',component:PhotoVerificationComponent},
   {path:'admin', component:HomeComponent ,canActivate: [AuthGuard]},
   {path:'admin/upload',component:UploadDetailsComponent,canActivate: [AuthGuard]},

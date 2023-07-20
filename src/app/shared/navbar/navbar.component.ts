@@ -17,9 +17,10 @@ export class NavbarComponent implements OnInit,OnDestroy {
   Applicant:boolean;
   userArray:any;
   adminArray:any;
-  admintoken=localStorage.getItem('UserId');
-  applicanttoken=localStorage.getItem('ApplicantId')
-  admid=localStorage.getItem('admid');
+  admintoken=sessionStorage.getItem('UserId');
+  applicanttoken=sessionStorage.getItem('ApplicantId')
+  admid=sessionStorage.getItem('admid');
+  UserName=sessionStorage.getItem("UserName");
 
   constructor(private route:Router,private testDataService: TestDataService) { }
   
@@ -30,7 +31,9 @@ export class NavbarComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
 
-    this.Applicant = Boolean(localStorage.getItem('UserId'));
+
+
+    this.Applicant = Boolean(sessionStorage.getItem('UserId'));
     
     this.getUserData();
     this.route.events.subscribe((event) => {
@@ -51,7 +54,8 @@ if(this.applicanttoken){
   console.log(this.applicanttoken);
     this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(this.applicanttoken,this.admid).subscribe((res)=>{
       this.userArray=res;
-      this.testDataService.applicantdatalog.next(res);
+      this.testDataService.SendUserInfo(this.userArray);
+    
       console.log("Here Bro!",this.userArray);
     })
 }
@@ -65,7 +69,7 @@ else if(this.admintoken){
 
 
   logout(){
-    localStorage.clear();
+    sessionStorage.clear();
     this.route.navigate(['/login/admin/0']);
   }
 

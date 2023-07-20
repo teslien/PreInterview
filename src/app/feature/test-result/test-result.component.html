@@ -1,25 +1,16 @@
 <app-wrap-instruction>
     <div class="text-center">
-        <label class="primaryFontSize font-bold">RESULT : <span class="text-green-600">PASS</span></label>
-
         <article class="primaryFontSize mt-7">
-            <span class="font-bold text-green-600">Congratulation !!</span> You are selected for the INTERVIEW round ,
-            we will connect with you via call within 3 days.
+            <span class="font-bold "> Your willingness to showcase your skills and abilities is truly appreciated, and we value your interest in joining our company :)</span>
+            <br><br>
+            We will carefully evaluate your performance during the interview process, and if you successfully meet our requirements, our company will definitely contact you. Rest assured that we take every candidate's application seriously, and we will make sure to communicate the results to you in a timely manner.
         </article>
     </div>
-    <ng-template #fail>
-        <div class="text-center">
-            <label class="primaryFontSize font-bold">RESULT : <span class="text-red-600">Fail</span></label>
-            <article class="primaryFontSize mt-7">
-                We appreciate the time and effort you invested in the application. We regret to inform you that you did not pass the first round of evaluations. 
-            </article>
-        </div>
-    </ng-template>
     
     <div class="flex justify-content-center mt-8 mb-3">
-        <a btn [customStyles]="{
+        <app-button btn [customStyles]="{
             background:'#3266CA'
             
-          }" >Exit Application<i class="pi pi-sign-out text-2xl"></i></a>
+          }" routerLink="/login/applicant/0">Exit Application<i class="pi pi-sign-out text-2xl"></i></app-button>
     </div>
 </app-wrap-instruction>

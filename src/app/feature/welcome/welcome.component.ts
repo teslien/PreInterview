@@ -15,10 +15,9 @@ export class WelcomeComponent implements OnInit {
   constructor(private testService:TestDataService) { }
 
   ngOnInit(): void {
-    this.testService.applicantdatalog.subscribe(res=>{
-      this.userDetails=res;
-    })
-    const applicantid = localStorage.getItem("ApplicantId")
+
+    this.userDetails=sessionStorage.getItem('UserName');
+    const applicantid = sessionStorage.getItem("ApplicantId")
     this.getLocation(applicantid);
   }
 

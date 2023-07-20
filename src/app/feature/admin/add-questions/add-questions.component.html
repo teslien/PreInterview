@@ -1,7 +1,7 @@
 <app-wrap-instruction>
     <div class="grid">
         <div class="col-12 flex justify-content-between p-4 align-items-center">
-<div class="primaryFontSize">
+<div class="primaryFontSize font-bold text-gray-900">
     Question No.1
 </div>
             <div class="flex gap-4">
@@ -12,7 +12,7 @@
                     class="pi textWonder text-2xl pi-arrow-left"></i></app-button>
             <app-button [customStyles]="{
                 background:'#3266CA'
-              }" >Next<i
+              }" (click)="NextQuesion()">Next<i
                     class="pi pi-arrow-right text-2xl"></i></app-button>
                 </div>
         </div>
@@ -20,19 +20,24 @@
             <p-editor [(ngModel)]="text" [style]="{'height':'420px'}"></p-editor>
         </div>
         <div class="col-6 flex justify-content-start flex-column gap-5 p-4">
-            <div class="p-inputgroup" *ngFor="let option of Options">
-                <input type="text" pInputText [placeholder]=option.name class="text-2xl h-5rem">   
-                <span class="p-inputgroup-addon"><p-radioButton name="option" id="option.key" checked="true"></p-radioButton></span>      
+            <div class="p-inputgroup" *ngFor="let option of Options;index as i">
+                <input type="text" pInputText [placeholder]=option.name (input)="enteringOptions($event,i)" id="option.id" class="text-2xl h-5rem bg-gray-200">        
             </div>
             <div class="flex justify-content-end gap-3">
                 <app-button [customStyles]="{
-                    background:'gray'
+                    background:'#e7e7e7',
+                    color:'black',
+                    border:'0.7px solid #939393'
                   }"title="Delete Option" (click)="deleteOptions()"><i
                         class="pi pi-minus text-2xl"></i></app-button>
                 <app-button [customStyles]="{
                     background:'green'
                   }"title="Add Options" (click)="addOptions()"><i
                         class="pi pi-plus text-2xl"></i></app-button>
+            </div>
+            <div class="flex gap-3 align-items-center">
+                <label for="answer" class="primaryFontSize">Answer :</label>
+                <p-dropdown [options]="Options" [(ngModel)]="selectedOption" optionLabel="name" placeholder="Select Answer" styleClass=" h-5rem w-full"></p-dropdown>
             </div>
         </div>
     </div>

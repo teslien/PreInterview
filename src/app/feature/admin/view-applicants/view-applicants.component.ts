@@ -9,7 +9,7 @@ import { TestDataService } from 'src/app/service/test-data.service';
 })
 export class ViewApplicantsComponent implements OnInit {
 
-  adminId=localStorage.getItem('UserId')
+  adminId=sessionStorage.getItem('UserId')
   ExcelData:any[]=[];
   load:boolean=true;
   constructor(private testService: TestDataService,private route:Router) { }

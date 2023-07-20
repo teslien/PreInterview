@@ -11,7 +11,7 @@ import { TestDataService } from 'src/app/service/test-data.service';
 export class PhotoVerificationComponent implements OnInit {
 
   UserIpAddress:any;
-  applicantid=localStorage.getItem("ApplicantId");
+  applicantid=sessionStorage.getItem("ApplicantId");
     
 
   constructor(private testDataService:TestDataService) { }

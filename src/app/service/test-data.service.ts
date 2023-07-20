@@ -92,5 +92,13 @@ export class TestDataService {
   }
 
   
+  UserInfo:any;
+  SendUserInfo(info:any){
+    this.UserInfo= info;
+  }
+  GetUserInfo(){
+    return this.UserInfo;
+  }
 
+  
 }

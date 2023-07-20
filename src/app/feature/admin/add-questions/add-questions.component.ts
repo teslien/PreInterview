@@ -8,7 +8,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class AddQuestionsComponent implements OnInit {
   
+  quizdata:any[]=[];
+  currentQuestion:number=0;
   text:any;
+  selectedOption:any;
   Options:any[]=[
   {
     name:"Option 1",
@@ -17,6 +20,11 @@ export class AddQuestionsComponent implements OnInit {
   },
   {
     name:"Option 2",
+    key:2,
+    check:false
+  },
+  {
+    name:"Option 3",
     key:2,
     check:false
   }
@@ -36,10 +44,23 @@ export class AddQuestionsComponent implements OnInit {
     })
   }
 
-  deleteOptions(){
-    
+  enteringOptions(event:any,i:number){
+    this.Options[i].name=event.target.value;
   }
   
 
-
+  deleteOptions(){
+    this.Options.splice(this.Options.length-1,this.Options.length)
+  }
+  
+ NextQuesion(){
+  const  data= {
+    "id": this.quizdata.length+1,
+    "question": this.text,
+    "options": this.Options,
+    "correctAnswer": this.selectedOption
+ }
+ this.quizdata.push(data);
+ console.log(this.quizdata);
+ }
 }

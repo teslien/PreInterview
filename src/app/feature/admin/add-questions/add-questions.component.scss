@@ -5,3 +5,28 @@
 :host ::ng-deep .ck-editor__editable_inline {
     min-height: 500px !important;
 }
+
+
+:host ::ng-deep {
+
+    .p-dropdown{
+        align-items: center;
+    }
+
+    .p-dropdown-label{
+        font-size: 1.5rem;
+    }
+
+    .p-dropdown-item{
+        font-size: 1.5rem;
+    }
+    .p-editor-container .p-editor-toolbar {
+        background: #e7e7e7 !important;
+        border: 1px solid #939393;
+        border-bottom: none;
+    }
+    .p-editor-container .p-editor-content.ql-snow {
+        border: 1px solid #939393;
+    }
+
+}

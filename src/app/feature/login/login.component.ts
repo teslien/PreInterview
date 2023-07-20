@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
+   sessionStorage.clear();
    this.activeUser =  this.route.snapshot.params['user'];
    this.activeId =  this.route.snapshot.params['id'];
 
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   if(this.activeUser=="admin"){
     const admins = this.adminArray.find(u => u.email == this.emailId && u.password == this.inputpassword);
     if (admins) {
-      localStorage.setItem("UserId", admins.id);
+      sessionStorage.setItem("UserId", admins.id);
       // this.auth.haveloggedin = true;
       this.router.navigate(['/admin']);
     } else {
@@ -60,8 +61,10 @@ export class LoginComponent implements OnInit,OnDestroy {
   else if(this.activeUser=="applicant"){
     const applicant = this.applicantArray.find(u => u.email == this.emailId && u.password == this.inputpassword);
     if(applicant){
-      localStorage.setItem("admid",this.activeId);
-      localStorage.setItem("ApplicantId", applicant.id);
+      this.testService.SendUserInfo(applicant);
+      sessionStorage.setItem("admid",this.activeId);
+      sessionStorage.setItem("UserName", applicant.name);
+      sessionStorage.setItem("ApplicantId", applicant.id);
       this.router.navigate(['/welcome']);
     }
     else
