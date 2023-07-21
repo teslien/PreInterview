@@ -100,6 +100,9 @@ export class TestDataService {
     return this.UserInfo;
   }
 
+  addCustomizeTest(quiz:any,adminid:any){
+    return this.http.post(`https://interview-test-648c5-default-rtdb.firebaseio.com/custom/${adminid}.json`,quiz);
+  }
 
   
 

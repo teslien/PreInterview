@@ -8,11 +8,5 @@ export class UserdataService {
   quizData:any[]=[];
   constructor(){}
 
-  passTestData(data:any){
-    this.quizData.push(data);
-  }
-  getTestData(){
-    return this.quizData;
-  }
 
 }

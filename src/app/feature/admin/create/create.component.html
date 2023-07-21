@@ -1,22 +1,26 @@
 <app-wrap-instruction>
+    <p-toast></p-toast>
     <div class="grid textWonder create">
         <div class="col-12 flex gap-4 p-4 align-items-center">
-            <div class="create_back">
+            <div class="create_back" routerLink="/admin/tests">
                 <i class="pi pi-arrow-left text-3xl font-bold text-gray-600"></i>
             </div>
             <label class="text-3xl font-bold">Create New Assessment</label>
         </div>
         <div class="col-6 flex flex-column gap-5 p-4">
-            <input type="text" pInputText class="w-full text-3xl bg-gray-300" [(ngModel)]="testName" placeholder="Name Your Assessment*">
-            <p-dropdown [options]="Categories" placeholder="Select Category" styleClass="w-full text-3xl bg-gray-300" panelStyleClass="text-3xl"  [(ngModel)]="selectedCategory" optionLabel="name"></p-dropdown>
+            <input type="text" pInputText class="w-full text-3xl bg-gray-200" required [(ngModel)]="testName" placeholder="Name Your Assessment*">
+            <p-dropdown [options]="Categories" placeholder="Select Category" styleClass="w-full text-3xl bg-gray-200" panelStyleClass="text-3xl"  [(ngModel)]="selectedCategory" optionLabel="name"></p-dropdown>
             <div class="flex gap-5 align-items-center">
                 <label class="primaryFontSize" title="shuffle options">Shuffle : </label>
-                <p-selectButton [options]="stateOptions" [(ngModel)]="shuffle" optionLabel="label" optionValue="value"></p-selectButton>
+                <label class="switch">
+                    <input type="checkbox" [(ngModel)]="shuffle">
+                    <span class="slider"></span>
+                </label>
             </div>
         </div>
         <div class="col-6 flex flex-column gap-5 p-4">
-            <input type="number" pInputText class="w-full text-3xl bg-gray-300" [(ngModel)]="noOfQuestion" placeholder="Total Questions*">
-            <input type="number" pInputText class="w-full text-3xl bg-gray-300"  [(ngModel)]="min" placeholder="Time in Mins*">
+            <input type="number" pInputText class="w-full text-3xl bg-gray-200" required [(ngModel)]="noOfQuestion" placeholder="Total Questions*">
+            <input type="number" pInputText class="w-full text-3xl bg-gray-200" required  [(ngModel)]="min" placeholder="Time in Mins*">
         </div>
         <div class="col-12 p-4 flex justify-content-end">
             <app-button [customStyles]="{

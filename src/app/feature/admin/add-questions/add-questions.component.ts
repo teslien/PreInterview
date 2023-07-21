@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TestDataService } from 'src/app/service/test-data.service';
 
 
 @Component({
@@ -8,8 +9,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class AddQuestionsComponent implements OnInit {
   
+  testData:any;
   quizdata:any[]=[];
-  currentQuestion:number=0;
+  currentQuestion:number=1;
+  home:boolean=false;
+  
   text:any;
   selectedOption:any;
   Options:any[]=[
@@ -29,10 +33,12 @@ export class AddQuestionsComponent implements OnInit {
     check:false
   }
 ];
-  constructor() { }
+  adminId: string;
+  constructor(private testService:TestDataService) { }
 
   ngOnInit(): void {
-
+    this.testData = JSON.parse(localStorage.getItem("customtest"));
+    console.log(this.testData);
   }
   
   addOptions(){
@@ -53,14 +59,64 @@ export class AddQuestionsComponent implements OnInit {
     this.Options.splice(this.Options.length-1,this.Options.length)
   }
   
- NextQuesion(){
-  const  data= {
-    "id": this.quizdata.length+1,
-    "question": this.text,
-    "options": this.Options,
-    "correctAnswer": this.selectedOption
+  NextQuestion(){
+  if(this.currentQuestion<this.testData.totalQuestions){
+    const  data= {
+      "id": this.quizdata.length+1,
+      "question": this.text,
+      "options": this.Options,
+      "correctAnswer": this.selectedOption
+   }
+   this.quizdata.push(data);
+   console.log(this.quizdata);
+   this.currentQuestion++;
+   this.Options=[
+    {
+      name:"Option 1",
+      key:1,
+      check:false
+    },
+    {
+      name:"Option 2",
+      key:2,
+      check:false
+    },
+    {
+      name:"Option 3",
+      key:2,
+      check:false
+    }]
+    this.selectedOption="";
+    this.text=""
+
+  }else if(this.currentQuestion==this.testData.totalQuestions){
+    this.home=true;
+  }
+
  }
- this.quizdata.push(data);
- console.log(this.quizdata);
+
+ PreviousQuestion(){
+  if(this.currentQuestion>1)
+  {
+    this.currentQuestion--;
+    this.Options=this.quizdata[this.currentQuestion-1].options;
+    this.selectedOption=this.quizdata[this.currentQuestion-1].correctAnswer;
+    this.text= this.quizdata[this.currentQuestion-1].question;
+  }
+ }
+
+
+ uploadTest(){
+  const quiz={
+    "testName":this.testData.testname,
+    "totalQuestions":this.testData.totalQuestions,
+    "totalTimeInMins":this.testData.totalTimeInMins,
+    "shuffle":this.testData.shuffle,
+    "questionData": this.quizdata
+  };
+   this.adminId = localStorage.getItem("UserId");
+  this.testService.addCustomizeTest(quiz,this.adminId).subscribe(res=>{
+    console.log(res);
+  })
  }
 }

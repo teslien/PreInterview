@@ -2,18 +2,25 @@
     <div class="grid">
         <div class="col-12 flex justify-content-between p-4 align-items-center">
 <div class="primaryFontSize font-bold text-gray-900">
-    Question No.1
+    Question No.{{currentQuestion}} / {{this.testData.totalQuestions}}
 </div>
             <div class="flex gap-4">
             <app-button [customStyles]="{
                 background:'#FBFBFB',
                 width:'4rem'
-              }" routerLink="/verification"><i
+              }" (click)="PreviousQuestion()" ><i
                     class="pi textWonder text-2xl pi-arrow-left"></i></app-button>
-            <app-button [customStyles]="{
+            <app-button *ngIf="!home;else homebtn" [customStyles]="{
                 background:'#3266CA'
-              }" (click)="NextQuesion()">Next<i
+              }" (click)="NextQuestion()">Next<i
                     class="pi pi-arrow-right text-2xl"></i></app-button>
+                <ng-template #homebtn>
+                    <app-button [customStyles]="{
+                        background:'#3266CA'
+                      }" (click)="uploadTest()">Upload Test<i
+                            class="pi pi-upload text-2xl"></i></app-button>
+                </ng-template>
+                  
                 </div>
         </div>
         <div class="col-6 editor_height p-4">
