@@ -22,8 +22,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RippleModule } from 'primeng/ripple';
 import {KnobModule} from 'primeng/knob';
 import {EditorModule} from 'primeng/editor';
-
-
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [],
@@ -54,7 +54,9 @@ import {EditorModule} from 'primeng/editor';
 		RadioButtonModule,
     RippleModule,
     KnobModule,
-    EditorModule
+    EditorModule,
+    CascadeSelectModule,
+    SelectButtonModule
   ],
   exports:[
     InputTextModule,
@@ -82,7 +84,9 @@ import {EditorModule} from 'primeng/editor';
 		RadioButtonModule,
     RippleModule,
     KnobModule,
-    EditorModule
+    EditorModule,
+    CascadeSelectModule,
+    SelectButtonModule
   ]
 })
 export class PrimengModule { }

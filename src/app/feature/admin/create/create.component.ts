@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserdataService } from 'src/app/service/shareData/userdata.service';
 
 @Component({
   selector: 'app-create',
@@ -7,19 +8,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  testName: String;
+  Categories: any;
+  stateOptions: { label: string; value: string; }[];
+  shuffle: boolean;
+  noOfQuestion: any;
+  min: any;
+
+  constructor(private quizDataService: UserdataService) { }
 
 
-  selectedCity: any;
+  selectedCategory: any;
   ngOnInit(): void {
+    this.Categories = [
+      { name: 'Apptitude Test', code: 'NY' },
+      { name: 'Personality Assesment', code: 'RM' },
+      { name: 'Technical Skill Evaluation', code: 'LDN' },
+      { name: 'Problem Solving Exercise', code: 'IST' },
+      { name: 'Programming Language Knowledge', code: 'PRS' },
+      { name: 'Coding Challenge', code: 'PRS' },
+      { name: 'Other', code: 'PRS' }
+
+    ];
+
+    this.stateOptions = [
+      { label: 'Off', value: 'false' },
+      { label: 'On', value: 'true' },
+    ];
+
   }
- cities = [
-    {name:'Select Language *',code:'null'},
-    {name: 'New York', code: 'NY'},
-    {name: 'Rome', code: 'RM'},
-    {name: 'London', code: 'LDN'},
-    {name: 'Istanbul', code: 'IST'},
-    {name: 'Paris', code: 'PRS'}
-];
+
+  OnNextt() {
+    const quizdata={
+            "testName":this.testName,
+            "totalQuestions":this.noOfQuestion,
+            "totalTimeInMins":this.min,
+            "shuffle":this.shuffle
+    }
+    console.log(quizdata);
+    // this.quizDataService.getTestData();
+
+  }
+
 
 }

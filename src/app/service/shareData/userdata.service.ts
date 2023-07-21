@@ -5,6 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class UserdataService {
 
-  constructor() { }
+  quizData:any[]=[];
+  constructor(){}
+
+  passTestData(data:any){
+    this.quizData.push(data);
+  }
+  getTestData(){
+    return this.quizData;
+  }
 
 }
