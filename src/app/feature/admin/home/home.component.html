@@ -1,35 +1,43 @@
-<div class="home">
-    <div class="home_heading line-height-3">
-        Hello <span class="font-bold">Liza</span>,<br>
-        We have a list of tests for the applicant. Please <br>
-        choose one from the following options :
-    </div>
-
-    <div class="flex flex-wrap gap-5 mt-4">
-        <div class="home_list">
-            <div class="home_listIn" *ngFor="let item of ['Aptitude Test','Personality Assessment','Technical Skills Evaluation','Problem-Solving Exercise','Coding Challenge']">
-                {{item}}
+<app-loader *ngIf="loading"></app-loader>
+<app-wrap-instruction>
+    <p-dataView #dv [value]="catagories" [paginator]="true" [rows]="9" filterBy="testName"
+        [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+        <ng-template pTemplate="header">
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+                <span class="p-input-icon-left mb-2 md:mb-0">
+                    <i class="pi pi-search text-2xl"></i>
+                    <input type="search" #textt class="text-2xl" pInputText placeholder="Search by Name" (input)="dv.filter(textt.value)">
+                </span>
+                <app-button [customStyles]="{
+                    background:'#3266CA'
+                }" routerLink="/admin/create">Add New</app-button>
             </div>
-            <div class="home_listIn flex justify-content-between align-items-center gap-4" routerLink="/admin/create">
-                <label>Create Customize Test</label> <i class="pi pi-pencil text-xl mr-3 textWonder"></i>
-            </div>
-        </div>
-        <div class="home_design ">
-            <div class="home_design_options hidden">
-                <div class="home_design_options_list mt-4" *ngFor="let item of ['Angular 2 Test','Kotlin - Android Test','Java 8','C# 4.3 Test']">
-                    {{item}}
+        </ng-template>
+        <ng-template let-product pTemplate="gridItem">
+            <div class="col-12 md:col-4 text-xl">
+                <div class="product-grid-item card cursor-pointer hover:bg-gray-200" routerLink="/admin/upload">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-clock product-category-icon text-xl"></i>
+                            <span class="product-category  text-xl">{{product.totalTimeInMins}} MIN</span>
+                        </div>
+                        <span [ngClass]="{'bg-orange-200' : product.level.code==3,'bg-yellow-200':product.level.code==2,'bg-green-200':product.level.code==1}" class=" p-2 border-round-sm font-bold">{{product.level.name}}</span>
+                    </div>
+                   
+                    <div class="product-grid-item-content">
+                        <img src="../../../../assets/images/designShape.svg" alt="">
+                        <div class="product-name">{{product.testName}}</div>
+                        <div class="product-description">{{product.catagories?.name}}</div>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <span class="product-price">{{product.totalQuestions}} Questions</span>
+                        <app-button [customStyles]="{
+                            background:'#3266CA'
+                        }"><i class=" pi pi-eye text-xl"></i></app-button>
+                    </div>
                 </div>
-                <div class="w-full flex justify-content-center mt-7">
-                    <app-button [customStyles]="{
-            background:'#3266CA',
-            width:'25rem',
-            height:'5rem',
-            borderRadius:'41px'
-          }" routerLink="/admin/upload">Generate Link <i class="pi pi-link
-          text-4xl"></i></app-button>
-                </div>
-
             </div>
-        </div>
-    </div>
-</div>
+        </ng-template>
+    </p-dataView>
+
+</app-wrap-instruction>

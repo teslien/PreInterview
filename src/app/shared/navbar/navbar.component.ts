@@ -54,6 +54,7 @@ if(this.applicanttoken){
   console.log(this.applicanttoken);
     this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(this.applicanttoken,this.admid).subscribe((res)=>{
       this.userArray=res;
+      sessionStorage.setItem("TestId",this.userArray.test_allocated_id)
       this.testDataService.SendUserInfo(this.userArray);
     
       console.log("Here Bro!",this.userArray);

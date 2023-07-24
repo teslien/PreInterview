@@ -1,3 +1,4 @@
+<app-loader *ngIf="loading"></app-loader>
 <app-wrap-instruction>
     <p-table #dt1 id="SrNo" [value]="ExcelData" tableStyleClass="text-2xl" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['id','name','email','mobile_number','location','test_name','position']" >

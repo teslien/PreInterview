@@ -10,6 +10,7 @@ import { TestDataService } from 'src/app/service/test-data.service';
 })
 export class ReportCardComponent implements OnInit,OnDestroy {
 
+  loading:boolean=true;
   constructor(private testService: TestDataService,private activatedRoute: ActivatedRoute) { }
   ngOnDestroy(): void {
     this.dataSubscription.unsubscribe();
@@ -24,6 +25,7 @@ export class ReportCardComponent implements OnInit,OnDestroy {
       const obj = data;
       this.testService.getSpecificApplicantdata(obj['id'],this.adminId).subscribe((res)=>{
         this.reportCard=res;
+        this.loading=false;
         console.log(this.reportCard);
       })
     })

@@ -3,12 +3,20 @@
     <div class="login bg-white flex align-items-center container  flex-column gap-5 navbarBGWOnder">
         <div class="flex flex-column justify-content-center align-items-center gap-7 login_input">
             <img src="../../../assets/logoWonder.png" width="171px" height="auto">
-            <input type="text" pInputText [(ngModel)]="emailId" required="true" placeholder="Email id"/>
-            <p-password [(ngModel)]="inputpassword" [feedback]="false" placeholder="Password" [toggleMask]="true"></p-password>
-            <a btn [customStyles]="{
-                background:'#3266CA',
-                width:'7.5rem'
-              }" (click)="onLogin()">Login</a>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()"  class="flex flex-column gap-5  justify-content-center ">
+                <input type="text" pInputText formControlName="emailid"  placeholder="Email id"/>
+                <span *ngIf="!loginForm.get('emailid').valid && loginForm.get('emailid').touched">Please enter a valid email id!</span>
+                <p-password  [feedback]="false" formControlName="possword" placeholder="Password" [toggleMask]="true"></p-password>
+                <span *ngIf="!loginForm.get('possword').valid && loginForm.get('possword').touched">Please enter your password!</span>
+                <div class="w-full flex justify-content-center mt-3">
+                    <a btn [customStyles]="{
+                        background:'#3266CA',
+                        width:'7.5rem'
+                      }" type="submit" >Login</a>
+                </div>
+         
+            </form>
+           
         </div>
     </div>
 </section>

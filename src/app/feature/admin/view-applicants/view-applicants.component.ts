@@ -12,12 +12,14 @@ export class ViewApplicantsComponent implements OnInit {
   adminId=sessionStorage.getItem('UserId')
   ExcelData:any[]=[];
   load:boolean=true;
+  loading:boolean=true;
   constructor(private testService: TestDataService,private route:Router) { }
 
   ngOnInit(): void {
     this.testService.getApplicantData(this.adminId).subscribe(res=>{
       this.ExcelData=res;
       this.load=false;
+      this.loading=false;
       console.log(this.ExcelData);
     })
   }

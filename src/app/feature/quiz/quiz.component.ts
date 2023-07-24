@@ -56,7 +56,9 @@ export class QuizComponent implements OnInit {
 
 
   getTestData(){
-      this.testDataService.getApplicantSpecificQuiz('-N_JY9blQwmxNuuftBWm','-N_JYmvGVU_2898KEAPR').subscribe(r=>{
+    const admin = sessionStorage.getItem("admid");
+    const testId = sessionStorage.getItem("TestId");
+      this.testDataService.getApplicantSpecificQuiz(admin,testId).subscribe(r=>{
         this.quizDetails=r;
         this.quizData=this.quizDetails.questionData;
         console.log(this.quizDetails);

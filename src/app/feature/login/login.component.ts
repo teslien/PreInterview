@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
 import {MessageService} from 'primeng/api';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,8 @@ export class LoginComponent implements OnInit,OnDestroy {
   //location 
   public lat;
   public lng;
+
+  loginForm:FormGroup;
   
 
   constructor(private router:Router, private route:ActivatedRoute,private testService : TestDataService,private messageService: MessageService) { }
@@ -34,6 +37,13 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
+
+    this.loginForm=new FormGroup({
+      'emailid': new FormControl(null,[Validators.email,Validators.required]),
+      'possword':new FormControl(null,Validators.required)
+    })
+
+
    sessionStorage.clear();
    this.activeUser =  this.route.snapshot.params['user'];
    this.activeId =  this.route.snapshot.params['id'];
@@ -48,30 +58,31 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
 
   onLogin(){
-  if(this.activeUser=="admin"){
-    const admins = this.adminArray.find(u => u.email == this.emailId && u.password == this.inputpassword);
-    if (admins) {
-      sessionStorage.setItem("UserId", admins.id);
-      // this.auth.haveloggedin = true;
-      this.router.navigate(['/admin']);
-    } else {
-      this.showError();
+
+    if(this.loginForm.valid){
+      if(this.activeUser=="admin"){
+        const admins = this.adminArray.find(u => u.email == this.loginForm.get('emailid').value && u.password == this.loginForm.get('possword').value);
+        if (admins) {
+          sessionStorage.setItem("UserId", admins.id);
+          // this.auth.haveloggedin = true;
+          this.router.navigate(['/admin/tests']);
+        } else {
+          this.showError();
+        }
+      }
+      else if(this.activeUser=="applicant"){
+        const applicant = this.applicantArray.find(u => u.email == this.loginForm.get('emailid').value && u.password == this.loginForm.get('possword').value);
+        if(applicant){
+          this.testService.SendUserInfo(applicant);
+          sessionStorage.setItem("admid",this.activeId);
+          sessionStorage.setItem("UserName", applicant.name);
+          sessionStorage.setItem("ApplicantId", applicant.id);
+          this.router.navigate(['/welcome']);
+        }
+      }
+
     }
-  }
-  else if(this.activeUser=="applicant"){
-    const applicant = this.applicantArray.find(u => u.email == this.emailId && u.password == this.inputpassword);
-    if(applicant){
-      this.testService.SendUserInfo(applicant);
-      sessionStorage.setItem("admid",this.activeId);
-      sessionStorage.setItem("UserName", applicant.name);
-      sessionStorage.setItem("ApplicantId", applicant.id);
-      this.router.navigate(['/welcome']);
-    }
-    else
-    {
-      this.showError();
-    }
-  }
+
   }
 
 

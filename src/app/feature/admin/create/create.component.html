@@ -7,26 +7,34 @@
             </div>
             <label class="text-3xl font-bold">Create New Assessment</label>
         </div>
-        <div class="col-6 flex flex-column gap-5 p-4">
-            <input type="text" pInputText class="w-full text-3xl bg-gray-200" required [(ngModel)]="testName" placeholder="Name Your Assessment*">
-            <p-dropdown [options]="Categories" placeholder="Select Category" styleClass="w-full text-3xl bg-gray-200" panelStyleClass="text-3xl"  [(ngModel)]="selectedCategory" optionLabel="name"></p-dropdown>
+        <form [formGroup]="testForm" class="w-full h-full p-4" (ngSubmit)="OnNextt()">
+        <div class="col-6 flex flex-column gap-5 p-4 w-full h-full">
+            <input type="text" pInputText formControlName="assessment" class="w-full text-3xl bg-gray-200 " placeholder="Name Your Assessment*">
+            <span *ngIf="!testForm.get('assessment').valid && testForm.get('assessment').touched" class="text-red-500">Please Enter a valid name for test!</span>
+            <p-dropdown [options]="Categories" placeholder="Select Category" formControlName="Categories" styleClass="w-full text-3xl bg-gray-200" panelStyleClass="text-3xl"  optionLabel="name"></p-dropdown>
+            <span *ngIf="!testForm.get('Categories').valid && testForm.get('Categories').touched" class="text-red-500">Please Select a category</span>
+            <p-dropdown [options]="Levels" placeholder="Select Level" formControlName="Levels" styleClass="w-full text-3xl bg-gray-200" panelStyleClass="text-3xl"  optionLabel="name"></p-dropdown>
             <div class="flex gap-5 align-items-center">
-                <label class="primaryFontSize" title="shuffle options">Shuffle : </label>
+                <label class="primaryFontSize" title="shuffle options" >Shuffle : </label>
                 <label class="switch">
-                    <input type="checkbox" [(ngModel)]="shuffle">
+                    <input type="checkbox" formControlName="shuffle">
                     <span class="slider"></span>
                 </label>
             </div>
         </div>
         <div class="col-6 flex flex-column gap-5 p-4">
-            <input type="number" pInputText class="w-full text-3xl bg-gray-200" required [(ngModel)]="noOfQuestion" placeholder="Total Questions*">
-            <input type="number" pInputText class="w-full text-3xl bg-gray-200" required  [(ngModel)]="min" placeholder="Time in Mins*">
+            <input type="number" pInputText class="w-full text-3xl bg-gray-200 " required formControlName="totalQuestions"  placeholder="Total Questions*">
+            <span *ngIf="!testForm.get('totalQuestions').valid && testForm.get('totalQuestions').touched" class="text-red-500">Please Enter a valid number</span>
+            <input type="number" pInputText class="w-full text-3xl bg-gray-200 " formControlName="totalmins"  required   placeholder="Time in Mins*">
+            <span *ngIf="!testForm.get('totalmins').valid && testForm.get('totalmins').touched" class="text-red-500">Please Enter a valid number</span>
         </div>
         <div class="col-12 p-4 flex justify-content-end">
             <app-button [customStyles]="{
                 background:'#3266CA'
-              }" (click)="OnNextt()" >Next <i class="pi pi-arrow-right text-2xl"></i></app-button>
+              }" type="submit">Next<i class="pi pi-arrow-right text-2xl"></i></app-button>
         </div>
-
+    </form>
     </div>
 </app-wrap-instruction>
+
+

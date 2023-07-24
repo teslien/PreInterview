@@ -17,7 +17,7 @@ export class TestDataService {
 
 
   getTestkData() {
-    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/-N_JY9blQwmxNuuftBWm/-N_JYmvGVU_2898KEAPR/questionData.json`).pipe(Rx.map(responsedata=>{
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/-N_JA8C0VE4f9S3dhXut/-Na7J8Hoz-BsqGJQI8cD/questionData.json`).pipe(Rx.map(responsedata=>{
       const testArray =[];
       for(const key in responsedata){
         if(responsedata.hasOwnProperty(key)){
@@ -70,8 +70,8 @@ export class TestDataService {
     return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/admin/${id}.json`);
   }
 
-  getAllTest(){
-    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests.json`).pipe(Rx.map(responsedata=>{
+  getAllTest(adminid:any){
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${adminid}.json`).pipe(Rx.map(responsedata=>{
       const UserArray =[];
       for(const key in responsedata){
         if(responsedata.hasOwnProperty(key)){
@@ -83,8 +83,8 @@ export class TestDataService {
   }
 
 
-  getApplicantSpecificQuiz(categoryId:any,testId:any){
-    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${categoryId}/${testId}.json`);
+  getApplicantSpecificQuiz(adminId:any,testId:any){
+    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${adminId}/${testId}.json`);
   }
 
   sendMyPicToCheatMonitor(id:any,obj:any){
@@ -101,7 +101,7 @@ export class TestDataService {
   }
 
   addCustomizeTest(quiz:any,adminid:any){
-    return this.http.post(`https://interview-test-648c5-default-rtdb.firebaseio.com/custom/${adminid}.json`,quiz);
+    return this.http.post(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${adminid}.json`,quiz);
   }
 
   

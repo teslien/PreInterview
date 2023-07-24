@@ -14,7 +14,7 @@ import { WrapInstructionComponent } from './shared/wrap-instruction/wrap-instruc
 import { WelcomeComponent } from './feature/welcome/welcome.component';
 import { CountdownComponent } from './shared/countdown/countdown.component';
 import { LoginComponent } from './feature/login/login.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PhotoVerificationComponent } from './feature/photo-verification/photo-verification.component';
 import {WebcamModule} from 'ngx-webcam';
@@ -27,6 +27,8 @@ import { AddQuestionsComponent } from './feature/admin/add-questions/add-questio
 import { TestResultComponent } from './feature/test-result/test-result.component';
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { ReportCardComponent } from './feature/admin/report-card/report-card.com
     TestResultComponent,
     ViewApplicantsComponent,
     ReportCardComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import { ReportCardComponent } from './feature/admin/report-card/report-card.com
     FormsModule,
     BrowserAnimationsModule,
     WebcamModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

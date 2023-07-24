@@ -13,7 +13,7 @@ export class AddQuestionsComponent implements OnInit {
   quizdata:any[]=[];
   currentQuestion:number=1;
   home:boolean=false;
-  
+
   text:any;
   selectedOption:any;
   Options:any[]=[
@@ -37,6 +37,7 @@ export class AddQuestionsComponent implements OnInit {
   constructor(private testService:TestDataService) { }
 
   ngOnInit(): void {
+    this.adminId = sessionStorage.getItem("UserId");
     this.testData = JSON.parse(localStorage.getItem("customtest"));
     console.log(this.testData);
   }
@@ -107,16 +108,20 @@ export class AddQuestionsComponent implements OnInit {
 
 
  uploadTest(){
-  const quiz={
-    "testName":this.testData.testname,
-    "totalQuestions":this.testData.totalQuestions,
-    "totalTimeInMins":this.testData.totalTimeInMins,
-    "shuffle":this.testData.shuffle,
-    "questionData": this.quizdata
-  };
-   this.adminId = localStorage.getItem("UserId");
-  this.testService.addCustomizeTest(quiz,this.adminId).subscribe(res=>{
-    console.log(res);
-  })
- }
+  if(this.adminId){
+    const quiz={
+      "testName":this.testData.testName,
+      "totalQuestions":this.testData.totalQuestions,
+      "totalTimeInMins":this.testData.totalTimeInMins,
+      "shuffle":this.testData.shuffle,
+      "questionData": this.quizdata,
+      "category":this.testData.category,
+      "level":this.testData.level
+    };
+    this.testService.addCustomizeTest(quiz,this.adminId).subscribe(res=>{
+      console.log(res);
+    })
+   }
+  }
+  
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserdataService } from 'src/app/service/shareData/userdata.service';
 import {MessageService} from 'primeng/api';
+import { FormControl,FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,13 +13,9 @@ import {MessageService} from 'primeng/api';
 })
 export class CreateComponent implements OnInit {
 
-  testName: String;
   Categories: any;
-  stateOptions: { label: string; value: string; }[];
-  shuffle: boolean=false;
-  noOfQuestion: any;
-  min: any;
-  
+  Levels:any;
+  testForm:FormGroup;
 
   constructor(private quizDataService: UserdataService, private route: Router,private messageService:MessageService) { }
 
@@ -35,18 +32,43 @@ export class CreateComponent implements OnInit {
       { name: 'Other', code: 'PRS' }
 
     ];
+    this.Levels = [
+      {
+        name:'Easy',
+        code:1
+      },
+      {
+        name:'Medium',
+        code:2
+      },
+      {
+        name:'Hard',
+        code:3
 
+      }
+    ]
 
-  }
+   this.testForm= new FormGroup({
+      'assessment':new FormControl(null,Validators.required),
+      'Categories':new FormControl(null,Validators.required),
+      'shuffle': new FormControl(null),
+      'totalQuestions': new FormControl(null,Validators.required),
+      'totalmins': new FormControl(null,Validators.required),
+      'Levels':new FormControl(null)
+
+  })
+}
 
   OnNextt() {
-    if (this.shuffle != undefined) {
+
+    if (this.testForm.valid) {
       const quizdata = {
-        "testName": this.testName,
-        "totalQuestions": this.noOfQuestion,
-        "totalTimeInMins": this.min,
-        "category":this.selectedCategory,
-        "shuffle": this.shuffle
+        "testName": this.testForm.get('assessment').value,
+        "totalQuestions": this.testForm.get('totalQuestions').value,
+        "totalTimeInMins": this.testForm.get('totalmins').value,
+        "category":this.testForm.get('Categories').value,
+        "shuffle": this.testForm.get('shuffle').value,
+        "level":this.testForm.get('Levels').value
       }
       console.log(quizdata);
       localStorage.setItem("customtest",JSON.stringify(quizdata))
@@ -61,3 +83,4 @@ export class CreateComponent implements OnInit {
 
 
 }
+
