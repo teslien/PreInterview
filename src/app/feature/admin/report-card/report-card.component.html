@@ -5,24 +5,27 @@
             <div class="p-2 largeboldFont font-bold">
                 Report Card
             </div>
-            <div class="px-4 py-2 primaryFontSize  border-round-2xl text-white bg-green-600 font-bold ">
-                PASS
+            <div *ngIf="reportCard?.test_status=='Live'" class="px-4 py-2 primaryFontSize  border-round-2xl text-red-500 font-bold ">
+                <li class="blinking">Live</li>
             </div>
         </div>
-        <div class="col-4 flex justify-content-center">
+        <div class="col-3 flex justify-content-center">
             <p-knob [(ngModel)]="value" valueColor="#3266CA"
             [size]="200" textColor="#252525" styleClass="font-bold" [readonly]="true"></p-knob>
         </div>
-        <div class="col-8">
+        <div class="col-5">
             <label for="name" class="largerFont font-bold">{{reportCard?.name}}</label>
             
             <div class="primaryFontSize flex flex-column gap-4 mt-4">
             <span>Location : {{reportCard?.location}}</span>
             <span>Position : {{reportCard?.position}}</span>
             <span>Test :{{reportCard?.test_name}}</span>
-            <span>Score : 60/60</span>
+            <span>Score : {{reportCard?.score}}/{{reportCard?.totalquestions}}</span>
             </div>
             
+        </div>
+        <div class="col-4">
+            <img src="{{reportCard?.firstPic._imageAsDataUrl}}" alt="" width="100%" height="100%" class="border-round-2xl">            
         </div>
         <div class="col-6 p-5 ">
             <div class="p-2 largeboldFont font-bold">
@@ -30,21 +33,23 @@
             </div>
             <div class="primaryFontSize">
                 <ul class="flex flex-column gap-4">
-                    <li>Ip : 103.86.182.248</li>
-                    <li>City: Pune</li>
-                    <li>Region : Maharashtra</li>
-                    <li>Country : India </li>
-                    <li>Org : Paradise Telecom Pvt Ltd</li>
-                    <li>Version : IPV4</li>
-                    <li>Timezone : Asia/Kolkata</li>
-                    <li>Latitude : 18.6161</li>
-                    <li>Longitude : 73.7286</li>
+                    <li>Ip : {{reportCard?.ip}}</li>
+                    <li>Network : {{reportCard?.network}}</li>
+                    <li>City: {{extraDetails?.city}}</li>
+                    <li>Region : {{extraDetails?.region}}</li>
+                    <li>Country : {{extraDetails?.country_name}} </li>
+                    <li>Org : {{extraDetails?.org}}</li>
+                    <li>Version : {{extraDetails?.version}}</li>
+                    <li>Timezone : {{extraDetails?.timezone}}</li>
+                    <li>Latitude : {{reportCard?.trackedlocation.lat}}</li>
+                    <li>Longitude :  {{reportCard?.trackedlocation.lng}}</li>
+                    <a href="https://maps.google.com/?q={{reportCard?.trackedlocation.lat}},{{reportCard?.trackedlocation.lng}}" target="_blank" rel="noopener noreferrer">View Location On Map!</a>
                 </ul>
             </div>
         </div>
         <div class="col-6">
             <div class="p-2 largeboldFont font-bold">
-                Images Captured
+                Images Captured Randomly
             </div>
             <div class="col-8 flex flex-wrap">
                 <div class="col-4"></div>

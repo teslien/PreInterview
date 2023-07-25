@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
 
 
-
     this.Applicant = Boolean(sessionStorage.getItem('UserId'));
     
     this.getUserData();

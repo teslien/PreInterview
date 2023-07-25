@@ -1,7 +1,7 @@
 <app-loader *ngIf="loading"></app-loader>
 <app-wrap-instruction>
     <p-dataView #dv [value]="catagories" [paginator]="true" [rows]="9" filterBy="testName"
-        [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+        [sortField]="sortField" [sortOrder]="sortOrder" layout="grid" >
         <ng-template pTemplate="header">
             <div class="flex flex-column md:flex-row md:justify-content-between">
                 <span class="p-input-icon-left mb-2 md:mb-0">
@@ -11,11 +11,13 @@
                 <app-button [customStyles]="{
                     background:'#3266CA'
                 }" routerLink="/admin/create">Add New</app-button>
+
             </div>
         </ng-template>
         <ng-template let-product pTemplate="gridItem">
             <div class="col-12 md:col-4 text-xl">
-                <div class="product-grid-item card cursor-pointer hover:bg-gray-200" routerLink="/admin/upload">
+            
+                <div class="product-grid-item card cursor-pointer hover:bg-gray-300 bg-gray-100" (click)="OpenTest(product)">
                     <div class="product-grid-item-top">
                         <div>
                             <i class="pi pi-clock product-category-icon text-xl"></i>
@@ -25,19 +27,17 @@
                     </div>
                    
                     <div class="product-grid-item-content">
-                        <img src="../../../../assets/images/designShape.svg" alt="">
                         <div class="product-name">{{product.testName}}</div>
-                        <div class="product-description">{{product.catagories?.name}}</div>
+                        <div class="product-description">{{product.category?.name}}</div>
                     </div>
                     <div class="product-grid-item-bottom">
                         <span class="product-price">{{product.totalQuestions}} Questions</span>
-                        <app-button [customStyles]="{
+                        <!-- <app-button [customStyles]="{
                             background:'#3266CA'
-                        }"><i class=" pi pi-eye text-xl"></i></app-button>
+                        }"><i class=" pi pi-eye text-xl"></i></app-button> -->
                     </div>
                 </div>
             </div>
         </ng-template>
     </p-dataView>
-
 </app-wrap-instruction>

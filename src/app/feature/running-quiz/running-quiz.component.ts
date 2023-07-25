@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-running-quiz',
@@ -8,7 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class RunningQuizComponent implements OnInit {
 
-  constructor( private route:Router){}
+  constructor(  private route:Router){}
   showNavbar: boolean=false;
 
   ngOnInit() {
@@ -18,6 +18,8 @@ export class RunningQuizComponent implements OnInit {
         this.showNavbar = !event.url.includes('/login');
       }
     });
+
+    
   }
 
 

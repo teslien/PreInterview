@@ -27,6 +27,9 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {DataViewModule} from 'primeng/dataview';
+import {CardModule} from 'primeng/card';
+
+
 
 @NgModule({
   declarations: [],
@@ -62,7 +65,8 @@ import {DataViewModule} from 'primeng/dataview';
     SelectButtonModule,
     ToggleButtonModule,
     ProgressSpinnerModule,
-    DataViewModule
+    DataViewModule,
+    CardModule
   ],
   exports:[
     InputTextModule,
@@ -95,7 +99,8 @@ import {DataViewModule} from 'primeng/dataview';
     SelectButtonModule,
     ToggleButtonModule,
     ProgressSpinnerModule,
-    DataViewModule
+    DataViewModule,
+    CardModule
   ]
 })
 export class PrimengModule { }

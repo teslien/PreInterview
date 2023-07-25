@@ -11,11 +11,13 @@ import { TestDataService } from 'src/app/service/test-data.service';
 export class ReportCardComponent implements OnInit,OnDestroy {
 
   loading:boolean=true;
+  extraDetails:any;
+  
   constructor(private testService: TestDataService,private activatedRoute: ActivatedRoute) { }
   ngOnDestroy(): void {
     this.dataSubscription.unsubscribe();
   }
-  value=100;
+  value=0;
   reportCard:any;
   adminId=sessionStorage.getItem('UserId');
   dataSubscription:Subscription;
@@ -25,10 +27,22 @@ export class ReportCardComponent implements OnInit,OnDestroy {
       const obj = data;
       this.testService.getSpecificApplicantdata(obj['id'],this.adminId).subscribe((res)=>{
         this.reportCard=res;
+        this.value=this.reportCard.score;
+        this.getUserInfo(this.reportCard.ip);
         this.loading=false;
         console.log(this.reportCard);
       })
     })
+
   }
+
+  getUserInfo(info:any){
+    console.log(info);
+      this.testService.getUserInfo(info).subscribe((res)=>{
+        console.log(res);
+        this.extraDetails=res;
+      })
+    
+    }
 
 }

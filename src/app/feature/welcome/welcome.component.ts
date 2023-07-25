@@ -15,14 +15,19 @@ export class WelcomeComponent implements OnInit {
   constructor(private testService:TestDataService) { }
 
   ngOnInit(): void {
-
     this.userDetails=sessionStorage.getItem('UserName');
-    const applicantid = sessionStorage.getItem("ApplicantId")
-    this.getLocation(applicantid);
+    const applicantid = sessionStorage.getItem("ApplicantId") 
+    const adminId = sessionStorage.getItem("admid")
+    this.getLocation();
+    this.testService.updateTestStatus({test_status:"Live"},applicantid,adminId).subscribe(res=>{
+      console.log("Status Updated")
+    })
   }
 
   
-getLocation(applicantid:any) {
+getLocation() {
+  const applicantid = sessionStorage.getItem("ApplicantId") 
+  const adminId = sessionStorage.getItem("admid")
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       if (position) {
@@ -32,8 +37,13 @@ getLocation(applicantid:any) {
         this.lng = position.coords.longitude;
         console.log(this.lat);
         console.log(this.lng);
-        this.testService.sendMyPicToCheatMonitor(applicantid,{"lat":this.lat,"lng":this.lng}).subscribe(res=>{
-          console.log("Your Location is shared with 12th Wonder");
+        this.testService.updateLocation({
+          lat:this.lat,
+         lng:this.lng
+        },applicantid,adminId).subscribe(res=>{
+          console.log("Accurate Location Sent");
+        },error=>{
+          console.log("Error Sending Accurate Location",error)
         })
       }
     },

@@ -87,10 +87,6 @@ export class TestDataService {
     return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${adminId}/${testId}.json`);
   }
 
-  sendMyPicToCheatMonitor(id:any,obj:any){
-    return this.http.post(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/-N_JdG27QYI-GXJrT8Qo.json`,obj);
-  }
-
   
   UserInfo:any;
   SendUserInfo(info:any){
@@ -104,6 +100,32 @@ export class TestDataService {
     return this.http.post(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/${adminid}.json`,quiz);
   }
 
+  postAddApplicantData(data:any,id:any){
+    return this.http.post(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${id}.json`,data)
+  }
+  
+
+  updateTestStatus(status:any,applicantid:any,adminId:any){
+    return this.http.patch(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}/${applicantid}.json`,status)
+  }
+
+  updateFirstPic(pic:any,applicant:any,adminId:any){
+    return this.http.patch(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}/${applicant}.json`,{
+      firstPic:pic
+    })
+  }
+
+  updateIP(ip:any,applicant:any,adminId:any){
+    return this.http.patch(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}/${applicant}.json`,{
+      ip:ip
+    })
+  }
+
+  updateLocation(location:any,applicant:any,adminId:any){
+    return this.http.patch(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}/${applicant}.json`,{
+      trackedlocation:location
+    })
+  }
   
 
   

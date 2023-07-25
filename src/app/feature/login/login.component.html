@@ -6,7 +6,7 @@
             <form [formGroup]="loginForm" (ngSubmit)="onLogin()"  class="flex flex-column gap-5  justify-content-center ">
                 <input type="text" pInputText formControlName="emailid"  placeholder="Email id"/>
                 <span *ngIf="!loginForm.get('emailid').valid && loginForm.get('emailid').touched">Please enter a valid email id!</span>
-                <p-password  [feedback]="false" formControlName="possword" placeholder="Password" [toggleMask]="true"></p-password>
+                <p-password  [feedback]="false" formControlName="possword" placeholder="Password" [toggleMask]="false"></p-password>
                 <span *ngIf="!loginForm.get('possword').valid && loginForm.get('possword').touched">Please enter your password!</span>
                 <div class="w-full flex justify-content-center mt-3">
                     <a btn [customStyles]="{

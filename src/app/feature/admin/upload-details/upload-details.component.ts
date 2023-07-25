@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { TestDataService } from 'src/app/service/test-data.service';
 import * as XLSX from 'xlsx'
 
 
@@ -11,10 +14,20 @@ import * as XLSX from 'xlsx'
 export class UploadDetailsComponent implements OnInit {
 
 
+
+
+	testDataFromHome:any;
+	dataSubs:Subscription;
 	ExcelData:any[];
+	loading: boolean;
+	constructor(private activatedRoute: ActivatedRoute,private testService: TestDataService, private route:Router){}
 
 	ngOnInit(): void {
-		
+		this.dataSubs= this.activatedRoute.queryParams.subscribe(data=>{
+			const obj = data['id'];
+			this.testDataFromHome= JSON.parse(obj)
+			console.log(this.testDataFromHome);
+		})
 	}
 
 	ReadExcel(event:any){
@@ -31,5 +44,39 @@ export class UploadDetailsComponent implements OnInit {
 
 	}
 
+
+	OnNextUpload(){
+		this.loading=true;
+		const length = this.ExcelData.length;
+		const adminId = sessionStorage.getItem("UserId")
+		if(length>0){
+			for (let i = 0; i <=length; i++) {
+				const applicantData = {
+					email:this.ExcelData[i].Email,
+					mobile_number:this.ExcelData[i].Mobile_number,
+					location:this.ExcelData[i].Location,
+					name:this.ExcelData[i].Name,
+					position:this.ExcelData[i].Applied,
+					test_allocated_id:this.testDataFromHome.id,
+					test_category:this.testDataFromHome.category.name,
+					test_name:this.testDataFromHome.testName,
+					test_status:"Not Started",
+					totalTimeInMins:this.testDataFromHome.totalTimeInMins,
+					totalquestions:this.testDataFromHome.totalQuestions,
+					firstPic:"empty",
+					ip:"empty",
+					trackedlocation:"empty",
+					score:"0"
+				}
+				this.testService.postAddApplicantData(applicantData,adminId).subscribe(res=>{
+					console.log(res);
+				})
+			  }
+			this.loading=false;
+			this.route.navigate(['/admin/tests']);
+		}
+
+		
+	}
 
 }

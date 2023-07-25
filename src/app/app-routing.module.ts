@@ -23,14 +23,14 @@ const routes: Routes = [
   {path:'login/:user/:id',component:LoginComponent},
   {path:'verification',component:PhotoVerificationComponent},
   {path:'admin', component:HomeComponent ,canActivate: [AuthGuard]},
-  {path:'admin/upload',component:UploadDetailsComponent,canActivate: [AuthGuard]},
-  {path:'admin/generate',component:LinkGeneratedComponent,canActivate: [AuthGuard]},
-  {path:'admin/create',component:CreateComponent,canActivate: [AuthGuard]},
-  {path:'admin/createtest/add',component:AddQuestionsComponent,canActivate: [AuthGuard]},
+  {path:'admin/upload',component:UploadDetailsComponent},
+  {path:'admin/generate',component:LinkGeneratedComponent},
+  {path:'admin/create',component:CreateComponent},
+  {path:'admin/createtest/add',component:AddQuestionsComponent},
   {path:'quiz/result',component:TestResultComponent},
-  {path:'admin/applicants',component:ViewApplicantsComponent,canActivate: [AuthGuard]},
-  {path:'admin/tests',component:HomeComponent,canActivate: [AuthGuard]},
-  {path:'admin/applicant/report', component:ReportCardComponent,canActivate: [AuthGuard]}
+  {path:'admin/applicants',component:ViewApplicantsComponent},
+  {path:'admin/tests',component:HomeComponent},
+  {path:'admin/applicant/report', component:ReportCardComponent}
 ];
 
 @NgModule({

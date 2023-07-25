@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {WebcamImage} from 'ngx-webcam';
 import {Subject, Observable} from 'rxjs';
 import { TestDataService } from 'src/app/service/test-data.service';
@@ -12,9 +13,9 @@ export class PhotoVerificationComponent implements OnInit {
 
   UserIpAddress:any;
   applicantid=sessionStorage.getItem("ApplicantId");
-    
+  adminId = sessionStorage.getItem("admid");
 
-  constructor(private testDataService:TestDataService) { }
+  constructor(private testDataService:TestDataService,private route:Router) { }
 
   ngOnInit(): void {
     this.getUserIp();
@@ -29,10 +30,9 @@ export class PhotoVerificationComponent implements OnInit {
   handleImage(webcamImage: WebcamImage): void {
    console.info('received webcam image', webcamImage);
    this.webcamImage = webcamImage;
-   this.testDataService.sendMyPicToCheatMonitor(this.applicantid,{"firstpic":this.webcamImage}).subscribe((res)=>{
-    console.log("mission successful!");
-   })
+
   }
+
  
   public get triggerObservable(): Observable<void> {
    return this.trigger.asObservable();
@@ -41,20 +41,23 @@ export class PhotoVerificationComponent implements OnInit {
   getUserIp(){
     this.testDataService.getUserIP().subscribe((res)=>{
      this.UserIpAddress=res;
-     this.getUserInfo(this.UserIpAddress.ip);
     })
   }
 
-  getUserInfo(info:any){
-  console.log(info);
-    this.testDataService.getUserInfo(info).subscribe((res)=>{
-      console.log(res);
-      this.testDataService.sendMyPicToCheatMonitor(this.applicantid,{"Info":res}).subscribe(res=>{
-        console.log("mission 2 successfull");
-      })
+  NextPage(){
+    this.testDataService.updateFirstPic(this.webcamImage,this.applicantid,this.adminId).subscribe(res=>{
+      console.log("Picture Sent To Interviewer");
+     },error=>{
+      console.log("Error Sending Picture",error);
+     })
+    this.testDataService.updateIP(this.UserIpAddress.ip,this.applicantid,this.adminId).subscribe(res=>{
+      console.log("IP Sent To Interviewer");
+    },error=>{
+      console.log("Error Sending IP")
     })
-  
+     this.route.navigate(['/instruction'])
   }
+
 
 
 

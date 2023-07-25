@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { PrimeNGConfig } from 'primeng/api';
+import { NavigationExtras, Router } from '@angular/router';
 
 
 
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   dataSubs:Subscription;
   
-  constructor(private testService:TestDataService,private primengConfig: PrimeNGConfig) { }
+  constructor(private testService:TestDataService,private primengConfig: PrimeNGConfig,private route:Router) { }
   ngOnDestroy(): void {
     this.dataSubs.unsubscribe()
   }
@@ -40,4 +41,16 @@ export class HomeComponent implements OnInit,OnDestroy {
 this.primengConfig.ripple = true;
   }
 
-}
+
+
+  OpenTest(id:any){
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        id: JSON.stringify(id)
+      }
+    };
+  
+    this.route.navigate(['admin/upload/'], navigationExtras);
+  }
+  }
+

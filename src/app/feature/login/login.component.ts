@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class LoginComponent implements OnInit,OnDestroy {
 
@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-
     this.loginForm=new FormGroup({
       'emailid': new FormControl(null,[Validators.email,Validators.required]),
       'possword':new FormControl(null,Validators.required)
@@ -71,7 +70,7 @@ export class LoginComponent implements OnInit,OnDestroy {
         }
       }
       else if(this.activeUser=="applicant"){
-        const applicant = this.applicantArray.find(u => u.email == this.loginForm.get('emailid').value && u.password == this.loginForm.get('possword').value);
+        const applicant = this.applicantArray.find(u => u.email == this.loginForm.get('emailid').value && u.mobile_number== this.loginForm.get('possword').value);
         if(applicant){
           this.testService.SendUserInfo(applicant);
           sessionStorage.setItem("admid",this.activeId);
