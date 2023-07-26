@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TestDataService } from 'src/app/service/test-data.service';
 
 @Component({
   selector: 'app-instructions',
@@ -11,12 +12,28 @@ export class InstructionsComponent implements OnInit {
 
   bgColorBtn='#3266CA';
   bgColorSEBtn='#FBFBFB';
-  constructor(@Inject(DOCUMENT) private document: any,private router: Router) { }
+  constructor(@Inject(DOCUMENT) private document: any,private router: Router,private testDataService:TestDataService) { }
   elem: any;
+  quizData:any;
 
   ngOnInit(): void {
     this.elem = document.documentElement;
+    this.getTestData();
   }
+
+  
+  getTestData(){
+    const admin = sessionStorage.getItem("admid");
+    const testId = sessionStorage.getItem("TestId");
+      this.testDataService.getApplicantSpecificQuiz(admin,testId).subscribe(res=>{
+        localStorage.setItem("QuizData",JSON.stringify(res));
+        this.quizData=res;
+        localStorage.setItem("questionData",JSON.stringify(this.quizData.questionData));
+      })
+
+
+  }
+
 
   openFullscreen() {
     if (this.elem.requestFullscreen) {

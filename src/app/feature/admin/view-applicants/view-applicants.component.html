@@ -36,7 +36,7 @@
                     <span class="p-column-title">Status</span>
                     <span class="text-red-500" *ngIf="data.test_status=='Live';else notStarted"><li>Live</li></span>
                     <ng-template #notStarted>
-                        <span class="text-red-500"><li>{{data.test_status}}</li></span>
+                        <span >{{data.test_status}}</span>
                     </ng-template>
                 </td>
                 <td>{{data.score}}</td>

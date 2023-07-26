@@ -31,13 +31,12 @@ export class NavbarComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
 
-
     this.Applicant = Boolean(sessionStorage.getItem('UserId'));
     
     this.getUserData();
     this.route.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.roundDetails = event.url.includes('/quiz');
+        this.roundDetails = event.url.includes('/quiz') && !event.url.includes('/result') ;
       }
     });
 

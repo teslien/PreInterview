@@ -127,6 +127,17 @@ export class TestDataService {
     })
   }
   
+  updateCapturedImages(images:any,applicant:any,adminId:any){
+    return this.http.patch(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}/${applicant}.json`,{
+      imageCaptured:images
+    })
+  }
+
+  SendAnswerSheet(data:any,applicant:any,adminId:any){
+    return this.http.patch(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}/${applicant}.json`,{
+      answerGiven:data
+    })
+  }
 
   
 }

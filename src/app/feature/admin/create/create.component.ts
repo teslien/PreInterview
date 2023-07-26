@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserdataService } from 'src/app/service/shareData/userdata.service';
 import {MessageService} from 'primeng/api';
 import { FormControl,FormGroup, Validators } from '@angular/forms';
 
@@ -17,7 +16,7 @@ export class CreateComponent implements OnInit {
   Levels:any;
   testForm:FormGroup;
 
-  constructor(private quizDataService: UserdataService, private route: Router,private messageService:MessageService) { }
+  constructor( private route: Router,private messageService:MessageService) { }
 
 
   selectedCategory: any;

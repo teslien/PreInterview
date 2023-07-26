@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-countdown',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CountdownComponent implements OnInit {
   @Input() value: any[]=[];
   @Input() startPositive: boolean=false;
+  @Output() MinutesSharing = new EventEmitter<string>()
 
   ms: any = '0' + 0;
   sec: any = '0' + 0;
@@ -84,6 +85,7 @@ export class CountdownComponent implements OnInit {
 
         if (this.sec == 0) {
           this.min--;
+          this.MinutesSharing.emit(this.min);
           this.min = this.min < 10 ? '0' + this.min : this.min;
           this.sec = 59;
         }

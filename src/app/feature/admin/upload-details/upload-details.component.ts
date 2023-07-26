@@ -66,14 +66,17 @@ export class UploadDetailsComponent implements OnInit {
 					firstPic:"empty",
 					ip:"empty",
 					trackedlocation:"empty",
-					score:"0"
+					score:"0",
+					imageCaptured:"empty",
+					answerGiven:"empty"
 				}
 				this.testService.postAddApplicantData(applicantData,adminId).subscribe(res=>{
 					console.log(res);
+					this.loading=false;
+					this.route.navigate(['/admin/tests']);
 				})
 			  }
-			this.loading=false;
-			this.route.navigate(['/admin/tests']);
+		
 		}
 
 		

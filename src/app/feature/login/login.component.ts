@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit,OnDestroy {
 
 
    sessionStorage.clear();
+   localStorage.clear();
    this.activeUser =  this.route.snapshot.params['user'];
    this.activeId =  this.route.snapshot.params['id'];
 
