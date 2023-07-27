@@ -139,5 +139,11 @@ export class TestDataService {
     })
   }
 
+  UpdateScore(score:number,applicant:any,adminId:any){
+    return this.http.patch(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminId}/${applicant}.json`,{  
+    score:score
+    })
+  }
+
   
 }

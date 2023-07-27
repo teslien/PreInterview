@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-3 flex justify-content-center">
-            <p-knob [(ngModel)]="value" valueColor="#3266CA"
+            <p-knob [(ngModel)]="value" [max]="totalQuestions" valueColor="#3266CA"
             [size]="200" textColor="#252525" styleClass="font-bold" [readonly]="true"></p-knob>
         </div>
         <div class="col-5">

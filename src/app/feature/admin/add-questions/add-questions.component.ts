@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TestDataService } from 'src/app/service/test-data.service';
 
 
@@ -13,6 +14,7 @@ export class AddQuestionsComponent implements OnInit {
   quizdata:any[]=[];
   currentQuestion:number=1;
   home:boolean=false;
+  loading:boolean=false;
 
   text:any;
   selectedOption:any;
@@ -29,12 +31,12 @@ export class AddQuestionsComponent implements OnInit {
   },
   {
     name:"Option 3",
-    key:2,
+    key:3,
     check:false
   }
 ];
   adminId: string;
-  constructor(private testService:TestDataService) { }
+  constructor(private testService:TestDataService,private route:Router) { }
 
   ngOnInit(): void {
     this.adminId = sessionStorage.getItem("UserId");
@@ -84,13 +86,14 @@ export class AddQuestionsComponent implements OnInit {
     },
     {
       name:"Option 3",
-      key:2,
+      key:3,
       check:false
     }]
     this.selectedOption="";
     this.text=""
 
-  }else if(this.currentQuestion==this.testData.totalQuestions){
+  }
+  if(this.currentQuestion==this.testData.totalQuestions){
     this.home=true;
   }
 
@@ -109,6 +112,15 @@ export class AddQuestionsComponent implements OnInit {
 
  uploadTest(){
   if(this.adminId){
+    this.loading=true;
+    if(this.currentQuestion==this.testData.totalQuestions){
+      const  data= {
+        "id": this.quizdata.length+1,
+        "question": this.text,
+        "options": this.Options,
+        "correctAnswer": this.selectedOption
+     }
+     this.quizdata.push(data);}
     const quiz={
       "testName":this.testData.testName,
       "totalQuestions":this.testData.totalQuestions,
@@ -120,6 +132,8 @@ export class AddQuestionsComponent implements OnInit {
     };
     this.testService.addCustomizeTest(quiz,this.adminId).subscribe(res=>{
       console.log(res);
+      this.loading=false;
+      this.route.navigate(['/admin/tests']);
     })
    }
   }

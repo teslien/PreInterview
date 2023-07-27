@@ -18,6 +18,7 @@ export class ReportCardComponent implements OnInit,OnDestroy {
     this.dataSubscription.unsubscribe();
   }
   value=0;
+  totalQuestions:number;
   reportCard:any;
   adminId=sessionStorage.getItem('UserId');
   dataSubscription:Subscription;
@@ -28,6 +29,7 @@ export class ReportCardComponent implements OnInit,OnDestroy {
       this.testService.getSpecificApplicantdata(obj['id'],this.adminId).subscribe((res)=>{
         this.reportCard=res;
         this.value=this.reportCard.score;
+        this.totalQuestions=this.reportCard.totalquestions;
         this.getUserInfo(this.reportCard.ip);
         this.loading=false;
         console.log(this.reportCard);

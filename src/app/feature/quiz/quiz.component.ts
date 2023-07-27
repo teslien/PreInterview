@@ -73,10 +73,8 @@ export class QuizComponent implements OnInit {
       this.currentQuestionIndex++;
       this.testDataService.UpdateNavbar.emit(this.quizData[this.currentQuestionIndex].id);
       this.optionChoosen=false;
-      if(this.selectedCategory==this.quizData[this.currentQuestionIndex].correctAnswer.name){
-        console.log("Your Answer is correct",this.correctAnswers);
-       }
-      this.randomlyCapturingImage(this.currentQuestionIndex);
+  
+      // this.randomlyCapturingImage(this.currentQuestionIndex);
     }
     if(this.currentQuestionIndex==this.quizDetails.totalQuestions-1){
       this.showSubmit=true;
@@ -85,14 +83,27 @@ export class QuizComponent implements OnInit {
   }
 
   onTestSubmit(){
+    this.quizData.forEach(i=>{
+      const ans = i.options.find(item => item.check === true);
+      if(i.correctAnswer.name == ans.name){
+        this.Score++;
+      }
+     })
     this.loading=true;
+    console.log(this.Score);
     const admin = sessionStorage.getItem("admid");
     const applicant = sessionStorage.getItem("ApplicantId");
     this.testDataService.SendAnswerSheet(this.quizData,applicant,admin).subscribe(res=>{
-      this.loading=false;
-      this.route.navigate(['/quiz/result']);
+      this.testDataService.UpdateScore(this.Score,applicant,admin).subscribe(res=>{
+        console.log(this.Score);
+        this.testDataService.updateTestStatus({test_status:"Completed"},applicant,admin).subscribe(res=>{
+        this.loading=false;
+        this.route.navigate(['/quiz/result']);
+      })
+      })
     });
-
+    
+   
   }
 
   onBack(){
@@ -114,7 +125,7 @@ export class QuizComponent implements OnInit {
 
     if(event.target.checked == true){
     this.makeAllFalse(this.currentQuestionIndex);
-     this.selectedCategory = event.target.value;
+     this.selectedCategory =  this.quizData[this.currentQuestionIndex].options[index].name;
      this.quizData[this.currentQuestionIndex].options[index].check=true;
      localStorage.setItem("questionData",JSON.stringify(this.quizData))
      this.previousQuestionIndex=this.currentQuestionIndex;
