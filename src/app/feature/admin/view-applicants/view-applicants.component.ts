@@ -39,6 +39,8 @@ export class ViewApplicantsComponent implements OnInit {
     let result = score/total*100;
     if(result>60){
       this.boolValue=true;
+    }else{
+      this.boolValue=false;
     }
     return this.boolValue;
   }
