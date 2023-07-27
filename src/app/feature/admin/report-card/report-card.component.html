@@ -47,15 +47,17 @@
                 </ul>
             </div>
         </div>
-        <div class="col-6">
-            <div class="p-2 largeboldFont font-bold">
+        <div class="col-6 p-4">
+            <div class="p-2 largeboldFont font-bold mb-3">
                 Images Captured Randomly
             </div>
-            <div class="col-8 flex flex-wrap">
-                <div class="col-4"></div>
-                <div class="col-4"></div>
-                <div class="col-4"></div>
-                <div class="col-4"></div>
+            <div class=" flex flex-wrap gap-2">
+                <div *ngFor="let item of ImageData">
+                   <p-image src="{{item._imageAsDataUrl}}" alt="Image" width="180px" height="auto" [preview]="true" class="relative">
+                </p-image>
+
+                </div>
+    
             </div>
      
         </div>

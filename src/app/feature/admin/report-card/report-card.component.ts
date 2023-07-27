@@ -22,6 +22,7 @@ export class ReportCardComponent implements OnInit,OnDestroy {
   reportCard:any;
   adminId=sessionStorage.getItem('UserId');
   dataSubscription:Subscription;
+  ImageData:any;
 
   ngOnInit(): void {
     this.dataSubscription= this.activatedRoute.queryParams.subscribe(data=>{
@@ -29,6 +30,7 @@ export class ReportCardComponent implements OnInit,OnDestroy {
       this.testService.getSpecificApplicantdata(obj['id'],this.adminId).subscribe((res)=>{
         this.reportCard=res;
         this.value=this.reportCard.score;
+        this.ImageData=this.reportCard.imageCaptured;
         this.totalQuestions=this.reportCard.totalquestions;
         this.getUserInfo(this.reportCard.ip);
         this.loading=false;
@@ -46,5 +48,8 @@ export class ReportCardComponent implements OnInit,OnDestroy {
       })
     
     }
+
+
+
 
 }
