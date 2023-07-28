@@ -14,6 +14,8 @@ export class ViewApplicantsComponent implements OnInit {
   load:boolean=true;
   loading:boolean=true;
   boolValue:boolean;
+ 
+
   constructor(private testService: TestDataService,private route:Router) { }
 
   ngOnInit(): void {
@@ -43,4 +45,8 @@ export class ViewApplicantsComponent implements OnInit {
     }
     return this.boolValue;
   }
+
+
+
+
 }

@@ -1,10 +1,31 @@
 <app-loader *ngIf="loading"></app-loader>
+<p-dialog header="Add Applicants" [(visible)]="displayBasic" [style]="{width: '50vw'}" [maximizable]="true"  [modal]="true" [baseZIndex]="10000">
+<form class="flex gap-4 flex-column" [formGroup]="applicantForm" (ngSubmit)="OnAdd()">
+    <input type="text" pInputText formControlName="sr" placeholder="Enter Sr.No" class="text-2xl">
+    <input type="text" pInputText formControlName="name" placeholder="Enter Name" class="text-2xl">
+    <input type="text" pInputText formControlName="email" placeholder="Enter Email" class="text-2xl">
+    <input type="text" pInputText formControlName="mobile" placeholder="Enter Mobile Number" class="text-2xl">
+    <input type="text" pInputText formControlName="location" placeholder="Enter Location" class="text-2xl">
+    <input type="text" pInputText formControlName="position" placeholder="Enter Position" class="text-2xl">
+    <div class="flex justify-content-end">
+        <app-button [customStyles]="{
+            background:'#3266CA'
+        }">Add <i class="pi pi-plus"></i></app-button>
+    </div>
+</form>
+</p-dialog>
 <app-wrap-instruction>
     <div class="mb-3 flex justify-content-between">
         <input type="file" (change)="ReadExcel($event)">
-        <app-button [customStyles]="{
-            background:'#3266CA'
-        }" (click)="OnNextUpload()">Next <i class="pi pi-arrow-right"></i></app-button>
+        <div class="flex gap-4">
+            <app-button [customStyles]="{
+                color:'#252525'
+            }" (click)="showModalDialog()">Add<i class="pi pi-plus textWonder"></i></app-button>
+
+            <app-button [customStyles]="{
+                background:'#3266CA'
+            }" (click)="OnNextUpload()">Next <i class="pi pi-arrow-right"></i></app-button>
+        </div>
     </div>
     <p-table #dt1 id="SrNo" [value]="ExcelData" tableStyleClass="text-2xl" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['SrNo','Name','Email','Mobile_number','Location','Applied']" >
