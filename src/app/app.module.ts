@@ -28,6 +28,7 @@ import { TestResultComponent } from './feature/test-result/test-result.component
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { ProfileComponent } from './feature/admin/profile/profile.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
     ViewApplicantsComponent,
     ReportCardComponent,
     LoaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

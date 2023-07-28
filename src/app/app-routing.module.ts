@@ -14,6 +14,7 @@ import { TestResultComponent } from './feature/test-result/test-result.component
 import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-applicants.component';
 import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
 import { AuthGuard } from './guard/auth.guard';
+import { ProfileComponent } from './feature/admin/profile/profile.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login/admin/0',pathMatch:'full'},
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path:'quiz/result',component:TestResultComponent},
   {path:'admin/applicants',component:ViewApplicantsComponent},
   {path:'admin/tests',component:HomeComponent},
-  {path:'admin/applicant/report', component:ReportCardComponent}
+  {path:'admin/applicant/report', component:ReportCardComponent},
+  {path:'admin/profile',component:ProfileComponent}
 ];
 
 @NgModule({

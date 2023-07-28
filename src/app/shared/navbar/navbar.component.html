@@ -1,7 +1,7 @@
 <nav class="navbar bg-white textWonder">
   <div class="navbar_center">
 
-      <img src='../../../assets/logoWonder.png' alt="logo" class="navbar_logo">
+      <img src='../../../assets/logoWonder.png' alt="logo" class="navbar_logo" >
 
 
       <div *ngIf="roundDetails">
@@ -24,7 +24,7 @@
             <img src="../../../assets/images/adminlogo.png" height="100%" width="100%" alt="">
           </div>
           <div class="dropdown-content">
-            <a>Profile</a>
+            <a routerLink="/admin/profile">Profile</a>
             <a>Settings</a>
             <a class="text-red-500" (click)="logout()">Logout</a>
           </div>
