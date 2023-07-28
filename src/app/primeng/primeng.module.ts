@@ -29,6 +29,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {DataViewModule} from 'primeng/dataview';
 import {CardModule} from 'primeng/card';
 import {ImageModule} from 'primeng/image';
+import {SkeletonModule} from 'primeng/skeleton';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {ImageModule} from 'primeng/image';
     ProgressSpinnerModule,
     DataViewModule,
     CardModule,
-    ImageModule
+    ImageModule,
+    SkeletonModule
   ],
   exports:[
     InputTextModule,
@@ -102,7 +104,8 @@ import {ImageModule} from 'primeng/image';
     ProgressSpinnerModule,
     DataViewModule,
     CardModule,
-    ImageModule
+    ImageModule,
+    SkeletonModule
   ]
 })
 export class PrimengModule { }

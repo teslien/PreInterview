@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TestDataService } from 'src/app/service/test-data.service';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { NavigationExtras, Router } from '@angular/router';
 
 
@@ -9,7 +9,8 @@ import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers:[MessageService]
 })
 export class HomeComponent implements OnInit,OnDestroy {
 
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   dataSubs:Subscription;
   
-  constructor(private testService:TestDataService,private primengConfig: PrimeNGConfig,private route:Router) { }
+  constructor(private testService:TestDataService,private primengConfig: PrimeNGConfig,private route:Router,private MessageService:MessageService) { }
   ngOnDestroy(): void {
     this.dataSubs.unsubscribe()
   }
@@ -32,10 +33,10 @@ export class HomeComponent implements OnInit,OnDestroy {
    const adminId = sessionStorage.getItem("UserId");
    this.dataSubs = this.testService.getAllTest(adminId).subscribe(res=>{
     this.catagories=res;
-    console.log(res);
+  
     this.loading=false;
    },error=>{
-    console.log(error)
+    this.MessageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
    })
 
 this.primengConfig.ripple = true;

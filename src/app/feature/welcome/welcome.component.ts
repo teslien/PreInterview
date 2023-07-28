@@ -11,46 +11,38 @@ export class WelcomeComponent implements OnInit {
   //location 
   public lat;
   public lng;
-  userDetails:any;
-  constructor(private testService:TestDataService) { }
+  userDetails: any;
+  constructor(private testService: TestDataService) { }
 
   ngOnInit(): void {
-    this.userDetails=sessionStorage.getItem('UserName');
-    const applicantid = sessionStorage.getItem("ApplicantId") 
+    this.userDetails = sessionStorage.getItem('UserName');
+    const applicantid = sessionStorage.getItem("ApplicantId")
     const adminId = sessionStorage.getItem("admid")
     this.getLocation();
-    this.testService.updateTestStatus({test_status:"Live"},applicantid,adminId).subscribe(res=>{
-      console.log("Status Updated")
-    })
+    this.testService.updateTestStatus({ test_status: "Live" }, applicantid, adminId).subscribe();
   }
 
-  
-getLocation() {
-  const applicantid = sessionStorage.getItem("ApplicantId") 
-  const adminId = sessionStorage.getItem("admid")
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      if (position) {
-        console.log("Latitude: " + position.coords.latitude +
-          "Longitude: " + position.coords.longitude);
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        console.log(this.lat);
-        console.log(this.lng);
-        this.testService.updateLocation({
-          lat:this.lat,
-         lng:this.lng
-        },applicantid,adminId).subscribe(res=>{
-          console.log("Accurate Location Sent");
-        },error=>{
-          console.log("Error Sending Accurate Location",error)
-        })
-      }
-    },
-      (error) => console.log(error));
-  } else {
-    alert("Geolocation is not supported by this browser.");
+
+  getLocation() {
+    const applicantid = sessionStorage.getItem("ApplicantId")
+    const adminId = sessionStorage.getItem("admid")
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        if (position) {
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          console.log(this.lat);
+          console.log(this.lng);
+          this.testService.updateLocation({
+            lat: this.lat,
+            lng: this.lng
+          }, applicantid, adminId).subscribe()
+        }
+      },
+        (error) => console.log(error));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   }
-}
 
 }

@@ -26,7 +26,6 @@ export class UploadDetailsComponent implements OnInit {
 		this.dataSubs= this.activatedRoute.queryParams.subscribe(data=>{
 			const obj = data['id'];
 			this.testDataFromHome= JSON.parse(obj)
-			console.log(this.testDataFromHome);
 		})
 	}
 
@@ -39,7 +38,7 @@ export class UploadDetailsComponent implements OnInit {
 			var workbook = XLSX.read(fileReader.result,{type:'binary'});
 			var sheetNames = workbook.SheetNames;
 			this.ExcelData= XLSX.utils.sheet_to_json(workbook.Sheets[sheetNames[0]]);
-			console.log(this.ExcelData);
+		
 				}
 
 	}
@@ -71,7 +70,7 @@ export class UploadDetailsComponent implements OnInit {
 					answerGiven:"empty"
 				}
 				this.testService.postAddApplicantData(applicantData,adminId).subscribe(res=>{
-					console.log(res);
+			
 					this.loading=false;
 					this.route.navigate(['/admin/tests']);
 				})

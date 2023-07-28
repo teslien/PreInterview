@@ -1,3 +1,4 @@
+import { ChangeDetectionStrategy } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -21,6 +22,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
   applicanttoken=sessionStorage.getItem('ApplicantId')
   admid=sessionStorage.getItem('admid');
   UserName=sessionStorage.getItem("UserName");
+  ProfileImage:any;
 
   constructor(private route:Router,private testDataService: TestDataService) { }
   
@@ -30,7 +32,7 @@ export class NavbarComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-
+    
     this.Applicant = Boolean(sessionStorage.getItem('UserId'));
     
     this.getUserData();
@@ -49,19 +51,20 @@ export class NavbarComponent implements OnInit,OnDestroy {
 
 getUserData(){
 if(this.applicanttoken){
-  console.log(this.applicanttoken);
     this.UserDataSubscription=this.testDataService.getSpecificApplicantdata(this.applicanttoken,this.admid).subscribe((res)=>{
       this.userArray=res;
       sessionStorage.setItem("TestId",this.userArray.test_allocated_id)
       this.testDataService.SendUserInfo(this.userArray);
-    
-      console.log("Here Bro!",this.userArray);
     })
 }
 else if(this.admintoken){
   this.UserDataSubscription=this.testDataService.getSpecificAdmindata(this.admintoken).subscribe((res)=>{
     this.adminArray=res;
-    console.log(this.adminArray);
+    this.ProfileImage=this.adminArray.profile_pic.changingThisBreaksApplicationSecurity;
+    this.testDataService.updateProfile.next(this.adminArray);
+  })
+ this.testDataService.UpdatePic.subscribe(res=>{
+    this.ProfileImage=res.changingThisBreaksApplicationSecurity;
   })
 }
 }
@@ -72,4 +75,7 @@ else if(this.admintoken){
     this.route.navigate(['/login/admin/0']);
   }
 
+  OpenProfile(){
+    this.route.navigate(['/admin/profile'])
+  }
 }

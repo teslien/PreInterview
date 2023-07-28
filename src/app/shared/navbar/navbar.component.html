@@ -21,10 +21,11 @@
         <li  class="navbar_adminlogo flex justify-content-center align-items-center ml-6 cursor-pointer">
           <div class="dropdown">
           <div class="navbar_adminlogo_logo dropbtn">
-            <img src="../../../assets/images/adminlogo.png" height="100%" width="100%" alt="">
+            <ng-template #profileText><p-skeleton shape="circle" size="100%"></p-skeleton></ng-template>
+            <img [src]="ProfileImage" *ngIf="ProfileImage; else profileText" class="border-circle" width="100%" height="100%" alt="profile_Image">
           </div>
           <div class="dropdown-content">
-            <a routerLink="/admin/profile">Profile</a>
+            <a (click)="OpenProfile()">Profile</a>
             <a>Settings</a>
             <a class="text-red-500" (click)="logout()">Logout</a>
           </div>

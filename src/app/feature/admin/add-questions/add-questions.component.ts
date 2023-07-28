@@ -41,7 +41,6 @@ export class AddQuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.adminId = sessionStorage.getItem("UserId");
     this.testData = JSON.parse(localStorage.getItem("customtest"));
-    console.log(this.testData);
   }
   
   addOptions(){
@@ -71,7 +70,6 @@ export class AddQuestionsComponent implements OnInit {
       "correctAnswer": this.selectedOption
    }
    this.quizdata.push(data);
-   console.log(this.quizdata);
    this.currentQuestion++;
    this.Options=[
     {
@@ -131,7 +129,7 @@ export class AddQuestionsComponent implements OnInit {
       "level":this.testData.level
     };
     this.testService.addCustomizeTest(quiz,this.adminId).subscribe(res=>{
-      console.log(res);
+  
       this.loading=false;
       this.route.navigate(['/admin/tests']);
     })

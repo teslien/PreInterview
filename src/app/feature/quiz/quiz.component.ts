@@ -90,12 +90,10 @@ export class QuizComponent implements OnInit {
       }
     })
     this.loading = true;
-    console.log(this.Score);
     const admin = sessionStorage.getItem("admid");
     const applicant = sessionStorage.getItem("ApplicantId");
     this.testDataService.SendAnswerSheet(this.quizData, applicant, admin).subscribe(res => {
       this.testDataService.UpdateScore(this.Score, applicant, admin).subscribe(res => {
-        console.log(this.Score);
         this.testDataService.updateTestStatus({ test_status: "Completed" }, applicant, admin).subscribe(res => {
           this.imageCaptured=JSON.parse(localStorage.getItem("Imagescaptured"))
           this.testDataService.updateCapturedImages(this.imageCaptured,applicant,admin).subscribe(res=>{
@@ -146,7 +144,6 @@ export class QuizComponent implements OnInit {
     this.trigger.next();
   }
   handleImage(webcamImage: WebcamImage): void {
-    console.info('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
 
   }

@@ -10,7 +10,8 @@ export class TestDataService {
 
   UpdateNavbar = new EventEmitter<any>();
   applicantdatalog=  new Rx.Subject<any>();
-  updateReportCard = new Rx.Subject<any>();
+  updateProfile = new Rx.BehaviorSubject<any>({});
+  UpdatePic=new EventEmitter<any>();
   
 
   constructor(private http: HttpClient) { }
@@ -145,5 +146,7 @@ export class TestDataService {
     })
   }
 
-  
+  UpDateAdminProfile(data:any,adminId:any){
+    return this.http.put(`https://interview-test-648c5-default-rtdb.firebaseio.com/admin/${adminId}.json`,data);
+  }
 }

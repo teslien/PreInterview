@@ -34,16 +34,14 @@ export class ReportCardComponent implements OnInit,OnDestroy {
         this.totalQuestions=this.reportCard.totalquestions;
         this.getUserInfo(this.reportCard.ip);
         this.loading=false;
-        console.log(this.reportCard);
+
       })
     })
 
   }
 
   getUserInfo(info:any){
-    console.log(info);
       this.testService.getUserInfo(info).subscribe((res)=>{
-        console.log(res);
         this.extraDetails=res;
       })
     

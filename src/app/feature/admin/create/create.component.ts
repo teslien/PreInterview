@@ -69,7 +69,7 @@ export class CreateComponent implements OnInit {
         "shuffle": this.testForm.get('shuffle').value,
         "level":this.testForm.get('Levels').value
       }
-      console.log(quizdata);
+  
       localStorage.setItem("customtest",JSON.stringify(quizdata))
       this.route.navigate(['/admin/createtest/add']);
     }

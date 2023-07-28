@@ -28,7 +28,6 @@ export class PhotoVerificationComponent implements OnInit {
    this.trigger.next();
   }
   handleImage(webcamImage: WebcamImage): void {
-   console.info('received webcam image', webcamImage);
    this.webcamImage = webcamImage;
 
   }
@@ -45,16 +44,8 @@ export class PhotoVerificationComponent implements OnInit {
   }
 
   NextPage(){
-    this.testDataService.updateFirstPic(this.webcamImage,this.applicantid,this.adminId).subscribe(res=>{
-      console.log("Picture Sent To Interviewer");
-     },error=>{
-      console.log("Error Sending Picture",error);
-     })
-    this.testDataService.updateIP(this.UserIpAddress.ip,this.applicantid,this.adminId).subscribe(res=>{
-      console.log("IP Sent To Interviewer");
-    },error=>{
-      console.log("Error Sending IP")
-    })
+    this.testDataService.updateFirstPic(this.webcamImage,this.applicantid,this.adminId).subscribe()
+    this.testDataService.updateIP(this.UserIpAddress.ip,this.applicantid,this.adminId).subscribe()
      this.route.navigate(['/instruction'])
   }
 

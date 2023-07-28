@@ -21,7 +21,6 @@ export class ViewApplicantsComponent implements OnInit {
       this.ExcelData=res;
       this.load=false;
       this.loading=false;
-      console.log(this.ExcelData);
     })
   }
 
