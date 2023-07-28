@@ -10,8 +10,7 @@
     
     
     &_logo{
-        max-width: 150px;
-        width: 100%;
+        max-width: 97%;
         height: auto;
 
     }
@@ -38,6 +37,7 @@
         height: 4.7rem;
         border-radius: 50%;
         background-color: #E0E0E0;
+        margin-left:3rem ;
 
         &_logo{
             width: 4rem;
@@ -130,8 +130,7 @@ li {
   }
 
   @media only screen and (max-width: 600px) {
-    .navbar_logo{
-     width: 100px;
-     height: auto;
+    .navbar_adminlogo{
+     margin-left:0;
     }
   }

@@ -1,7 +1,14 @@
 <nav class="navbar bg-white textWonder">
   <div class="navbar_center">
 
-      <img src='../../../assets/logoWonder.png' alt="logo" class="navbar_logo" >
+
+    <picture>
+      <source media="(max-width: 799px)" srcset="../../../assets/images/won.png" />
+      <source media="(min-width: 800px)" srcset="../../../assets/logoWonder.png" />
+      <img src="../../../assets/logoWonder.png" alt="Chris standing up holding his daughter Elva" class="navbar_logo" />
+    </picture>
+      <!-- <img srcset="../../../assets/images/won.png 480w, ../../../assets/logoWonder.png 800w"  sizes="(max-width: 600px) 480px,
+      800px" src='../../../assets/logoWonder.png' alt="logo" class="navbar_logo" > -->
 
 
       <div *ngIf="roundDetails">
@@ -16,9 +23,9 @@
           <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1  hoverLine" routerLink="/admin/tests" routerLinkActive="activeClass">Tests</li>
         </div>
         <div class="navbar_link gap-2 relative cursor-pointer ">
-          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1  hoverLine mr-4" routerLink="/admin/applicants" routerLinkActive="activeClass">Applicants</li>
+          <li class="flex-grow-1 flex justify-content-center align-items-center flex-shrink-1  hoverLine mr-4 " routerLink="/admin/applicants" routerLinkActive="activeClass">Applicants</li>
         </div>
-        <li  class="navbar_adminlogo flex justify-content-center align-items-center ml-6 cursor-pointer">
+        <li  class="navbar_adminlogo flex justify-content-center align-items-center cursor-pointer">
           <div class="dropdown">
           <div class="navbar_adminlogo_logo dropbtn">
             <ng-template #profileText><p-skeleton shape="circle" size="100%"></p-skeleton></ng-template>
