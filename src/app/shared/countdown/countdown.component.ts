@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TestDataService } from 'src/app/service/test-data.service';
 
 @Component({
   selector: 'app-countdown',
@@ -6,106 +7,54 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./countdown.component.scss']
 })
 export class CountdownComponent implements OnInit {
-  @Input() value: any[]=[];
-  @Input() startPositive: boolean=false;
-  @Output() MinutesSharing = new EventEmitter<string>()
 
-  ms: any = '0' + 0;
-  sec: any = '0' + 0;
-  min: any = '0' + 0;
-  hr: any = '0' + 0;
-  running = false;
-  startTimer: any;
-  constructor() { }
+  minutesInput: number;
+  secondsInput: number;
+  timerValue: number;
+  isTimerRunning: boolean = false;
+
+  constructor(private textDataService:TestDataService) {}
 
   ngOnInit(): void {
-    if (this.startPositive) {
-      this.start();
-    } else {
-      if(this.value!=null)
-      {
-        this.startNegative(this.value[0], this.value[1], this.value[2], this.value[3]);
+    const storedTimer = localStorage.getItem('timer_value');
+    this.timerValue = storedTimer ? parseInt(storedTimer, 10) : 0;
+    this.minutesInput = Math.floor(this.timerValue / 60);
+    this.secondsInput = this.timerValue % 60;
+    this.startTimer();
+  }
+
+  startTimer(): void {
+    this.timerValue = this.minutesInput * 60 + this.secondsInput;
+    localStorage.setItem('timer_value', this.timerValue.toString());
+    this.isTimerRunning = true;
+    this.countdown();
+  }
+
+  countdown(): void {
+    const interval = setInterval(() => {
+      if (this.timerValue > 0 && this.isTimerRunning) {
+        this.timerValue--;
+        localStorage.setItem('timer_value', this.timerValue.toString());
+        this.minutesInput = Math.floor(this.timerValue / 60);
+        this.secondsInput = this.timerValue % 60;
+        if(this.timerValue==0){
+          this.textDataService.autoSubmitting.next(true);
+        }
+      } else {
+        clearInterval(interval);
+        this.isTimerRunning = false;
       }
+    }, 1000); // 1 second in milliseconds
+  }
+
+  pauseTimer(): void {
+    this.isTimerRunning = false;
+  }
+
+  resumeTimer(): void {
+    if (!this.isTimerRunning) {
+      this.isTimerRunning = true;
+      this.countdown();
     }
   }
-
-  start(): void {
-    if (!this.running) {
-      this.running = true;
-      this.startTimer = setInterval(() => {
-        this.ms++;
-        this.ms = this.ms < 10 ? '0' + this.ms : this.ms;
-
-        if (this.ms === 100) {
-          this.sec++;
-          this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
-          this.ms = '0' + 0;
-        }
-
-        if (this.sec === 60) {
-          this.min++;
-          this.min = this.min > 10 ? '0' + this.min : this.min;
-          this.sec = '0' + 0;
-        }
-
-        if (this.min === 60) {
-          this.hr++;
-          this.hr = this.hr < 10 ? '0' + this.hr : this.hr;
-          this.min = '0' + 0;
-        }
-      }, 10);
-
-    } else {
-      this.stop();
-    }
-  }
-
-  stop(): void {
-    clearInterval(this.startTimer);
-    this.running = false;
-  }
-
-  startNegative(hr: any, min: any, sec: any, ms: any): void {
-    this.hr = hr;
-    this.min = min;
-    this.ms = ms;
-    this.sec = sec;
-
-    if (!this.running) {
-      this.running = true;
-      this.startTimer = setInterval(() => {
-        this.ms--;
-        this.ms = this.ms < 10 ? '0' + this.ms : this.ms;
-
-        if (this.ms == 0) {
-          this.sec--;
-          this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
-          this.ms = 99;
-        }
-
-        if (this.sec == 0) {
-          this.min--;
-          this.MinutesSharing.emit(this.min);
-          this.min = this.min < 10 ? '0' + this.min : this.min;
-          this.sec = 59;
-        }
-
-        if (this.min == 0) {
-          this.hr--;
-          this.hr = this.hr < 10 ? '0' + this.hr : this.hr;
-          this.min = 59;
-        }
-        // if(this.hr==-1){
-        //   this.stop();
-        // }
-      }, 10);
-
-    } else {
-      this.stop();
-    }
-
-  }
-
-  
 }
-

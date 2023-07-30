@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
 import { WebcamImage } from 'ngx-webcam';
@@ -49,12 +49,24 @@ export class QuizComponent implements OnInit {
 
 
 
-  constructor(private testDataService: TestDataService, private route: Router) { }
+  constructor(private testDataService: TestDataService, private route: Router) {
+
+    //code to block inspect option
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+   }
 
   ngOnInit(): void {
     this.quizDetails = JSON.parse(localStorage.getItem("QuizData"));
     this.quizData = JSON.parse(localStorage.getItem("questionData"));
     this.randomlyCapturingImage();
+
+    this.testDataService.autoSubmitting.subscribe(res=>{
+      if(res==true){
+        this.onTestSubmit();
+      }
+    })
   }
 
   quizData: any[0];
@@ -85,8 +97,10 @@ export class QuizComponent implements OnInit {
   onTestSubmit() {
     this.quizData.forEach(i => {
       const ans = i.options.find(item => item.check === true);
-      if (i.correctAnswer.name == ans.name) {
+      if (i.correctAnswer.name == ans?.name) {
         this.Score++;
+      }else{
+        return;
       }
     })
     this.loading = true;
@@ -165,10 +179,27 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  onDataReceived(event: any) {
-    sessionStorage.setItem("Mins", event);
+
+//code to block inspect options
+@HostListener('document:keydown', ['$event'])
+handleKeyboardEvent(e: KeyboardEvent) {
+  console.log(e)
+  if (e.key === 'F12') {
+    return false;
   }
-
-
+  if (e.ctrlKey && e.shiftKey && e.key === "I") {
+    return false;
+  }
+  if (e.ctrlKey && e.shiftKey && e.key === "C") {
+    return false;
+  }
+  if (e.ctrlKey && e.shiftKey && e.key === "J") {
+    return false;
+  }
+  if (e.ctrlKey && e.key == "U") {
+    return false;
+  }
+  return true;
+}
 
 }

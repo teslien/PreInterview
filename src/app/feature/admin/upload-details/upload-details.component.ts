@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TestDataService } from 'src/app/service/test-data.service';
@@ -31,12 +31,12 @@ export class UploadDetailsComponent implements OnInit {
 		})
 
 		this.applicantForm = new FormGroup({
-			'sr': new FormControl(null),
-			'name': new FormControl(null),
-			'email': new FormControl(null),
-			'mobile': new FormControl(null),
-			'location': new FormControl(null),
-			'position': new FormControl(null)
+			'sr': new FormControl(null,Validators.required),
+			'name': new FormControl(null,Validators.required),
+			'email': new FormControl(null,[Validators.required,Validators.email]),
+			'mobile': new FormControl(null,[Validators.required]),
+			'location': new FormControl(null,Validators.required),
+			'position': new FormControl(null,Validators.required)
 		})
 	}
 
@@ -98,27 +98,30 @@ export class UploadDetailsComponent implements OnInit {
 	}
 
 	OnAdd() {
-		if(this.ExcelData!=undefined){
-			let data = {
-				Applied: this.applicantForm.get('position').value,
-				Email: this.applicantForm.get('email').value,
-				Location :this.applicantForm.get('location').value,
-				Mobile_number : this.applicantForm.get('mobile').value,
-				Name : this.applicantForm.get('name').value,
-				SrNo : this.ExcelData.length+1
+		if(this.applicantForm.valid){
+			if(this.ExcelData!=undefined){
+				let data = {
+					Applied: this.applicantForm.get('position').value,
+					Email: this.applicantForm.get('email').value,
+					Location :this.applicantForm.get('location').value,
+					Mobile_number : this.applicantForm.get('mobile').value,
+					Name : this.applicantForm.get('name').value,
+					SrNo : this.ExcelData.length+1
+				}
+				this.ExcelData.push(data);
+			}else{
+				let data = {
+					Applied: this.applicantForm.get('position').value,
+					Email: this.applicantForm.get('email').value,
+					Location :this.applicantForm.get('location').value,
+					Mobile_number : this.applicantForm.get('mobile').value,
+					Name : this.applicantForm.get('name').value,
+					SrNo : this.applicantForm.get('sr').value
+				}
+				this.ExcelData=[data];
 			}
-			this.ExcelData.push(data);
-		}else{
-			let data = {
-				Applied: this.applicantForm.get('position').value,
-				Email: this.applicantForm.get('email').value,
-				Location :this.applicantForm.get('location').value,
-				Mobile_number : this.applicantForm.get('mobile').value,
-				Name : this.applicantForm.get('name').value,
-				SrNo : this.applicantForm.get('sr').value
-			}
-			this.ExcelData=[data];
 		}
+
 	}
 
 }

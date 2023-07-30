@@ -1,10 +1,10 @@
 <app-loader *ngIf="loading"></app-loader>
 <p-dialog header="Add Applicants" [(visible)]="displayBasic" [style]="{width: '50vw'}" [maximizable]="true"  [modal]="true" [baseZIndex]="10000">
 <form class="flex gap-4 flex-column" [formGroup]="applicantForm" (ngSubmit)="OnAdd()">
-    <input type="text" pInputText formControlName="sr" placeholder="Enter Sr.No" class="text-2xl">
+    <input type="number" pInputText formControlName="sr" placeholder="Enter Sr.No" class="text-2xl">
     <input type="text" pInputText formControlName="name" placeholder="Enter Name" class="text-2xl">
-    <input type="text" pInputText formControlName="email" placeholder="Enter Email" class="text-2xl">
-    <input type="text" pInputText formControlName="mobile" placeholder="Enter Mobile Number" class="text-2xl">
+    <input type="email" pInputText formControlName="email" placeholder="Enter Email" class="text-2xl">
+    <input type="number" pInputText formControlName="mobile" placeholder="Enter Mobile Number" class="text-2xl">
     <input type="text" pInputText formControlName="location" placeholder="Enter Location" class="text-2xl">
     <input type="text" pInputText formControlName="position" placeholder="Enter Position" class="text-2xl">
     <div class="flex justify-content-end">

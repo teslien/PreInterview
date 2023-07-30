@@ -29,6 +29,7 @@ import { ViewApplicantsComponent } from './feature/admin/view-applicants/view-ap
 import { ReportCardComponent } from './feature/admin/report-card/report-card.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { ProfileComponent } from './feature/admin/profile/profile.component';
+import { SecToMinPipe } from './sec-to-min.pipe';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ProfileComponent } from './feature/admin/profile/profile.component';
     ViewApplicantsComponent,
     ReportCardComponent,
     LoaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    SecToMinPipe
   ],
   imports: [
     BrowserModule,

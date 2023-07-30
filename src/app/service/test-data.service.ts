@@ -10,6 +10,7 @@ export class TestDataService {
 
   UpdateNavbar = new EventEmitter<any>();
   applicantdatalog=  new Rx.Subject<any>();
+  autoSubmitting=  new Rx.Subject<boolean>();
   updateProfile = new Rx.BehaviorSubject<any>({});
   UpdatePic=new EventEmitter<any>();
   

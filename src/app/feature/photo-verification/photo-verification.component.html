@@ -4,13 +4,13 @@
     <label class="verification_heading">Verification Step</label>
   </div>
   <div class="grid mt-3">
-    <div class="col-6 flex justify-content-center">
-      <webcam *ngIf="!webcamImage" [height]="400" [width]="500" [trigger]="triggerObservable" class="border-1" (imageCapture)="handleImage($event)"></webcam>
+    <div class="lg:col-6 md:col-6 col-12 flex justify-content-center">
+      <webcam *ngIf="!webcamImage" [height]="400" [width]="500" [trigger]="triggerObservable" class="border-1 " (imageCapture)="handleImage($event)"></webcam>
       <div class="snapshot" *ngIf="webcamImage">
         <img [src]="webcamImage.imageAsDataUrl" class="verification_photo"/>
       </div>
     </div>
-    <div class="col-6 verification_hiwid">
+    <div class="col-12 md:col-6 lg:col-6 verification_hiwid">
       <label class="font-bold">Recommended :</label>
       <ol  class="flex flex-column gap-3">
         <li> <span class="font-bold"> Find a well-lit area:</span> Look for a location with good lighting, preferably natural light, to ensure your face is well illuminated and there are no harsh shadows.</li>
@@ -23,7 +23,7 @@
         <li>Make Sure the Photo is not blurred.</li>
       </ul>
     </div>
-    <div class="col-12 h-10rem align-items-center flex justify-content-center gap-3 p-2">
+    <div class="col-12 h-10rem align-items-center flex justify-content-center flex-wrap gap-3 p-2">
       <a class="actionBtn" btn [customStyles]="{
         background:'green',
         width:'25rem'
