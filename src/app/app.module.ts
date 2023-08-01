@@ -30,6 +30,7 @@ import { ReportCardComponent } from './feature/admin/report-card/report-card.com
 import { LoaderComponent } from './shared/loader/loader.component';
 import { ProfileComponent } from './feature/admin/profile/profile.component';
 import { SecToMinPipe } from './sec-to-min.pipe';
+import { ShufflePipe } from './shuffle.pipe';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { SecToMinPipe } from './sec-to-min.pipe';
     ReportCardComponent,
     LoaderComponent,
     ProfileComponent,
-    SecToMinPipe
+    SecToMinPipe,
+    ShufflePipe
   ],
   imports: [
     BrowserModule,

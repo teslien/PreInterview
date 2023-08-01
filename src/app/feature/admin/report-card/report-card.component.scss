@@ -1,4 +1,26 @@
 
+.a_document{
+    display: inline-block;
+}
+:host ::ng-deep .a_document { 
+    display: block;
+    max-width: 600px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  :host ::ng-deep .a_document img { 
+    max-width: 50%;
+    max-height: auto;
+  }
+
+  :host ::ng-deep .a_document h2{
+    font-family: inter;
+    font-size: 1.7rem;
+    font-weight: 100;
+  }
+
+
 .blinking{
     animation: blink 2s linear infinite;
 }
@@ -10,3 +32,58 @@
     100%{opacity: 1;}
     }
 
+    :host::ng-deep{
+        
+        .radioStyle_radbtn {
+               margin: 1rem;
+               margin-right: 2rem;
+               margin-left: 1.7rem;
+            }
+        
+        
+        input[type=radio] {
+            border: 0px;
+            height: 2.7em;
+            width: 2.7em;
+            z-index: 1;   
+            // appearance: none;
+    
+        }
+        
+        .radio-item{
+            position: relative;
+            border:1px solid #CDCDCD;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            margin: 1rem;
+        }
+    
+     .radio-item label{
+        position: absolute;
+        padding: 20px;
+        width: 100%;
+        border-radius:9px;
+        text-align: start;
+        
+     }
+    
+    
+    
+    
+       .radio-item input[type="radio"]:checked+label{
+            background-color: #3266CA;
+            color:#fff;
+    
+        } 
+
+
+        .ItIscheck{
+            .radio-item input[type="radio"]:checked+label{
+                background-color: #3266CA;
+                color:#fff;
+        
+            } 
+    
+        }
+    }

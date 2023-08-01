@@ -1,17 +1,18 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
 import { WebcamImage } from 'ngx-webcam';
 import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {MessageService, PrimeNGConfig} from 'primeng/api';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss']
+  styleUrls: ['./quiz.component.scss'],
+  providers: [MessageService]
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit{
 
   dataSubscription: Subscription;
 
@@ -39,34 +40,42 @@ export class QuizComponent implements OnInit {
   Score: number = 0;
   loading: boolean = false;
   private interval: any;
-
-
-
+  shouldShuffle: boolean;
+  private intervalSubscription: Subscription;
 
   //image
   imageCaptured: any[] = [];
+  appHidden: boolean;
+  cheactValue:number=0;
 
 
 
 
-  constructor(private testDataService: TestDataService, private route: Router) {
+  constructor(private testDataService: TestDataService, private route: Router,private messageService: MessageService, private primengConfig: PrimeNGConfig) {
 
-    //code to block inspect option
-    document.addEventListener('contextmenu', function(e) {
+    // code to block inspect option
+    document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
     });
-   }
+
+    // this.startInterval();
+    
+  }
 
   ngOnInit(): void {
     this.quizDetails = JSON.parse(localStorage.getItem("QuizData"));
     this.quizData = JSON.parse(localStorage.getItem("questionData"));
-    this.randomlyCapturingImage();
+    const takePic = JSON.parse(localStorage.getItem("takePic"));
+    this.shouldShuffle = this.quizDetails.shuffle;
+    console.log(takePic);
+    this.randomlyCapturingImage(takePic);
 
-    this.testDataService.autoSubmitting.subscribe(res=>{
-      if(res==true){
+    this.testDataService.autoSubmitting.subscribe(res => {
+      if (res == true) {
         this.onTestSubmit();
       }
     })
+    this.primengConfig.ripple = true;
   }
 
   quizData: any[0];
@@ -99,7 +108,7 @@ export class QuizComponent implements OnInit {
       const ans = i.options.find(item => item.check === true);
       if (i.correctAnswer.name == ans?.name) {
         this.Score++;
-      }else{
+      } else {
         return;
       }
     })
@@ -109,8 +118,8 @@ export class QuizComponent implements OnInit {
     this.testDataService.SendAnswerSheet(this.quizData, applicant, admin).subscribe(res => {
       this.testDataService.UpdateScore(this.Score, applicant, admin).subscribe(res => {
         this.testDataService.updateTestStatus({ test_status: "Completed" }, applicant, admin).subscribe(res => {
-          this.imageCaptured=JSON.parse(localStorage.getItem("Imagescaptured"))
-          this.testDataService.updateCapturedImages(this.imageCaptured,applicant,admin).subscribe(res=>{
+          this.imageCaptured = JSON.parse(localStorage.getItem("Imagescaptured"))
+          this.testDataService.updateCapturedImages(this.imageCaptured, applicant, admin).subscribe(res => {
             this.loading = false;
             this.route.navigate(['/quiz/result']);
           })
@@ -167,39 +176,76 @@ export class QuizComponent implements OnInit {
   }
 
 
-  randomlyCapturingImage() {
-    for(let i=0;i<=9;i++){
+  randomlyCapturingImage(sec:any) {
+    const timelim = sec*1000;
+    for(let i=0;i<=10;i++){
       this.interval = setTimeout(() => {
         this.triggerSnapshot();
         if (this.webcamImage != null) {
           this.imageCaptured.push(this.webcamImage);
           localStorage.setItem("Imagescaptured",JSON.stringify(this.imageCaptured));
         }
-      }, 240000);
+      }, timelim);
     }
+
   }
 
+  // private startInterval(): void {
+  //   const intervalTime = 60000; // 1000 milliseconds (1 second)
+  //   this.intervalSubscription = interval(intervalTime).subscribe(() => {
+  //     this.onIntervalTick();
+  //   });
+  // }
 
-//code to block inspect options
-@HostListener('document:keydown', ['$event'])
-handleKeyboardEvent(e: KeyboardEvent) {
-  console.log(e)
-  if (e.key === 'F12') {
-    return false;
+  // private onIntervalTick(): void {
+  //   this.triggerSnapshot();
+  //   if (this.webcamImage != null) {
+  //     this.imageCaptured.push(this.webcamImage);
+  //     localStorage.setItem("Imagescaptured", JSON.stringify(this.imageCaptured));
+  //   }
+
+  // }
+
+  //code to block inspect options
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(e: KeyboardEvent) {
+    console.log(e)
+    if (e.key === 'F12') {
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.key === "I") {
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.key === "C") {
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.key === "J") {
+      return false;
+    }
+    if (e.ctrlKey && e.key == "U") {
+      return false;
+    }
+    return true;
   }
-  if (e.ctrlKey && e.shiftKey && e.key === "I") {
-    return false;
-  }
-  if (e.ctrlKey && e.shiftKey && e.key === "C") {
-    return false;
-  }
-  if (e.ctrlKey && e.shiftKey && e.key === "J") {
-    return false;
-  }
-  if (e.ctrlKey && e.key == "U") {
-    return false;
-  }
-  return true;
+
+  // ngOnDestroy(): void {
+  //   // Clean up the subscription to avoid memory leaks when the component is destroyed
+  //   if (this.intervalSubscription) {
+  //     this.intervalSubscription.unsubscribe();
+  //   }
+  // }
+
+
+  @HostListener('document:visibilitychange', ['$event'])
+  appVisibility() {
+   if (document.hidden) {
+      //do whatever you want
+      this.appHidden = true;
+      this.messageService.add({severity:'warn', summary: `Warning ${this.cheactValue+1}`, detail: 'Switching Tabs will result Auto submitting!', sticky: true});
+      this.cheactValue++;
+      if(this.cheactValue==4){
+        this.onTestSubmit()
+      }
+    } 
 }
-
 }

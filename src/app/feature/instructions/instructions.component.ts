@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit,HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { TestDataService } from 'src/app/service/test-data.service';
 
@@ -12,7 +12,13 @@ export class InstructionsComponent implements OnInit {
 
   bgColorBtn='#3266CA';
   bgColorSEBtn='#FBFBFB';
-  constructor(@Inject(DOCUMENT) private document: any,private router: Router,private testDataService:TestDataService) { }
+  constructor(@Inject(DOCUMENT) private document: any,private router: Router,private testDataService:TestDataService) {
+     
+      //code to block inspect option
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+  }
   elem: any;
   quizData:any;
 
@@ -28,12 +34,12 @@ export class InstructionsComponent implements OnInit {
       this.testDataService.getApplicantSpecificQuiz(admin,testId).subscribe(res=>{
         localStorage.setItem("QuizData",JSON.stringify(res));
         this.quizData=res;
-        const sec = this.quizData.totalTimeInMins*60;
+        const sec = (this.quizData.totalTimeInMins-1)*60;
+        const takePic = sec/10;
+        localStorage.setItem("takePic",takePic.toString());
         localStorage.setItem("timer_value",sec.toString());
         localStorage.setItem("questionData",JSON.stringify(this.quizData.questionData));
       })
-
-
   }
 
 
@@ -72,5 +78,31 @@ export class InstructionsComponent implements OnInit {
     this.openFullscreen();
     this.router.navigate(['/quiz']);
   }
+
+
+
+
+  //code to block inspect options
+@HostListener('document:keydown', ['$event'])
+handleKeyboardEvent(e: KeyboardEvent) {
+  console.log(e)
+  if (e.key === 'F12') {
+    return false;
+  }
+  if (e.ctrlKey && e.shiftKey && e.key === "I") {
+    return false;
+  }
+  if (e.ctrlKey && e.shiftKey && e.key === "C") {
+    return false;
+  }
+  if (e.ctrlKey && e.shiftKey && e.key === "J") {
+    return false;
+  }
+  if (e.ctrlKey && e.key == "U") {
+    return false;
+  }
+  return true;
+}
+
 
 }

@@ -28,6 +28,7 @@ export class ReportCardComponent implements OnInit,OnDestroy {
     this.dataSubscription= this.activatedRoute.queryParams.subscribe(data=>{
       const obj = data;
       this.testService.getSpecificApplicantdata(obj['id'],this.adminId).subscribe((res)=>{
+        console.log(res);
         this.reportCard=res;
         this.value=this.reportCard.score;
         this.ImageData=this.reportCard.imageCaptured;
@@ -48,6 +49,15 @@ export class ReportCardComponent implements OnInit,OnDestroy {
     }
 
 
-
+CalculateHighlight(id:any,index:any){
+  let userAnswer:boolean;
+    const ans =   this.reportCard.answerGiven[id].options[index];
+    if (this.reportCard.answerGiven[id].correctAnswer.name == ans?.name) {
+      userAnswer=true;
+    }else if(this.reportCard.answerGiven[id].correctAnswer!=ans?.name){
+      userAnswer=false
+    }
+  return userAnswer;
+}
 
 }

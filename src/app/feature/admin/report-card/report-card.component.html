@@ -47,13 +47,13 @@
                 </ul>
             </div>
         </div>
-        <div class="col-12 lg:col-6 md:col-6 p-4">
+        <div class="col-12 lg:col-6 md:col-6 py-4">
             <div class="p-2 largeboldFont font-bold mb-3">
                 Images Captured Randomly
             </div>
             <div class=" flex flex-wrap gap-2">
                 <div *ngFor="let item of ImageData">
-                   <p-image src="{{item._imageAsDataUrl}}" alt="Image" width="180px" height="auto" [preview]="true" class="relative">
+                   <p-image src="{{item._imageAsDataUrl}}" alt="Image" width="180px" height="auto" [preview]="true" >
                 </p-image>
 
                 </div>
@@ -61,6 +61,21 @@
             </div>
      
         </div>
-
+        <div  class="col-12">
+            <div *ngFor="let item of reportCard?.answerGiven;index as id"  class="col-12 flex flex-wrap align-items-center bg-gray-200 mb-2">
+                <div class="primaryFontSize">
+                    Q.{{item.id}}
+                </div>
+                <div class="lg:col-6 md:col-6 col-12 a_document" [innerHTML]="item.question">
+                 
+                </div>
+                <div class="col">
+                    <div *ngFor="let option of item.options; index as i"> 
+                        
+                        <label for="option.name" class="font-bold"><div [ngClass]="{'bg-blue-500 text-white': item.options[i].check==true,'bg-green-500 text-white': CalculateHighlight(id,i)}" class="secondaryFontSize border-1 p-2 mb-4">{{option.name}}</div></label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </app-wrap-instruction>
