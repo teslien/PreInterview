@@ -15,9 +15,10 @@
 </form>
 </p-dialog>
 <app-wrap-instruction>
-    <div class="mb-3 flex justify-content-between">
+    <div class="mb-3 flex justify-content-between ">
         <input type="file" (change)="ReadExcel($event)">
-        <div class="flex gap-4">
+        <div class="flex gap-4 align-items-center">
+            <a href="../../../../assets/applicants.xlsx" title="Sample Excel File" class="no-underline" download>Excel <i class="pi pi-download"></i></a>
             <app-button [customStyles]="{
                 color:'#252525'
             }" (click)="showModalDialog()">Add<i class="pi pi-plus textWonder"></i></app-button>
