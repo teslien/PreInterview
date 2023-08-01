@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { TestDataService } from 'src/app/service/test-data.service';
 import { Subscription } from 'rxjs';
 import { WebcamImage } from 'ngx-webcam';
@@ -39,9 +39,8 @@ export class QuizComponent implements OnInit{
   Mins: any;
   Score: number = 0;
   loading: boolean = false;
-  private interval: any;
   shouldShuffle: boolean;
-  private intervalSubscription: Subscription;
+
 
   //image
   imageCaptured: any[] = [];
@@ -58,7 +57,6 @@ export class QuizComponent implements OnInit{
       e.preventDefault();
     });
 
-    // this.startInterval();
     
   }
 
@@ -177,34 +175,27 @@ export class QuizComponent implements OnInit{
 
 
   randomlyCapturingImage(sec:any) {
-    const timelim = sec*1000;
-    for(let i=0;i<=10;i++){
-      this.interval = setTimeout(() => {
-        this.triggerSnapshot();
-        if (this.webcamImage != null) {
-          this.imageCaptured.push(this.webcamImage);
-          localStorage.setItem("Imagescaptured",JSON.stringify(this.imageCaptured));
-        }
-      }, timelim);
-    }
+    const timeLim = sec * 1000;
+    let captureCount = 0;
+  
+    const captureImage = () => {
+      this.triggerSnapshot();
+      if (this.webcamImage != null) {
+        this.imageCaptured.push(this.webcamImage);
+        localStorage.setItem("Imagescaptured", JSON.stringify(this.imageCaptured));
+      }
+      
+      captureCount++;
+      if (captureCount < 10) {
+        setTimeout(captureImage, timeLim);
+      }
+    };
+  
+    // Start the capturing process by capturing the first image immediately
+    captureImage();
 
   }
 
-  // private startInterval(): void {
-  //   const intervalTime = 60000; // 1000 milliseconds (1 second)
-  //   this.intervalSubscription = interval(intervalTime).subscribe(() => {
-  //     this.onIntervalTick();
-  //   });
-  // }
-
-  // private onIntervalTick(): void {
-  //   this.triggerSnapshot();
-  //   if (this.webcamImage != null) {
-  //     this.imageCaptured.push(this.webcamImage);
-  //     localStorage.setItem("Imagescaptured", JSON.stringify(this.imageCaptured));
-  //   }
-
-  // }
 
   //code to block inspect options
   @HostListener('document:keydown', ['$event'])
@@ -227,13 +218,6 @@ export class QuizComponent implements OnInit{
     }
     return true;
   }
-
-  // ngOnDestroy(): void {
-  //   // Clean up the subscription to avoid memory leaks when the component is destroyed
-  //   if (this.intervalSubscription) {
-  //     this.intervalSubscription.unsubscribe();
-  //   }
-  // }
 
 
   @HostListener('document:visibilitychange', ['$event'])

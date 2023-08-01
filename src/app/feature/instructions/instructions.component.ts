@@ -34,7 +34,7 @@ export class InstructionsComponent implements OnInit {
       this.testDataService.getApplicantSpecificQuiz(admin,testId).subscribe(res=>{
         localStorage.setItem("QuizData",JSON.stringify(res));
         this.quizData=res;
-        const sec = (this.quizData.totalTimeInMins-1)*60;
+        const sec = (this.quizData.totalTimeInMins)*60;
         const takePic = sec/10;
         localStorage.setItem("takePic",takePic.toString());
         localStorage.setItem("timer_value",sec.toString());

@@ -44,6 +44,12 @@
   max-width: 100%;
 }
 
+:host ::ng-deep .appQuiz_document h2{
+  font-family: inter;
+  font-size: 1.7rem;
+  font-weight: 100;
+}
+
 :host::ng-deep {
 
   .radioStyle_radbtn {
@@ -80,4 +86,16 @@
     background-color: #3266ca;
     color: #fff;
   }
+}
+
+:host::ng-deep {
+  .p-component {
+    font-size: 1.4rem;
+    font-family: inter;
+  }
+
+  .p-toast {
+    width: 45rem;
+  }
+
 }

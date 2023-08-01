@@ -7,9 +7,8 @@ export class SecToMinPipe implements PipeTransform {
 
   transform(value: any) {
     const minutes: number = value / 60
-    var seconds = value % 60;
   
-    return Math.round(minutes) + ' min' + (seconds ? ' ' + seconds + ' sec' : ' 00 sec' );
+    return Math.round(minutes);
   }
   
 

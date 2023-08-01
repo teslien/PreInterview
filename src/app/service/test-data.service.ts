@@ -17,20 +17,6 @@ export class TestDataService {
 
   constructor(private http: HttpClient) { }
 
-
-  getTestkData() {
-    return this.http.get(`https://interview-test-648c5-default-rtdb.firebaseio.com/tests/-N_JA8C0VE4f9S3dhXut/-Na7J8Hoz-BsqGJQI8cD/questionData.json`).pipe(Rx.map(responsedata=>{
-      const testArray =[];
-      for(const key in responsedata){
-        if(responsedata.hasOwnProperty(key)){
-          testArray.push({...responsedata[key], id: key})
-        }
-      }
-      return testArray;
-    }));
-  }
-
-
   getUserIP(){
     return this.http.get('https://jsonip.com/');
   }
