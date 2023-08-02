@@ -102,8 +102,10 @@ export class QuizComponent implements OnInit{
   }
 
   onTestSubmit() {
+    this.Score=0;
+    this.quizData = JSON.parse(localStorage.getItem("questionData"));
     this.quizData.forEach(i => {
-      const ans = i.options.find(item => item.check === true);
+      const ans = i.options.find(item => item.check == true);
       if (i.correctAnswer.name == ans?.name) {
         this.Score++;
       } else {
