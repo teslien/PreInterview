@@ -20,7 +20,6 @@ import { PhotoVerificationComponent } from './feature/photo-verification/photo-v
 import {WebcamModule} from 'ngx-webcam';
 import { HomeComponent } from './feature/admin/home/home.component';
 import { UploadDetailsComponent } from './feature/admin/upload-details/upload-details.component';
-import { LinkGeneratedComponent } from './feature/admin/link-generated/link-generated.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './feature/admin/create/create.component';
 import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
@@ -49,7 +48,6 @@ import { ShufflePipe } from './shuffle.pipe';
     PhotoVerificationComponent,
     HomeComponent,
     UploadDetailsComponent,
-    LinkGeneratedComponent,
     CreateComponent,
     AddQuestionsComponent,
     TestResultComponent,

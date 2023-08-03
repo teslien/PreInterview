@@ -32,9 +32,8 @@
                 Cheat Monitor
             </div>
             <div class="primaryFontSize">
-                <ul class="flex flex-column gap-4 text-wrap">
+                <ul class="flex flex-column gap-4 text-wrap" *ngIf="extraDetails">
                     <li>Ip : {{reportCard?.ip}}</li>
-                    <li>Network : {{reportCard?.network}}</li>
                     <li>City: {{extraDetails?.city}}</li>
                     <li>Region : {{extraDetails?.region}}</li>
                     <li>Country : {{extraDetails?.country_name}} </li>

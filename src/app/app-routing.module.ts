@@ -7,7 +7,6 @@ import { LoginComponent } from './feature/login/login.component';
 import { PhotoVerificationComponent } from './feature/photo-verification/photo-verification.component';
 import { HomeComponent } from './feature/admin/home/home.component';
 import { UploadDetailsComponent } from './feature/admin/upload-details/upload-details.component';
-import { LinkGeneratedComponent } from './feature/admin/link-generated/link-generated.component';
 import { CreateComponent } from './feature/admin/create/create.component';
 import { AddQuestionsComponent } from './feature/admin/add-questions/add-questions.component';
 import { TestResultComponent } from './feature/test-result/test-result.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
   {path:'verification',component:PhotoVerificationComponent},
   {path:'admin', component:HomeComponent ,canActivate: [AuthGuard]},
   {path:'admin/upload',component:UploadDetailsComponent},
-  {path:'admin/generate',component:LinkGeneratedComponent},
   {path:'admin/create',component:CreateComponent},
   {path:'admin/createtest/add',component:AddQuestionsComponent},
   {path:'quiz/result',component:TestResultComponent},

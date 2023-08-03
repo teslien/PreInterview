@@ -136,4 +136,8 @@ export class TestDataService {
   UpDateAdminProfile(data:any,adminId:any){
     return this.http.put(`https://interview-test-648c5-default-rtdb.firebaseio.com/admin/${adminId}.json`,data);
   }
+
+  deleteApplicant(adminid:any,id:any){
+    return this.http.delete(`https://interview-test-648c5-default-rtdb.firebaseio.com/applicant/${adminid}/${id}.json`);
+  }
 }

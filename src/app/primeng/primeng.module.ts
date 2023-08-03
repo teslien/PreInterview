@@ -30,7 +30,7 @@ import {DataViewModule} from 'primeng/dataview';
 import {CardModule} from 'primeng/card';
 import {ImageModule} from 'primeng/image';
 import {SkeletonModule} from 'primeng/skeleton';
-
+import {InputMaskModule} from 'primeng/inputmask';
 
 @NgModule({
   declarations: [],
@@ -69,7 +69,8 @@ import {SkeletonModule} from 'primeng/skeleton';
     DataViewModule,
     CardModule,
     ImageModule,
-    SkeletonModule
+    SkeletonModule,
+    InputMaskModule
   ],
   exports:[
     InputTextModule,
@@ -105,7 +106,8 @@ import {SkeletonModule} from 'primeng/skeleton';
     DataViewModule,
     CardModule,
     ImageModule,
-    SkeletonModule
+    SkeletonModule,
+    InputMaskModule
   ]
 })
 export class PrimengModule { }

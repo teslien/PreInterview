@@ -3,29 +3,37 @@
     <div class="grid textWonder create">
         <div class="col-12 flex gap-4 p-4 align-items-center">
             <div class="create_back" routerLink="/admin/tests">
-                <i class="pi pi-arrow-left text-3xl font-bold text-gray-600"></i>
+                <i class="pi pi-arrow-left text-3xl font-bold text-gray-800"></i>
             </div>
             <label class="text-3xl font-bold">Create New Assessment</label>
         </div>
-        <form [formGroup]="testForm" class="w-full h-full p-4" (ngSubmit)="OnNextt()">
-        <div class="col-6 flex flex-column gap-5 p-4 w-full h-full">
-            <input type="text" pInputText formControlName="assessment" class="w-full text-3xl bg-gray-200 " placeholder="Name Your Assessment*">
+        <form [formGroup]="testForm" class="w-full h-full p-4 flex" (ngSubmit)="OnNextt()">
+        <div class="flex grid col-12">
+        <div class="lg:col-6 md:col-6 col-12 flex flex-column gap-4 p-4">
+            <label  class="primaryFontSize">Name Your Assessment<span class="text-red-500">*</span></label>
+            <input type="text" pInputText formControlName="assessment"  class="w-full text-3xl bg-gray-50 ">
             <span *ngIf="!testForm.get('assessment').valid && testForm.get('assessment').touched" class="text-red-500">Please Enter a valid name for test!</span>
-            <p-dropdown [options]="Categories" placeholder="Select Category" formControlName="Categories" styleClass="w-full text-3xl bg-gray-200" panelStyleClass="text-3xl"  optionLabel="name"></p-dropdown>
+            <label  class="primaryFontSize">Select Category<span class="text-red-500">*</span></label>
+            <p-dropdown [options]="Categories" formControlName="Categories" styleClass="w-full text-3xl bg-gray-50 " panelStyleClass="text-3xl"  optionLabel="name"></p-dropdown>
             <span *ngIf="!testForm.get('Categories').valid && testForm.get('Categories').touched" class="text-red-500">Please Select a category</span>
-            <p-dropdown [options]="Levels" placeholder="Select Level" formControlName="Levels" styleClass="w-full text-3xl bg-gray-200" panelStyleClass="text-3xl"  optionLabel="name"></p-dropdown>
+            <label  class="primaryFontSize">Select Level<span class="text-red-500">*</span></label>
+            <p-dropdown [options]="Levels"  formControlName="Levels" styleClass="w-full text-3xl bg-gray-50 " panelStyleClass="text-3xl"  optionLabel="name"></p-dropdown>
+            <span *ngIf="!testForm.get('Levels').valid && testForm.get('Levels').touched" class="text-red-500">Please Select a Level</span>
             <div class="flex gap-5 align-items-center">
-                <label class="primaryFontSize" title="shuffle options" >Shuffle : </label>
+                <label class="primaryFontSize" title="shuffle options" >Shuffle </label>
                 <label class="switch">
                     <input type="checkbox" formControlName="shuffle">
                     <span class="slider"></span>
                 </label>
             </div>
         </div>
-        <div class="col-6 flex flex-column gap-5 p-4">
-            <input type="number" pInputText class="w-full text-3xl bg-gray-200 " required formControlName="totalQuestions"  placeholder="Total Questions*">
+    
+        <div class="lg:col-6 md:col-6 col-12 flex flex-column gap-4 p-4">
+            <label  class="primaryFontSize">Total Questions <span class="text-red-500">*</span></label>
+            <input type="number" pInputText class="w-full text-3xl bg-gray-50 " required formControlName="totalQuestions">
             <span *ngIf="!testForm.get('totalQuestions').valid && testForm.get('totalQuestions').touched" class="text-red-500">Please Enter a valid number</span>
-            <input type="number" pInputText class="w-full text-3xl bg-gray-200 " formControlName="totalmins"  required   placeholder="Time in Mins*">
+            <label  class="primaryFontSize">Time in Mins<span class="text-red-500">*</span></label>
+            <input type="number" pInputText class="w-full text-3xl bg-gray-50  " formControlName="totalmins"  required >
             <span *ngIf="!testForm.get('totalmins').valid && testForm.get('totalmins').touched" class="text-red-500">Please Enter a valid number</span>
         </div>
         <div class="col-12 p-4 flex justify-content-end">
@@ -33,6 +41,7 @@
                 background:'#3266CA'
               }" type="submit">Next<i class="pi pi-arrow-right text-2xl"></i></app-button>
         </div>
+    </div>
     </form>
     </div>
 </app-wrap-instruction>

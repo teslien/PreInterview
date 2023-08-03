@@ -1,5 +1,7 @@
 <app-loader *ngIf="loading"></app-loader>
+<p-toast></p-toast>
 <app-wrap-instruction>
+    <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" styleClass="text-2xl"></p-confirmDialog>
     <p-table #dt1 id="SrNo" [value]="ExcelData" tableStyleClass="text-2xl" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['id','name','email','mobile_number','location','test_name','position','score']" >
         <ng-template pTemplate="caption">
@@ -21,6 +23,7 @@
                 <th pSortableColumn="test_name"> Test Name <p-sortIcon field="test_name"></p-sortIcon></th>
                 <th pSortableColumn="test_status">Test Status <p-sortIcon field="test_status"></p-sortIcon></th>
                 <th pSortableColumn="score">Score <p-sortIcon field="score"></p-sortIcon></th>
+                <th></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-data>
@@ -40,6 +43,9 @@
                     </ng-template>
                 </td>
                 <td><span  [ngClass]="highlight(data.score,data.totalquestions) ? 'text-green-500' : 'text-red-500'" class="font-bold">{{data.score}}</span>/{{data.totalquestions}}</td>
+                <td>
+                    <i  class="pi pi-trash text-2xl cursor-pointer" (click)="confirmDelete(data.id,$event)"></i>
+                </td>
             </tr>
         </ng-template>
     </p-table>

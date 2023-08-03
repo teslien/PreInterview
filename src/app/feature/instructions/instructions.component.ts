@@ -38,6 +38,7 @@ export class InstructionsComponent implements OnInit {
         const takePic = sec/10;
         localStorage.setItem("takePic",takePic.toString());
         localStorage.setItem("timer_value",sec.toString());
+        localStorage.setItem("CurrectQuesionIndex",'0');
         localStorage.setItem("questionData",JSON.stringify(this.quizData.questionData));
       })
   }

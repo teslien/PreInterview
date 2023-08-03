@@ -53,7 +53,7 @@ export class CreateComponent implements OnInit {
       'shuffle': new FormControl(null),
       'totalQuestions': new FormControl(null,Validators.required),
       'totalmins': new FormControl(null,Validators.required),
-      'Levels':new FormControl(null)
+      'Levels':new FormControl(null,Validators.required)
 
   })
 }

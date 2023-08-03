@@ -61,6 +61,7 @@ export class QuizComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.currentQuestionIndex=parseInt(localStorage.getItem("CurrectQuesionIndex"));
     this.quizDetails = JSON.parse(localStorage.getItem("QuizData"));
     this.quizData = JSON.parse(localStorage.getItem("questionData"));
     const takePic = JSON.parse(localStorage.getItem("takePic"));
@@ -69,7 +70,7 @@ export class QuizComponent implements OnInit{
     this.randomlyCapturingImage(takePic);
 
     this.testDataService.autoSubmitting.subscribe(res => {
-      if (res == true) {
+      if(res) {
         this.onTestSubmit();
       }
     })
@@ -92,6 +93,7 @@ export class QuizComponent implements OnInit{
 
     if (this.currentQuestionIndex <= this.quizDetails.totalQuestions && this.currentQuestionIndex > -1) {
       this.currentQuestionIndex++;
+      localStorage.setItem("CurrectQuesionIndex",this.currentQuestionIndex.toString())
       this.testDataService.UpdateNavbar.emit(this.quizData[this.currentQuestionIndex].id);
       this.optionChoosen = false;
     }

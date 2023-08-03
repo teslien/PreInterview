@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { TestDataService } from 'src/app/service/test-data.service';
+import {ConfirmationService} from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
+
 
 @Component({
   selector: 'app-view-applicants',
   templateUrl: './view-applicants.component.html',
-  styleUrls: ['./view-applicants.component.scss']
+  styleUrls: ['./view-applicants.component.scss'],
+  providers:[MessageService,ConfirmationService]
 })
 export class ViewApplicantsComponent implements OnInit {
 
@@ -16,7 +21,7 @@ export class ViewApplicantsComponent implements OnInit {
   boolValue:boolean;
  
 
-  constructor(private testService: TestDataService,private route:Router) { }
+  constructor(private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig,private testService: TestDataService,private route:Router,private message:MessageService) { }
 
   ngOnInit(): void {
     this.testService.getApplicantData(this.adminId).subscribe(res=>{
@@ -46,7 +51,27 @@ export class ViewApplicantsComponent implements OnInit {
     return this.boolValue;
   }
 
-
+  confirmDelete(id:any,event:MouseEvent) {
+    event.stopPropagation();
+    this.confirmationService.confirm({
+        message: `Do you want to delete this record with id = ${id}?`,
+        header: 'Delete Confirmation',
+        icon: 'pi pi-info-circle',
+        accept: () => {
+          const tragetObject = this.ExcelData.find(item => item.id === id);
+          const indexToDelete = this.ExcelData.indexOf(tragetObject);
+          if (tragetObject) {
+            this.ExcelData.splice(indexToDelete, 1);
+          } 
+          this.testService.deleteApplicant(this.adminId,id).subscribe(res=>{
+            this.message.add({severity:'success', summary:'Succesfully', detail:'Deleted'});
+          })
+        },
+        reject: () => {
+          this.message.add({severity:'info', summary:'Rejected', detail:'Item not deleted'});
+        }
+    });
+}
 
 
 }

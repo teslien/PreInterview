@@ -1,22 +1,45 @@
 <app-loader *ngIf="loading"></app-loader>
 <p-dialog header="Add Applicants" [(visible)]="displayBasic" [style]="{width: '50vw'}" [maximizable]="true"  [modal]="true" [baseZIndex]="10000">
-<form class="flex gap-4 flex-column" [formGroup]="applicantForm" (ngSubmit)="OnAdd()">
-    <input type="number" pInputText formControlName="sr" placeholder="Enter Sr.No" class="text-2xl">
-    <input type="text" pInputText formControlName="name" placeholder="Enter Name" class="text-2xl">
-    <input type="email" pInputText formControlName="email" placeholder="Enter Email" class="text-2xl">
-    <input type="number" pInputText formControlName="mobile" placeholder="Enter Mobile Number" class="text-2xl">
-    <input type="text" pInputText formControlName="location" placeholder="Enter Location" class="text-2xl">
-    <input type="text" pInputText formControlName="position" placeholder="Enter Position" class="text-2xl">
-    <div class="flex justify-content-end">
+<form class="flex grid col-12 justify-content-center" [formGroup]="applicantForm" (ngSubmit)="OnAdd()">
+<div class="lg:col-6 md:col-6 col-12 flex flex-column gap-4">
+    <div class="flex justify-content-evenly align-items-center">
+        <label  class="secondaryFontSize">Enter Sr.No<span class="text-red-500">*</span></label>
+        <input type="number" pInputText formControlName="sr" class="text-2xl">
+    </div>
+    <div class="flex justify-content-evenly align-items-center">
+        <label  class="secondaryFontSize">Enter Name<span class="text-red-500">*</span></label>
+        <input type="text" pInputText formControlName="name"  class="text-2xl">
+    </div>
+    <div class="flex justify-content-evenly align-items-center">
+    <label  class="secondaryFontSize">Enter Email<span class="text-red-500">*</span></label>
+    <input type="email" pInputText formControlName="email"  class="text-2xl">
+    </div>
+</div>
+<div class="col  flex flex-column gap-4">
+    <div class="flex justify-content-evenly align-items-center">
+        <label  class="secondaryFontSize">Enter Number<span class="text-red-500">*</span></label>
+        <p-inputMask formControlName="mobile" mask="(999) 999-9999" styleClass="text-2xl" ></p-inputMask>    
+    </div>
+    <div class="flex justify-content-evenly align-items-center">
+        <label  class="secondaryFontSize">Enter Location<span class="text-red-500">*</span></label>
+        <input type="text" pInputText formControlName="location"  class="text-2xl">
+    </div>
+    <div class="flex justify-content-evenly align-items-center">
+        <label  class="secondaryFontSize">Enter Position<span class="text-red-500">*</span></label>
+    <input type="text" pInputText formControlName="position"  class="text-2xl">
+    </div>
+</div>
+
+    <div class="flex justify-content-end col-12 mt-4 px-6">
         <app-button [customStyles]="{
             background:'#3266CA'
-        }">Add <i class="pi pi-plus"></i></app-button>
+        }" type="submit">Add <i class="pi pi-plus"></i></app-button>
     </div>
 </form>
 </p-dialog>
 <app-wrap-instruction>
     <div class="mb-3 flex justify-content-between ">
-        <input type="file" (change)="ReadExcel($event)">
+        <input type="file" (change)="ReadExcel($event)" accept=".xls,.xlsx">
         <div class="flex gap-4 align-items-center">
             <a href="../../../../assets/applicants.xlsx" title="Sample Excel File" class="no-underline" download>Excel <i class="pi pi-download"></i></a>
             <app-button [customStyles]="{
