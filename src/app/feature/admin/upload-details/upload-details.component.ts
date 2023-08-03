@@ -19,7 +19,7 @@ export class UploadDetailsComponent implements OnInit {
 	applicantForm: FormGroup;
 	testDataFromHome: any;
 	dataSubs: Subscription;
-	ExcelData: any[];
+	ExcelData: any[]=[];
 	loading: boolean;
 	displayBasic: boolean;
 	constructor(private activatedRoute: ActivatedRoute, private testService: TestDataService, private route: Router) { }
@@ -31,7 +31,6 @@ export class UploadDetailsComponent implements OnInit {
 		})
 
 		this.applicantForm = new FormGroup({
-			'sr': new FormControl(null,Validators.required),
 			'name': new FormControl(null,Validators.required),
 			'email': new FormControl(null,[Validators.required,Validators.email]),
 			'mobile': new FormControl(null,[Validators.required]),
@@ -104,22 +103,13 @@ export class UploadDetailsComponent implements OnInit {
 					Applied: this.applicantForm.get('position').value,
 					Email: this.applicantForm.get('email').value,
 					Location :this.applicantForm.get('location').value,
-					Mobile_number : this.applicantForm.get('mobile').value,
+					Mobile_number : this.applicantForm.get('mobile').value.filter(item=>item.i != '('),
 					Name : this.applicantForm.get('name').value,
 					SrNo : this.ExcelData.length+1
 				}
 				this.ExcelData.push(data);
-			}else{
-				let data = {
-					Applied: this.applicantForm.get('position').value,
-					Email: this.applicantForm.get('email').value,
-					Location :this.applicantForm.get('location').value,
-					Mobile_number : this.applicantForm.get('mobile').value,
-					Name : this.applicantForm.get('name').value,
-					SrNo : this.applicantForm.get('sr').value
-				}
-				this.ExcelData=[data];
 			}
+			this.applicantForm.reset();
 		}
 
 	}

@@ -44,7 +44,7 @@
                 </td>
                 <td><span  [ngClass]="highlight(data.score,data.totalquestions) ? 'text-green-500' : 'text-red-500'" class="font-bold">{{data.score}}</span>/{{data.totalquestions}}</td>
                 <td>
-                    <i  class="pi pi-trash text-2xl cursor-pointer" (click)="confirmDelete(data.id,$event)"></i>
+                    <i  class="pi pi-trash text-2xl cursor-pointer" (click)="confirmDelete(data.id,$event,data.name)"></i>
                 </td>
             </tr>
         </ng-template>

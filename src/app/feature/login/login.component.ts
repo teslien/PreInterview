@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit,OnDestroy {
         const admins = this.adminArray.find(u => u.email == this.loginForm.get('emailid').value && u.password == this.loginForm.get('possword').value);
         if (admins) {
           sessionStorage.setItem("UserId", admins.id);
-          // this.auth.haveloggedin = true;
+          this.loginForm.reset();
           this.router.navigate(['/admin/tests']);
         } else {
           this.showError();
@@ -77,10 +77,15 @@ export class LoginComponent implements OnInit,OnDestroy {
           sessionStorage.setItem("admid",this.activeId);
           sessionStorage.setItem("UserName", applicant.name);
           sessionStorage.setItem("ApplicantId", applicant.id);
+          this.loginForm.reset();
           this.router.navigate(['/welcome']);
+        }else{
+          this.showError();
         }
       }
 
+    }else{
+      this.messageService.add({severity:'info', summary: 'Invalid', detail: 'Form Data Invalid'})
     }
 
   }

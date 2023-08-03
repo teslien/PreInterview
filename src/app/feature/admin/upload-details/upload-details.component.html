@@ -1,30 +1,26 @@
 <app-loader *ngIf="loading"></app-loader>
 <p-dialog header="Add Applicants" [(visible)]="displayBasic" [style]="{width: '50vw'}" [maximizable]="true"  [modal]="true" [baseZIndex]="10000">
 <form class="flex grid col-12 justify-content-center" [formGroup]="applicantForm" (ngSubmit)="OnAdd()">
-<div class="lg:col-6 md:col-6 col-12 flex flex-column gap-4">
-    <div class="flex justify-content-evenly align-items-center">
-        <label  class="secondaryFontSize">Enter Sr.No<span class="text-red-500">*</span></label>
-        <input type="number" pInputText formControlName="sr" class="text-2xl">
-    </div>
-    <div class="flex justify-content-evenly align-items-center">
+<div class="lg:col-6 md:col-6 col-12 px-5 flex flex-column gap-4">
+    <div class="flex justify-content-between align-items-center">
         <label  class="secondaryFontSize">Enter Name<span class="text-red-500">*</span></label>
         <input type="text" pInputText formControlName="name"  class="text-2xl">
     </div>
-    <div class="flex justify-content-evenly align-items-center">
+    <div class="flex justify-content-between align-items-center">
     <label  class="secondaryFontSize">Enter Email<span class="text-red-500">*</span></label>
     <input type="email" pInputText formControlName="email"  class="text-2xl">
     </div>
-</div>
-<div class="col  flex flex-column gap-4">
-    <div class="flex justify-content-evenly align-items-center">
+    <div class="flex justify-content-between align-items-center">
         <label  class="secondaryFontSize">Enter Number<span class="text-red-500">*</span></label>
         <p-inputMask formControlName="mobile" mask="(999) 999-9999" styleClass="text-2xl" ></p-inputMask>    
     </div>
-    <div class="flex justify-content-evenly align-items-center">
+</div>
+<div class="col  flex flex-column gap-4 px-5">
+    <div class="flex justify-content-between align-items-center">
         <label  class="secondaryFontSize">Enter Location<span class="text-red-500">*</span></label>
         <input type="text" pInputText formControlName="location"  class="text-2xl">
     </div>
-    <div class="flex justify-content-evenly align-items-center">
+    <div class="flex justify-content-between align-items-center">
         <label  class="secondaryFontSize">Enter Position<span class="text-red-500">*</span></label>
     <input type="text" pInputText formControlName="position"  class="text-2xl">
     </div>

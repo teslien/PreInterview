@@ -51,10 +51,10 @@ export class ViewApplicantsComponent implements OnInit {
     return this.boolValue;
   }
 
-  confirmDelete(id:any,event:MouseEvent) {
+  confirmDelete(id:any,event:MouseEvent,name:any) {
     event.stopPropagation();
     this.confirmationService.confirm({
-        message: `Do you want to delete this record with id = ${id}?`,
+        message: `Do you want to delete this record of ${name}?`,
         header: 'Delete Confirmation',
         icon: 'pi pi-info-circle',
         accept: () => {

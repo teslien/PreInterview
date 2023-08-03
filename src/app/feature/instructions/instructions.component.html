@@ -1,26 +1,21 @@
 <app-wrap-instruction>
     <div class="p-4 primaryFontSize text-justify line-height-2">
-        <h3 class="font-bold">Instructions</h3>
+        <h3 class="font-bold mb-5 textWonder">Instructions</h3>
 
-        <br>
-        As part of the evaluation process, you will be required to complete two rounds. These rounds are designed to
-        assess your skills, knowledge, and suitability for the position you've applied for.
-
-        During the first round, you will be presented with a series of questions or tasks. These may be in the form of
-        multiple-choice questions, problem-solving exercises, or practical assignments, depending on the nature of the
-        position. Take your time to carefully read and understand each question or task before providing your response.
-
-        If you successfully pass the first round, you will proceed to the second round. The second round might involve
-        additional assessments, such as a virtual interview, a coding challenge, a presentation, or a simulation
-        exercise. The specific details and requirements for the second round will be communicated to you after the
-        completion of the first round.
-
-        It's important to approach each round with focus, attention to detail, and a desire to showcase your abilities.
-        Make sure to follow any provided instructions closely and submit your responses within the given timeframe, if
-        applicable.
-
-        We wish you the best of luck in the upcoming rounds of the pre-interview test. If you have any further questions
-        or require clarification on anything, please don't hesitate to ask.
+        <div class="mb-1">
+            <label for="testName" >Test Name :</label> {{this.quizData.testName}}
+        </div>
+        <div class="mb-1" ><label for="min" >Duration : </label>{{this.quizData.totalTimeInMins}} minutes</div>
+       
+        <div class="mb-1"> <label for="numberOfQuestion" >Number of Questions :</label> {{this.quizData.totalQuestions}}</div>
+        <div class="mb-1"><label for="type" >Question Type : </label>Multiple Choice Questions</div>
+        <div class="mb-1"><label for="level" >Level :</label> {{this.quizData.level.name}}</div>
+        <div class="mt-5">
+       <span class="font-bold">Note : </span>For test integrity, random pictures may be taken during the assessment to ensure no cheating is involved. Additionally, your IP address and location may be stored for monitoring purposes.
+        </div>
+        <div class="mt-4">
+            <span>By proceeding, you agree to the terms and conditions stated above. Please continue with the test <span class="text-red-500">*</span></span> 
+        </div>
         <div class="col-12 flex justify-content-end gap-3 px-4 mt-7">
             <app-button [customStyles]="{
                 background:'#FBFBFB',
