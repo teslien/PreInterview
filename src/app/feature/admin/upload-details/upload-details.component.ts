@@ -103,7 +103,7 @@ export class UploadDetailsComponent implements OnInit {
 					Applied: this.applicantForm.get('position').value,
 					Email: this.applicantForm.get('email').value,
 					Location :this.applicantForm.get('location').value,
-					Mobile_number : this.applicantForm.get('mobile').value.filter(item=>item.i != '('),
+					Mobile_number : this.applicantForm.get('mobile').value,
 					Name : this.applicantForm.get('name').value,
 					SrNo : this.ExcelData.length+1
 				}

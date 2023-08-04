@@ -11,6 +11,7 @@ export class TestDataService {
   UpdateNavbar = new EventEmitter<any>();
   applicantdatalog=  new Rx.Subject<any>();
   autoSubmitting=  new Rx.Subject<boolean>();
+  UserData = new Rx.BehaviorSubject<any>(undefined);
   updateProfile = new Rx.BehaviorSubject<any>({});
   UpdatePic=new EventEmitter<any>();
   

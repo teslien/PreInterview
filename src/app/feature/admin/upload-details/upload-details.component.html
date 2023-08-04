@@ -26,7 +26,7 @@
     </div>
 </div>
 
-    <div class="flex justify-content-end col-12 mt-4 px-6">
+    <div class="flex justify-content-end col-12 px-6">
         <app-button [customStyles]="{
             background:'#3266CA'
         }" type="submit">Add <i class="pi pi-plus"></i></app-button>
@@ -34,8 +34,11 @@
 </form>
 </p-dialog>
 <app-wrap-instruction>
+    <div class="p-2 mb-5">
+        <span class="primaryFontSize">Upload Via Excel File or Add Applicant manually</span>
+    </div>
     <div class="mb-3 flex justify-content-between ">
-        <input type="file" (change)="ReadExcel($event)" accept=".xls,.xlsx">
+        <input type="file" (change)="ReadExcel($event)"  accept=".xls,.xlsx">
         <div class="flex gap-4 align-items-center">
             <a href="../../../../assets/applicants.xlsx" title="Sample Excel File" class="no-underline" download>Excel <i class="pi pi-download"></i></a>
             <app-button [customStyles]="{

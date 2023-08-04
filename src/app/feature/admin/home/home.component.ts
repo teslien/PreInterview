@@ -14,7 +14,7 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit,OnDestroy {
 
-  catagories:any;
+  catagories:any[]=undefined;
   sortOptions: any[];
   sortOrder: number;
   sortField: string;
@@ -26,18 +26,23 @@ export class HomeComponent implements OnInit,OnDestroy {
   
   constructor(private testService:TestDataService,private primengConfig: PrimeNGConfig,private route:Router,private MessageService:MessageService) { }
   ngOnDestroy(): void {
-    this.dataSubs.unsubscribe()
+    this.dataSubs?.unsubscribe()
   }
 
   ngOnInit(): void {
    const adminId = sessionStorage.getItem("UserId");
-   this.dataSubs = this.testService.getAllTest(adminId).subscribe(res=>{
-    this.catagories=res;
-  
+   const data = localStorage.getItem("homeShowtest");
+   if(data){
+    this.catagories=JSON.parse(data);
     this.loading=false;
-   },error=>{
-    this.MessageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
-   })
+   }else{
+      this.dataSubs = this.testService.getAllTest(adminId).subscribe(res=>{
+      this.catagories=res;
+      this.loading=false;
+      localStorage.setItem("homeShowtest",JSON.stringify(this.catagories));
+     })
+   }
+
 
 this.primengConfig.ripple = true;
   }

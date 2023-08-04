@@ -19,15 +19,30 @@ export class ViewApplicantsComponent implements OnInit {
   load:boolean=true;
   loading:boolean=true;
   boolValue:boolean;
- 
+  dataFromSubject:any;
 
   constructor(private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig,private testService: TestDataService,private route:Router,private message:MessageService) { }
 
   ngOnInit(): void {
+
+    this.testService.UserData.subscribe(res=>{
+      this.dataFromSubject= res;
+    })
+    if(this.dataFromSubject!=undefined){
+      this.ExcelData=this.dataFromSubject;
+      this.load=false;
+      this.loading=false;
+    }else{
+      this.fetchUserData()
+    }
+  }
+
+  fetchUserData(){
     this.testService.getApplicantData(this.adminId).subscribe(res=>{
       this.ExcelData=res;
       this.load=false;
       this.loading=false;
+      this.testService.UserData.next(this.ExcelData);
     })
   }
 
